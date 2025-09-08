@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve and source utils.sh (assumes utils.sh is next to this script)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/utils.sh"
+
+# Find project root
+DSDC_DIR="$(find_project_root ".dsdc_project_root")"
+
+# Ask for confirmation
+echo "⚠️  WARNING: This operation will IRREVERSIBLY delete all generated files in:"
+echo "  → $DSDC_DIR"
+echo
+echo "The following will be removed:"
+echo "  - Python virtual environment (default: \$DSDC_DIR/env)"
+echo "  - All data files"
+echo "  - All docker images and containers related to the project"
+echo
+read -rp "Are you sure you want to proceed? (yes/[no]) " confirm
+if [[ "$confirm" != "yes" ]]; then
+  echo "Aborted."
+  exit 0
+fi
+
+echo "🧹 Resetting project at: $DSDC_DIR"
+
+# Resolve venv path
+DSDC_VENV="${DSDC_VENV:-env}"
+if [[ "$DSDC_VENV" = /* ]]; then
+  VENV_PATH="$DSDC_VENV"
+else
+  VENV_PATH="${DSDC_DIR}/${DSDC_VENV}"
+fi
+
+# Remove venv
+if [[ -d "$VENV_PATH" ]]; then
+  echo "🔸 Removing virtual environment: $VENV_PATH"
+  rm -rf "$VENV_PATH"
+fi
+
+# Remove tmp dir
+if [[ -d "$DSDC_DIR/tmp" ]]; then
+  echo "🔸 Removing temporary directory"
+  rm -rf "$DSDC_DIR/tmp"
+fi
+
+echo "✅ Hard reset completed."
