@@ -1,3 +1,7 @@
 # python files
 __pycache__/
 *.py[cod]
+*.egg-info/
+
+# .env file (only template to be synchronized on git)
+.env
