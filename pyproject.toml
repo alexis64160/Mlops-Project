@@ -1,0 +1,18 @@
+[project]
+name = "dsdc"
+version = "0.1.0"
+description = "DataScientest Document Classification Project"
+requires-python = "==3.13"
+readme = "README.md"
+license = "MIT"
+authors = [
+  { name = "AL"},
+  { name = "BH"},
+]
+
+dependencies = [
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dsdc*"]
