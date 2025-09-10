@@ -177,6 +177,8 @@ mkdir data/processed
 # -------------- #
 # PREPARE DOCKER #
 # -------------- #
+./services/postgres/scripts/initialize.sh
+
 
 
 # # création des volumes Docker

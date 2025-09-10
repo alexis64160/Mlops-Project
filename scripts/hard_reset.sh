@@ -39,10 +39,26 @@ if [[ -d "$VENV_PATH" ]]; then
   rm -rf "$VENV_PATH"
 fi
 
+# Remove installed services
+# Stop and remove containers
+docker ps -a --filter "name=^dsdc" --format "{{.ID}}" | xargs -r docker stop
+docker ps -a --filter "name=^dsdc" --format "{{.ID}}" | xargs -r docker rm
+# Remove images
+docker images --filter=reference='dsdc*' -q | xargs -r docker rmi
+# Remove volumes
+docker volume ls --format '{{.Name}}' | grep '^dsdc'
+
 # Remove tmp dir
 if [[ -d "$DSDC_DIR/tmp" ]]; then
   echo "🔸 Removing temporary directory"
   rm -rf "$DSDC_DIR/tmp"
 fi
+
+# Remove data dir
+if [[ -d "$DSDC_DIR/data" ]]; then
+  echo "🔸 Removing data directory"
+  rm -rf "$DSDC_DIR/data"
+fi
+
 
 echo "✅ Hard reset completed."
