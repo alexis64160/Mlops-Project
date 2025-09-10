@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $DSDC_DIR/.env.secret
+source $DSDC_DIR/.env.secrets
 
 docker run --rm --name dsdc-postgres \
   -e POSTGRES_USER=$POSTGRES_USER \
