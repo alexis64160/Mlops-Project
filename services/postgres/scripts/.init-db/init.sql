@@ -41,6 +41,6 @@ CREATE TABLE IF NOT EXISTS embeddings(
     processed_image SERIAL NOT NULL,
     processed_text SERIAL NOT NULL,
     clip_version TEXT NOT NULL,
-    embeddings ARRAY
+    embeddings FLOAT8[1024]
 );
 
