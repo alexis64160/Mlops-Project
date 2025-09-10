@@ -46,7 +46,7 @@ docker ps -a --filter "name=^dsdc" --format "{{.ID}}" | xargs -r docker rm
 # Remove images
 docker images --filter=reference='dsdc*' -q | xargs -r docker rmi
 # Remove volumes
-docker volume ls --format '{{.Name}}' | grep '^dsdc'
+docker volume ls --format '{{.Name}}' | grep '^dsdc' | xargs -r docker volume rm
 
 # Remove tmp dir
 if [[ -d "$DSDC_DIR/tmp" ]]; then
@@ -60,5 +60,7 @@ if [[ -d "$DSDC_DIR/data" ]]; then
   rm -rf "$DSDC_DIR/data"
 fi
 
+# Remove pytest_cache:
+rm -rf "$DSDC_DIR/.pytest_cache"
 
 echo "✅ Hard reset completed."
