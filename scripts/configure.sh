@@ -17,7 +17,7 @@ source "$SCRIPT_DIR/scripts/utils.sh"
 export DSDC_DIR="$(find_project_root ".dsdc_project_root")"
 
 # Set default venv location
-export DSDC_VENV="${DSDC_VENV:-env}"
+export DSDC_VENV="${DSDC_VENV:-.venv}"
 if [[ "$DSDC_VENV" = /* ]]; then
   VENV_PATH="$DSDC_VENV"
 else

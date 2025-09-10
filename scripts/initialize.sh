@@ -133,7 +133,7 @@ export DSDC_PYTHON
 
 # Step 0: Define path variables
 TMP_VENV=$DSDC_DIR/tmp/venv
-DSDC_VENV="${DSDC_VENV:-env}"
+DSDC_VENV="${DSDC_VENV:-.venv}"
 if [[ "$DSDC_VENV" = /* ]]; then # absolute path
   VENV_DIR="$DSDC_VENV"
 else # relative path
