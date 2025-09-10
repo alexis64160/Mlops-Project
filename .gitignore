@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 
-# .env file (only template to be synchronized on git)
+# .local files
 .env.secrets
 config.yaml
+
+# data and model folders
+/data
+/models
