@@ -26,7 +26,7 @@ fi
 echo "🧹 Resetting project at: $DSDC_DIR"
 
 # Resolve venv path
-DSDC_VENV="${DSDC_VENV:-env}"
+DSDC_VENV="${DSDC_VENV:-.venv}"
 if [[ "$DSDC_VENV" = /* ]]; then
   VENV_PATH="$DSDC_VENV"
 else
@@ -60,7 +60,16 @@ if [[ -d "$DSDC_DIR/data" ]]; then
   rm -rf "$DSDC_DIR/data"
 fi
 
+# Remove build dir
+if [[ -d "$DSDC_DIR/build" ]]; then
+  echo "🔸 Removing build directory"
+  rm -rf "$DSDC_DIR/build"
+fi
+
 # Remove pytest_cache:
-rm -rf "$DSDC_DIR/.pytest_cache"
+if [[ -d "$DSDC_DIR/.pytest_cache" ]]; then
+  echo "🔸 Removing .pytest_cache directory"
+  rm -rf "$DSDC_DIR/.pytest_cache"
+fi
 
 echo "✅ Hard reset completed."
