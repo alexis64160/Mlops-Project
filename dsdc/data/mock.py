@@ -66,10 +66,15 @@ def pull_cdip_images(minimum_quantity = 500):
                         cdip_document_id, filename = file.name.split(os.sep)[4:]
                         print(file.name, cdip_document_id, filename)
                         if cdip_document_id in document_ids:
-                            dest_path = CONFIG.paths.to_ingest / cdip_document_id / filename
-                            archive.extract(file, path=dest_path.parent)
-                            file_paths[cdip_document_id] = f"{cdip_document_id}/{filename}"
-                            tif_amount += 1        
+                            dest_dir = CONFIG.paths.to_ingest / cdip_document_id
+                            dest_dir.mkdir(parents=True, exist_ok=True)
+                            dest_path = dest_dir / filename
+                            extracted_file = archive.extractfile(file)
+                            if extracted_file:
+                                with open(dest_path, 'wb') as out_f:
+                                    shutil.copyfileobj(extracted_file, out_f)
+                                file_paths[cdip_document_id] = f"{cdip_document_id}/{filename}"
+                                tif_amount += 1        
             logging.info(f"   ... Successfully imported {tif_amount} tif files, in {time.time() - t:.2f} seconds")
         logging.info(f"Done")
 
