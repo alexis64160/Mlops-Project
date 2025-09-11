@@ -3,7 +3,6 @@ import requests
 import logging
 from pathlib import Path
 import pandas as pd
-import numpy as np
 import time
 import tarfile
 import io
@@ -12,7 +11,7 @@ import os
 import random
 
 from dsdc import CONFIG
-from dsdc.db.crud import get_document_list, add_documents_with_labels
+from dsdc.db.crud import get_document_list
 
 
 def pull_cdip_images(minimum_quantity = 500):
@@ -41,29 +40,19 @@ def pull_cdip_images(minimum_quantity = 500):
         logging.info(msg=f"téléchargement d'images depuis {url}")
         response = requests.get(url, stream=True)
         response.raise_for_status()
-        total_size = int(response.headers.get('Content-Length', 0))
-        chunk_size = 1024 * 1024  # 1 MB
-        temp_bytes = io.BytesIO()
-        with tqdm(total=total_size, unit='B', unit_scale=True, desc="Downloading .tar") as pbar:
-            for chunk in response.iter_content(chunk_size=chunk_size):
-                temp_bytes.write(chunk)
-                pbar.update(len(chunk))
-        temp_bytes.seek(0)
-        response = requests.get(url, stream=True)
-        response.raise_for_status()  # En cas d'erreur HTTP
+
         file_paths = {}
+        tif_amount = 0
         with tarfile.open(fileobj=io.BytesIO(response.content), mode="r|*") as archive:
             for file in archive:
-                if file.name.endswith('.tif'): # to filter xml files that are part of the archive
+                if file.name.endswith('.tif'):
                     cdip_document_id, filename = file.name.split(os.sep)[4:]
                     if cdip_document_id in document_ids:
-                        archive.extract(file, path=CONFIG.paths.to_ingest/cdip_document_id/filename)
+                        dest_path = CONFIG.paths.to_ingest / cdip_document_id / filename
+                        archive.extract(file, path=dest_path.parent)
                         file_paths[cdip_document_id] = f"{cdip_document_id}/{filename}"
-                        tif_amount += 1
+                        tif_amount += 1        
         logging.info(f"   ... Successfully imported {tif_amount} tif files, in {time.time() - t:.2f} seconds")
-        logging.info(f"Adding data to postgres database")
-        documents = [[document_id, file_paths[document_id], label] for document_id, label in zip(document_ids, labels)]
-        add_documents_with_labels(documents)
         logging.info(f"Done")
 
 
