@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-docker volume dsdc_pgdata
+docker volume create dsdc_pgdata
 
 docker pull postgres:latest
