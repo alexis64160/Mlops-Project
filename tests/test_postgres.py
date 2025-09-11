@@ -1,11 +1,12 @@
 import psycopg2
 import pytest
 
+from dsdc import CONFIG, SECRETS
 # Configuration de connexion à la base de données
 DB_CONFIG = {
-    "dbname": "dsdc_db",       # ← remplace par le nom réel de ta base
-    "user": "dsdc_user",
-    "password": "toto",
+    "dbname": CONFIG.services.postgres.db_name,
+    "user": SECRETS.POSTGRES_USER,
+    "password": SECRETS.POSTGRES_PASSWORD,
     "host": "localhost",
     "port": 5432
 }
@@ -26,6 +27,13 @@ def db_connection():
     conn = psycopg2.connect(**DB_CONFIG)
     yield conn
     conn.close()
+
+
+def test_db_connection(db_connection):
+    cursor = db_connection.cursor()
+    cursor.execute("SELECT 1")
+    result = cursor.fetchone()
+    assert result == (1,), "Connexion à la base échouée ou requête simple non fonctionnelle"
 
 
 def test_tables_exist(db_connection):
