@@ -42,6 +42,7 @@ fi
 # Remove installed services
 # Stop and remove containers
 docker ps -a --filter "name=^dsdc" --format "{{.ID}}" | xargs -r docker stop
+sleep 2
 docker ps -a --filter "name=^dsdc" --format "{{.ID}}" | xargs -r docker rm
 # Remove images
 docker images --filter=reference='dsdc*' -q | xargs -r docker rmi
