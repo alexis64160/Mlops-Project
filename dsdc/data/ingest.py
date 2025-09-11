@@ -42,7 +42,11 @@ if __name__ == "__main__":
     labels = get_labels(original_file_paths)
 
     # ecriture dans la table documents
-    add_documents_with_labels(zip(document_ids, storage_file_paths, labels))
+    add_documents_with_labels(zip(
+        document_ids,
+        map(lambda p: p.relative_to(CONFIG.paths.raw), storage_file_paths),
+        labels
+        ))
     # # déplacement des fichiers
     move_files(original_file_paths, storage_file_paths)
     for p in CONFIG.paths.to_ingest.iterdir():
