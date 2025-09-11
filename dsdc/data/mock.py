@@ -14,7 +14,6 @@ from dsdc import CONFIG
 from dsdc.db.crud import get_document_list
 from dsdc.utils.project_files import get_images_files_in_directory
 
-
 def pull_cdip_images(minimum_quantity = 500):
 
     rvl_documents = pd.read_csv(CONFIG.paths.rvl_csv)
@@ -40,9 +39,13 @@ def pull_cdip_images(minimum_quantity = 500):
         for source_file in sum(list(map(get_images_files_in_directory, paths)), []):
             cdip_document_id = source_file.parent.name
             filename = source_file.name
-            dest_file = CONFIG.paths.to_ingest / cdip_document_id / filename
-            dest_file.parent.mkdir(exist_ok=True, parents=True)
+            dest_dir = CONFIG.paths.to_ingest / cdip_document_id
+            dest_dir.mkdir(exist_ok=True, parents=True)
+            dest_file = dest_dir / filename
             shutil.copy(source_file, dest_file)
+            label = int(rvl_documents.loc[rvl_documents.document_id==cdip_document_id,"label"].values[0])
+            with open(dest_dir/"label.txt", "w") as f:
+                f.write(str(label))
             tif_amount += 1
         logging.info(f"   ... Successfully imported {tif_amount} tif files, in {time.time() - t:.2f} seconds")
 
@@ -74,6 +77,9 @@ def pull_cdip_images(minimum_quantity = 500):
                                 with open(dest_path, 'wb') as out_f:
                                     shutil.copyfileobj(extracted_file, out_f)
                                 file_paths[cdip_document_id] = f"{cdip_document_id}/{filename}"
+                                label = int(rvl_documents.loc[rvl_documents.document_id==cdip_document_id,"label"].values[0])
+                                with open(dest_dir/"label.txt", "w") as f:
+                                    f.write(str(label))
                                 tif_amount += 1        
             logging.info(f"   ... Successfully imported {tif_amount} tif files, in {time.time() - t:.2f} seconds")
         logging.info(f"Done")
