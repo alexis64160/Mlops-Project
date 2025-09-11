@@ -11,10 +11,12 @@ def get_labels(original_file_paths):
     labels_df = pd.read_csv(CONFIG.paths.rvl_csv)
     labels = labels_df[labels_df["document_id"].isin(cdip_ids)][["document_id", "label"]].set_index("document_id").to_dict()['label']
     labels = [labels[d] for d in cdip_ids]
+    return labels
 
 def move_files(original_file_paths, storage_file_paths):
     logging.info(f"Moving {len(original_file_paths)} files")
     for original_file_path, storage_file_path in zip(original_file_paths, storage_file_paths):
+        storage_file_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.move(original_file_path, storage_file_path)
 
 if __name__ == "__main__":
@@ -23,9 +25,11 @@ if __name__ == "__main__":
     document_ids = list(map(compute_document_id, original_file_paths))
     storage_file_paths = list(map(compute_storage_path, original_file_paths, document_ids))
     preprocessed_image_paths = list(map(get_processed_image_path, document_ids))
-    labels = list(map(get_labels, original_file_paths))
+    labels = get_labels(original_file_paths)
 
     # ecriture dans la table documents
     add_documents_with_labels(zip(document_ids, storage_file_paths, labels))
-    # déplacement des fichiers
+    # # déplacement des fichiers
     move_files(original_file_paths, storage_file_paths)
+    for p in CONFIG.paths.to_ingest.iterdir():
+        p.rmdir()
