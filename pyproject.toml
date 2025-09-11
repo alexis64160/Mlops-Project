@@ -12,6 +12,7 @@ authors = [
 
 dependencies = [
     "pandas>=2.3.2",
+    "pillow>=11.3.0",
     "psycopg2-binary>=2.9.10",
     "pyyaml>=6.0.2",
     "requests>=2.32.5",
