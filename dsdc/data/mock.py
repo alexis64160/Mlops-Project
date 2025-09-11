@@ -9,9 +9,10 @@ import io
 from tqdm import tqdm
 import os
 import random
-
+import shutil
 from dsdc import CONFIG
 from dsdc.db.crud import get_document_list
+from dsdc.utils.project_files import get_images_files_in_directory
 
 
 def pull_cdip_images(minimum_quantity = 500):
@@ -29,30 +30,47 @@ def pull_cdip_images(minimum_quantity = 500):
         to_download += not_downloaded[not_downloaded.prefix==prefix][["document_id", "label"]].values.tolist()
         prefixes.append(prefix)
     document_ids, labels = zip(*to_download)
-    nist_images_base_url = "https://data.nist.gov/od/ds/ark:/88434/mds2-2531/cdip-images/"
-    urls = [
-        f"{nist_images_base_url}images.{prefix[0]}.{prefix[1]}.tar" for prefix in prefixes
-    ]
-    for url in urls:
+    # TODO: intégrer un fichier label dans to_ingest (le fichier rvl ne devrait plus servir dans import)
+
+    if CONFIG.settings.primarly_use_alternative_cdip_images:
+        # copie des images depuis un répertoire local
         t = time.time()
         tif_amount = 0
-        # Téléchargement avec progress bar
-        logging.info(msg=f"téléchargement d'images depuis {url}")
-        response = requests.get(url, stream=True)
-        response.raise_for_status()
-
-        file_paths = {}
-        tif_amount = 0
-        with tarfile.open(fileobj=io.BytesIO(response.content), mode="r|*") as archive:
-            for file in archive:
-                if file.name.endswith('.tif'):
-                    cdip_document_id, filename = file.name.split(os.sep)[4:]
-                    if cdip_document_id in document_ids:
-                        dest_path = CONFIG.paths.to_ingest / cdip_document_id / filename
-                        archive.extract(file, path=dest_path.parent)
-                        file_paths[cdip_document_id] = f"{cdip_document_id}/{filename}"
-                        tif_amount += 1        
+        paths = [CONFIG.paths.alternative_cdip_images/f"images{prefix[0]}"/prefix[0]/prefix[1] for prefix in prefixes]
+        for source_file in sum(list(map(get_images_files_in_directory, paths)), []):
+            cdip_document_id = source_file.parent.name
+            filename = source_file.name
+            dest_file = CONFIG.paths.to_ingest / cdip_document_id / filename
+            dest_file.parent.mkdir(exist_ok=True, parents=True)
+            shutil.copy(source_file, dest_file)
+            tif_amount += 1
         logging.info(f"   ... Successfully imported {tif_amount} tif files, in {time.time() - t:.2f} seconds")
+
+    else:
+        # téléchargement des images
+        nist_images_base_url = "https://data.nist.gov/od/ds/ark:/88434/mds2-2531/cdip-images/"
+        urls = [
+            f"{nist_images_base_url}images.{prefix[0]}.{prefix[1]}.tar" for prefix in prefixes
+        ]
+        for url in urls:
+            t = time.time()
+            tif_amount = 0
+            logging.info(msg=f"téléchargement d'images depuis {url}")
+            response = requests.get(url, stream=True)
+            response.raise_for_status()
+            file_paths = {}
+            tif_amount = 0
+            with tarfile.open(fileobj=io.BytesIO(response.content), mode="r|*") as archive:
+                for file in archive:
+                    if file.name.endswith('.tif'):
+                        cdip_document_id, filename = file.name.split(os.sep)[4:]
+                        print(file.name, cdip_document_id, filename)
+                        if cdip_document_id in document_ids:
+                            dest_path = CONFIG.paths.to_ingest / cdip_document_id / filename
+                            archive.extract(file, path=dest_path.parent)
+                            file_paths[cdip_document_id] = f"{cdip_document_id}/{filename}"
+                            tif_amount += 1        
+            logging.info(f"   ... Successfully imported {tif_amount} tif files, in {time.time() - t:.2f} seconds")
         logging.info(f"Done")
 
 
