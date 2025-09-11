@@ -11,11 +11,11 @@ from tqdm import tqdm
 import os
 import random
 
-from dsdc import PROJECT_ROOT, CONFIG
+from dsdc import CONFIG
 from dsdc.db.crud import get_document_list, add_documents_with_labels
 
 
-def import_iit_files(minimum_quantity = 500):
+def pull_cdip_images(minimum_quantity = 500):
 
     rvl_documents = pd.read_csv(CONFIG.paths.rvl_csv)
     already_downloaded = set(d.id for d in get_document_list())
@@ -66,5 +66,46 @@ def import_iit_files(minimum_quantity = 500):
         add_documents_with_labels(documents)
         logging.info(f"Done")
 
+
+def build_rvl_csv(csv_file=CONFIG.paths.rvl_csv):
+    rvl_cdip_urls = {
+        "train": "https://huggingface.co/datasets/rvl_cdip/resolve/main/data/train.txt",
+        "test": "https://huggingface.co/datasets/rvl_cdip/resolve/main/data/test.txt",
+        "val": "https://huggingface.co/datasets/rvl_cdip/resolve/main/data/val.txt",
+    }
+    all_entries = []
+
+    for url in rvl_cdip_urls.values():
+        logging.info(msg=f"retrieving data from {url}")
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            logging.error(f"Error while requesting {url}: {e}")
+            continue
+
+        lines = response.text.strip().split("\n")
+        for line in lines:
+            raw_path, label = line.strip().split()            
+            # Supprimer les 4 premiers niveaux de répertoire
+            parts = Path(raw_path).parts
+            if len(parts) < 5:
+                logging.warning(f"Invalid path format: {raw_path}")
+                continue
+
+            doc_folder = parts[4]  # 5e élément (index 4)
+            filename = parts[-1]   # le fichier .tif
+            all_entries.append((doc_folder, filename, label))
+
+    # Tri alphabétique : d'abord par dossier, puis par nom de fichier
+    all_entries.sort()
+
+    with open(csv_file, "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["document_id", "filename", "label"])
+        writer.writerows(all_entries)
+
 if __name__ == "__main__":
-    import_iit_files()
+    if not CONFIG.paths.rvl_csv.exists():
+        build_rvl_csv()
+    pull_cdip_images()
