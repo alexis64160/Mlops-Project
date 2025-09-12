@@ -2,7 +2,7 @@ from PIL import Image
 import os
 import logging
 from pathlib import Path
-from dsdc.db.crud import add_preprocessed_image
+from dsdc.db.crud.processed_images import add_preprocessed_image
 
 _VERSION = "1.0.0"
 _KIND = "pil_based"

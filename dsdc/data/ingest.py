@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 
 from dsdc import CONFIG
-from dsdc.db.crud import add_documents_with_labels
+from dsdc.db.crud.labels import add_documents_with_labels
 from dsdc.utils.project_files import compute_document_id, compute_storage_path, get_processed_image_path, get_images_files_in_directory
 
 def get_labels(original_file_paths):
