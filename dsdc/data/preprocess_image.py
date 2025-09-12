@@ -1,10 +1,12 @@
 from dsdc.image.preprocess import preprocess, PREPROCESSOR_NAME
-from dsdc.db.crud import get_document_list, get_processed_image_list, add_processed_images
+from dsdc.db.crud.original_documents import get_documents
+from dsdc.db.crud.processed_images import get_processed_image_list, add_processed_images
 from dsdc import CONFIG
 import logging
 
+
 if __name__ == "__main__":
-    documents = get_document_list()
+    documents = get_documents()
     document_ids = set(map(lambda x:x.id, documents))
     processed_images = get_processed_image_list()
     # TODO: Ajouter le processeur dans la requete (si le calcul a été fait avec un processeur plus ancien, 
