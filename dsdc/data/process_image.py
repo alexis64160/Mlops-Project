@@ -5,7 +5,7 @@ from pathlib import Path
 
 from dsdc import CONFIG
 from dsdc.db.crud.original_documents import get_documents
-from dsdc.db.crud.processed_images import get_processed_image_list, add_processed_images
+from dsdc.db.crud.processed_images import get_processed_images, add_processed_images
 
 _VERSION = "1.0.0"
 _KIND = "pil_based"
@@ -24,7 +24,7 @@ def process(document_id, input_path:Path, output_path:Path):
 if __name__ == "__main__":
     documents = get_documents()
     document_ids = set(map(lambda x:x.id, documents))
-    processed_images = get_processed_image_list()
+    processed_images = get_processed_images()
     # TODO: Ajouter le processeur dans la requete (si le calcul a été fait avec un processeur plus ancien, 
     # on pourra souhaiter refaire le calcul)
     processed_image_ids = set(map(lambda x:x.document_id, processed_images))
