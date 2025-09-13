@@ -1,7 +1,7 @@
-from typing import List, Tuple
-
+from typing import List, Tuple, Optional
+import logging
 from dsdc.db import SessionLocal
-from dsdc.db.models import ProcessedText, RawText
+from dsdc.db.models import ProcessedText, RawText, OriginalDocument
 
 
 def get_missing_processed_text_raw_texts() -> List[str]:
@@ -15,6 +15,35 @@ def get_missing_processed_text_raw_texts() -> List[str]:
             .all()
         )
         return result
+    finally:
+        session.close()
+
+def get_processed_texts(
+    document_ids: Optional[List[str]] = None,
+    raw_text_ids: Optional[List[int]] = None
+) -> List[ProcessedText]:
+    if document_ids is not None and raw_text_ids is not None:
+        raise NotImplementedError("Filtering by both document_ids and raw_text_ids is not supported yet.")
+    session = SessionLocal()
+    try:
+        query = session.query(ProcessedText)
+        if document_ids is not None:
+            query = query.join(RawText, ProcessedText.raw_text_id == RawText.id) \
+                         .join(OriginalDocument, RawText.document_id == OriginalDocument.id) \
+                         .filter(OriginalDocument.id.in_(document_ids))
+        elif raw_text_ids is not None:
+            query = query.filter(ProcessedText.raw_text_id.in_(raw_text_ids))
+        results = query.all()
+        if document_ids is not None:
+            mapping = {}
+            for pt in results:
+                mapping[pt.raw_text.document_id] = pt
+            ordered_results = [mapping[doc_id] for doc_id in document_ids if doc_id in mapping]
+            return ordered_results
+        return results
+    except Exception as e:
+        logging.error(f"Error in get_processed_texts: {e}")
+        return []
     finally:
         session.close()
 
