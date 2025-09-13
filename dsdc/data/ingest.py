@@ -38,7 +38,7 @@ if __name__ == "__main__":
     logging.info(f"Preparing to ingest {len(original_file_paths)} documents")
     document_ids = list(map(compute_document_id, original_file_paths))
     storage_file_paths = list(map(compute_storage_path, original_file_paths, document_ids))
-    preprocessed_image_paths = list(map(get_processed_image_path, document_ids))
+    processed_image_paths = list(map(get_processed_image_path, document_ids))
     labels = get_labels(original_file_paths)
 
     # ecriture dans la table documents
