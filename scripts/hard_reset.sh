@@ -72,5 +72,17 @@ if [[ -d "$DSDC_DIR/.pytest_cache" ]]; then
   echo "🔸 Removing .pytest_cache directory"
   rm -rf "$DSDC_DIR/.pytest_cache"
 fi
+# Remove dsdc.egg-info:
+if [[ -d "$DSDC_DIR/dsdc.egg-info" ]]; then
+  echo "🔸 Removing dsdc.egg-info directory"
+  rm -rf "$DSDC_DIR/dsdc.egg-info"
+fi
+
+# Remove models:
+if [[ -d "$DSDC_DIR/models" ]]; then
+  echo "🔸 Removing models directory"
+  rm -rf "$DSDC_DIR/models"
+fi
+
 
 echo "✅ Hard reset completed."
