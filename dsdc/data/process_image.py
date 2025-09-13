@@ -1,9 +1,25 @@
-from dsdc.image.preprocess import preprocess, PREPROCESSOR_NAME
+import os
+import logging
+from PIL import Image
+from pathlib import Path
+
+from dsdc import CONFIG
 from dsdc.db.crud.original_documents import get_documents
 from dsdc.db.crud.processed_images import get_processed_image_list, add_processed_images
-from dsdc import CONFIG
-import logging
 
+_VERSION = "1.0.0"
+_KIND = "pil_based"
+PROCESSOR_NAME = f"{_KIND}_{_VERSION}"
+
+def process(document_id, input_path:Path, output_path:Path):
+    image = Image.open(input_path).convert("RGB")
+
+    # Redimensionner plus grand pour pouvoir cropper ensuite (comme CLIP)
+    # CLIP resize à 224 avec bicubic puis crop central à 224x224 → donc on va simuler ça
+    # Comme on veut du 224x224 final, on resize directement
+    image = image.resize((224, 224), resample=Image.BICUBIC)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    image.save(output_path)
 
 if __name__ == "__main__":
     documents = get_documents()
@@ -30,10 +46,10 @@ if __name__ == "__main__":
     ))
 
     for document_id, original_file, output_path in zip(document_ids, original_files, output_paths):
-        preprocess(document_id, original_file, output_path)
-    logging.info(f"{len(document_ids)} images were successfully preprocessed.")
+        process(document_id, original_file, output_path)
+    logging.info(f"{len(document_ids)} images were successfully processed.")
     add_processed_images(list(zip(
             document_ids,
             list(map(lambda p:p.relative_to(CONFIG.paths.processed), output_paths)),
-            [PREPROCESSOR_NAME] * len(document_ids)
+            [PROCESSOR_NAME] * len(document_ids)
         )))

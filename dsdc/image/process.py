@@ -8,7 +8,7 @@ _VERSION = "1.0.0"
 _KIND = "pil_based"
 PREPROCESSOR_NAME = f"{_KIND}_{_VERSION}"
 
-def preprocess(document_id, input_path:Path, output_path:Path):
+def process(document_id, input_path:Path, output_path:Path):
     image = Image.open(input_path).convert("RGB")
 
     # Redimensionner plus grand pour pouvoir cropper ensuite (comme CLIP)
