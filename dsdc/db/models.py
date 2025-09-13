@@ -7,6 +7,8 @@ class OriginalDocument(Base):
     
     id = Column(String, primary_key=True)
     original_file = Column(String, nullable=False)
+    original_name = Column(String, nullable=False)
+
     import_datetime = Column(TIMESTAMP)
 
     labels = relationship("Label", back_populates="document")
