@@ -11,13 +11,13 @@ import os
 import random
 import shutil
 from dsdc import CONFIG
-from dsdc.db.crud.original_documents import get_documents
+from dsdc.db.crud.original_documents import get_original_documents
 from dsdc.utils.project_files import get_images_files_in_directory
 
 def pull_cdip_images(minimum_quantity = 500):
 
     rvl_documents = pd.read_csv(CONFIG.paths.rvl_csv)
-    already_downloaded = set(d.id for d in get_documents())
+    already_downloaded = set(d.id for d in get_original_documents())
     not_downloaded = rvl_documents[~rvl_documents.document_id.isin(already_downloaded)]
     not_downloaded["prefix"] = not_downloaded.document_id.str.slice(0,2)
     not_downloaded_prefixes = not_downloaded["prefix"].unique().tolist()

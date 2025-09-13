@@ -1,12 +1,12 @@
 import logging
 from pathlib import Path
-from typing import Union
+from typing import Union, List
 
 from dsdc import CONFIG
 from dsdc.db import SessionLocal
 from dsdc.db.models import OriginalDocument
 
-def get_documents():
+def get_original_documents():
     session = SessionLocal()
     try:
         images = session.query(OriginalDocument).all()
@@ -15,8 +15,6 @@ def get_documents():
     finally:
         session.close()
     return images
-
-
 
 
 def get_original_image_paths(document_ids=None):
@@ -50,7 +48,40 @@ def get_original_image_paths(document_ids=None):
         return []
     finally:
         session.close()
-        
+
+def add_original_documents(original_documents: List[tuple[str, Union[str, Path], Union[str, Path]]]):
+    """
+    Import multiple original documents in one transaction.
+    Args:
+        documents: List of tuples (document_id, raw_document_path, original_document_path)
+            raw_document_path is relative to CONFIG.paths.data/raw
+            original_document is relative to CONFIG.paths.data/to_ingest
+    """
+    session = SessionLocal()
+    try:
+        to_add = []
+        for document_id, raw_document_path, original_document_path in original_documents:
+            original_document = OriginalDocument(
+                id=document_id,
+                original_file=str(original_document_path),
+                original_name=str(raw_document_path)
+                )
+            to_add.append(original_document)
+        session.add_all(to_add)
+        session.commit()
+        logging.info(f"Successfully added {len(original_documents)} documents to original_document table.")
+    except Exception as e:
+        session.rollback()
+        logging.error(f"Batch import failed: {e}")
+    finally:
+        session.close()
+
+
+
+
+
+
+
 # DEPRECATED (Ne garantit pas de conserver l'ordre)
 # def get_original_image_paths(document_ids=None):
 #     """
