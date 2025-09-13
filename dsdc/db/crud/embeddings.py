@@ -11,7 +11,62 @@ from dsdc.db.models import (
     RawText,
     ProcessedText,
     Embedding,
+    Label
 )
+
+def get_embeddings() -> List[Embedding]:
+    """
+    Retrieve all embeddings from the database.
+
+    Returns:
+        List[Embedding]: A list of Embedding ORM objects.
+    """
+    session = SessionLocal()
+    try:
+        return session.query(Embedding).all()
+    except Exception as e:
+        logging.error(f"Error fetching embeddings: {e}")
+        return []
+    finally:
+        session.close()
+
+def get_embedding_label_pairs() -> List[Tuple[List[float], int]]:
+    """
+    Retrieve all (embedding, label) pairs, where each embedding is computed from
+    both a processed image and a processed text, and is associated to a labeled document.
+
+    Assumes:
+    - Each embedding is linked to both a processed_image and a processed_text.
+    - Each document has exactly one label.
+    - Only one embedding per image-text pair for now.
+
+    Returns:
+        List[Tuple[List[float], int]]: A list of (embedding vector, label) pairs.
+    """
+    session = SessionLocal()
+    try:
+        #TODO: supprimer les lignes commenter et lancer des tests de coherence de la DB à la place...
+        results = (
+            session.query(Embedding.embeddings, Label.label)
+            .join(ProcessedImage, Embedding.processed_image_id == ProcessedImage.id)
+            # .join(ProcessedText, Embedding.processed_text_id == ProcessedText.id)
+            # .join(RawText, ProcessedText.raw_text_id == RawText.id)
+            .join(OriginalDocument, ProcessedImage.document_id == OriginalDocument.id)
+            .join(Label, Label.document_id == OriginalDocument.id)
+            # .filter(ProcessedImage.document_id == OriginalDocument.id)  # ensure both point to same doc
+            .all()
+        )
+        return list(zip(*results))
+        #     (list(embedding), label)
+        #     for embedding, label in results
+        #     if embedding is not None and label is not None
+        # ]
+
+    except Exception as e:
+        logging.error(f"Error fetching embedding-label pairs: {e}")
+        return []
+    finally:
+        session.close()
 
 def get_missing_embeddings_document_ids() -> List[str]:
     session = SessionLocal()
