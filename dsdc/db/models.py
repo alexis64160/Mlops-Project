@@ -6,7 +6,7 @@ class OriginalDocument(Base):
     __tablename__ = 'original_documents'
     
     id = Column(String, primary_key=True)
-    original_file = Column(String, nullable=False)
+    file_path = Column(String, nullable=False)
     original_name = Column(String, nullable=False)
 
     import_datetime = Column(TIMESTAMP)

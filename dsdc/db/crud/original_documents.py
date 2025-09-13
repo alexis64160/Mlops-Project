@@ -29,12 +29,12 @@ def get_original_image_paths(document_ids=None):
     """
     session = SessionLocal()
     try:
-        query = session.query(OriginalDocument.id, OriginalDocument.original_file)
+        query = session.query(OriginalDocument.id, OriginalDocument.file_path)
         
         if document_ids is not None:
             query = query.filter(OriginalDocument.id.in_(document_ids))
         
-        result = query.all()  # List of tuples: [(id, original_file), ...]
+        result = query.all()  # List of tuples: [(id, file_path), ...]
 
         if document_ids is not None:
             # Convert to dict for fast lookup
@@ -63,8 +63,8 @@ def add_original_documents(original_documents: List[tuple[str, Union[str, Path],
         for document_id, raw_document_path, original_document_path in original_documents:
             original_document = OriginalDocument(
                 id=document_id,
-                original_file=str(original_document_path),
-                original_name=str(raw_document_path)
+                file_path=str(raw_document_path),
+                original_name=str(original_document_path)
                 )
             to_add.append(original_document)
         session.add_all(to_add)
@@ -75,33 +75,3 @@ def add_original_documents(original_documents: List[tuple[str, Union[str, Path],
         logging.error(f"Batch import failed: {e}")
     finally:
         session.close()
-
-
-
-
-
-
-
-# DEPRECATED (Ne garantit pas de conserver l'ordre)
-# def get_original_image_paths(document_ids=None):
-#     """
-#     Retrieve the original file paths of documents from the database.
-
-#     """
-#     session = SessionLocal()
-#     try:
-#         query = session.query(OriginalDocument.original_file)
-        
-#         if document_ids is not None:
-#             query = query.filter(OriginalDocument.id.in_(document_ids))
-        
-#         result = query.all()
-        
-#         # result is a list of single-element tuples: [(file1,), (file2,), ...]
-#         return [CONFIG.paths.raw/row[0] for row in result]
-
-#     except Exception as e:
-#         logging.error(f"Error fetching original image paths: {e}")
-#         return []
-#     finally:
-#         session.close()
