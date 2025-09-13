@@ -174,6 +174,12 @@ uv pip install -e .
 mkdir -p data/raw
 mkdir data/processed
 
+# --------------------- #
+# DOWNLOAD CLIP WEIGHTS #
+# --------------------- #
+python $DSDC_DIR/dsdc/scripts/download_clip.py
+
+
 # -------------- #
 # PREPARE DOCKER #
 # -------------- #
