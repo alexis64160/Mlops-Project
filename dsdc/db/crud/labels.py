@@ -8,8 +8,6 @@ def add_labels(labels: List[tuple[str, int]]):
     session = SessionLocal()
     try:
         to_add = []
-        print(len(labels))
-        print(labels[0])
         for document_id, label in labels:
             label = Label(document_id=document_id, label=label)
             to_add.append(label)
