@@ -1,9 +1,9 @@
 import logging
 from datetime import datetime
 
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Input, Dense, Dropout, LeakyReLU
-from tensorflow.keras.optimizers import Adam
+from keras.models import Sequential
+from keras.layers import Input, Dense, Dropout, LeakyReLU
+from keras.optimizers import Adam
 from keras.models import load_model
 
 # Best models parameters in compliance with DS Project
