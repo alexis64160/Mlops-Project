@@ -47,7 +47,6 @@ def process_text(text):
 
     # t0 = time.time()
     # df.loc[:,"ocr_tmp"] = df.ocr_tmp.apply(apply_jamspell)
-    # print(f"{len(df)} lignes traitées en {time.time()-t0:.0f} secondes")
 
 
 

@@ -67,7 +67,6 @@ def pull_cdip_images(minimum_quantity = 500):
                 for file in archive:
                     if file.name.endswith('.tif'):
                         cdip_document_id, filename = file.name.split(os.sep)[4:]
-                        print(file.name, cdip_document_id, filename)
                         if cdip_document_id in document_ids:
                             dest_dir = CONFIG.paths.to_ingest / cdip_document_id
                             dest_dir.mkdir(parents=True, exist_ok=True)
