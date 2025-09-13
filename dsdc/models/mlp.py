@@ -114,7 +114,8 @@ class MLP(Sequential):
         logging.info(f"Successfully saved model at {str(save_path)}")
     
     @classmethod
-    def load(cls, path):
+    def load(cls, filename):
+        path = CONFIG.paths.models/"mlps"/filename
         return load_model(str(path), custom_objects={"MLP": MLP})
 
 # EXEMPLE AVEC MLFLOW
