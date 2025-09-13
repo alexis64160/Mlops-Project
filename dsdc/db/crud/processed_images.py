@@ -1,22 +1,35 @@
 import logging
 from pathlib import Path
-from typing import Union
+from typing import Union, Optional, List
 
 from dsdc.db import SessionLocal
 from dsdc.db.models import ProcessedImage
 
 
-def get_processed_image_list():
+def get_processed_images(document_ids: Optional[List[str]] = None) -> List[ProcessedImage]:
     session = SessionLocal()
     try:
-        images = session.query(ProcessedImage).all()
+        query = session.query(ProcessedImage)
+        
+        if document_ids is not None:
+            query = query.filter(ProcessedImage.document_id.in_(document_ids))
+            results = query.all()
+            image_map = {}
+            for img in results:
+                image_map.setdefault(img.document_id, []).append(img)
+            ordered_results = []
+            for doc_id in document_ids:
+                ordered_results.extend(image_map.get(doc_id, []))
+            return ordered_results
+        else:
+            return query.all()
     except Exception as e:
-        logging.error(e)
+        logging.error(f"Error in get_processed_images: {e}")
+        return []
     finally:
         session.close()
-    return images
 
-def add_preprocessed_image(document_id: str, file_path: Path|str, processor:str):
+def add_processed_image(document_id: str, file_path: Path|str, processor:str):
     session = SessionLocal()
     try:
         image = ProcessedImage(
