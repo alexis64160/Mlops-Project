@@ -3,16 +3,38 @@
 ## Quick start
 ### Première installation
 - Créer un fichier env personalisé:
-`cp .env.template .env`
+`cp .env.secrets.template .env.secrets`
 
 - puis éditer le fichier .env
-`vim .env`
+`vim .env.secrets`
+
+- Créer le fichier de configuration:
+`cp config.yaml.template config.yaml`
 
 Exécuter le fichier scripts/initialize.sh:
 `./scripts/initialize.sh`
 
-### Configuration lors d'une utilisation régulière
-Sourcer le fichier setup.sh
+### Configuration lors de chaque utilisation
+- Configurer l'environnement:
+`source ./scripts/configure.sh`
+
+- lancer les services:
+`./scripts/start.sh`
+
+- [Optionnel] ajouter les dépendances de développement
+`uv pip install pytest ipython`
+
+- [Optionnel] (nécessite d'avoir exécuté la précédente commande optionnelle) lancer les tests:
+`pytest tests/test_postgres.py `
+
+### Utilisation
+- import liste des documents rvl_cdip:
+`python dsdc/data/mock.py`
+
+- import d'un jeu d'images iit_cdip:
+`python dsdc/import_iit_files.py`
+
+- preprocessing image
 
 
 
@@ -32,7 +54,7 @@ Les variables `DSDC_DIR` (répertoire du projet) et `DSDC_PYTHON` (exécutable P
    - `DSDC_DIR` via la variable d’environnement `DSDC_DIR`
    - `DSDC_PYTHON` via la variable d’environnement `DSDC_PYTHON`
 
-3. **Fichier de configuration (CONFIG) :**
+3. **Fichier de configuration (.env) :**
 
    - Les variables peuvent être définies dans le fichier de configuration `.env`, situé à la racine du projet
 
@@ -54,8 +76,79 @@ Les variables `DSDC_DIR` (répertoire du projet) et `DSDC_PYTHON` (exécutable P
 
 #### Exemple d’utilisation CLI
 
-```bash
-./initialize.sh --project-dir /path/to/project --python /usr/bin/python3.13
+
+## Structure du repo:
+
+.
+├── config.yaml
+├── config.yaml.template
+├── data
+│   ├── processed
+│   │   ├── 0
+│   │   ├── 1
+│   │   ├── [...]
+│   │   └── f
+│   ├── raw
+│   │   ├── 0
+│   │   ├── 1
+│   │   ├── [...]
+│   │   ├── f
+│   │   └── rvl_documents.csv
+│   └── to_ingest
+├── docs
+│   └── db_schema.drawio
+├── dsdc
+│   ├── __init__.py
+│   ├── data
+│   │   ├── compute_embeddings.py
+│   │   ├── extract_text.py
+│   │   ├── ingest.py
+│   │   ├── mock.py
+│   │   ├── process_image.py
+│   │   └── process_text.py
+│   ├── db
+│   │   ├── __init__.py
+│   │   ├── crud
+│   │   └── models.py
+│   ├── models
+│   │   ├── clip_mlp.py
+│   │   ├── clip.py
+│   │   ├── mlp.py
+│   │   └── train.py
+│   ├── scripts
+│   │   └── download_clip.py
+│   └── utils
+│       ├── config.py
+│       └── project_files.py
+├── models
+│   ├── clip-vit-base
+│   │   ├── config.json
+│   │   ├── merges.txt
+│   │   ├── preprocessor_config.json
+│   │   ├── pytorch_model.bin
+│   │   ├── special_tokens_map.json
+│   │   ├── tokenizer_config.json
+│   │   └── vocab.json
+│   └── mlps
+│       └── test.keras
+├── pyproject.toml
+├── README.md
+├── scripts
+│   ├── configure.sh
+│   ├── hard_reset.sh
+│   ├── initialize.sh
+│   ├── loop.sh
+│   ├── start.sh
+│   └── utils.sh
+├── services
+│   └── postgres
+│       └── scripts
+├── tests
+│   ├── test_postgres.py
+│   └── test_rvl_csv_import.py
+├── tmp
+└── uv.lock
+
 
 
 
