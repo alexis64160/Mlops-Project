@@ -36,7 +36,7 @@ if __name__ == "__main__":
         documents
     ))
     original_files = list(map(
-        lambda x:CONFIG.paths.raw/x.original_file,
+        lambda x:CONFIG.paths.raw/x.file_path,
         documents
         ))
 

@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS original_documents(
     id TEXT PRIMARY KEY,
-    original_file TEXT NOT NULL,
+    file_path TEXT NOT NULL,
     original_name TEXT NOT NULL,
     import_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

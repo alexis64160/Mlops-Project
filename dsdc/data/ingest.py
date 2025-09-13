@@ -62,7 +62,7 @@ if __name__ == "__main__":
         # Check document_id unicity
         if document_id in existing_document_ids:
             candidate_rel_path = candidate.relative_to(CONFIG.paths.to_ingest)
-            existing_rel_path = [d for d in existing_documents if d.id == document_id][0].original_file
+            existing_rel_path = [d for d in existing_documents if d.id == document_id][0].file_path
             logging.warning(f"rejecting document {str(candidate_rel_path)}: document is identical to {str(existing_rel_path)} with sha1 {document_id}")
             reject_candidate(candidate)
             continue
