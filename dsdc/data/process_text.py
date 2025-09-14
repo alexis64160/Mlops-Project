@@ -49,8 +49,7 @@ def process_text(text):
     # df.loc[:,"ocr_tmp"] = df.ocr_tmp.apply(apply_jamspell)
 
 
-
-if __name__ == '__main__':
+def process_texts():
     raw_texts = get_missing_processed_text_raw_texts()
     logging.info(f"processing text from {len(raw_texts)} documents with {PROCESSING_VERSION}")
     raw_text_ids, processed_texts, versions = [], [], []
@@ -65,3 +64,6 @@ if __name__ == '__main__':
         versions
     ))
     logging.info(f"Successfully added {len(raw_texts)} documents inside raw_texts table")
+    
+if __name__ == '__main__':
+    process_texts()

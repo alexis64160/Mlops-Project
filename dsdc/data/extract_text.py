@@ -35,7 +35,7 @@ def extract_text(image_file_path):
         logging.error(f"Erreur lors de l'extraction du texte : {e}")
         return None, version
 
-if __name__ == '__main__':
+def extract_texts():
     document_ids = get_missing_raw_text_document_ids()
     image_paths = get_original_image_paths(document_ids)
     logging.info(f"extracting text from {len(document_ids)} documents with {version}")
@@ -51,3 +51,5 @@ if __name__ == '__main__':
     ))
     logging.info(f"Successfully added {len(document_ids)} documents inside raw_texts table")
     
+if __name__ == '__main__':
+    extract_texts()

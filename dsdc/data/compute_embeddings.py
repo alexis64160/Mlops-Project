@@ -11,7 +11,7 @@ model = CLIPSingleton()
 
 CLIP_VERSION = model.version
 
-if __name__ == '__main__':
+def compute_embeddings():
     document_ids = get_missing_embeddings_document_ids()
     logging.info(f"computing embeddings from {len(document_ids)} documents with {CLIP_VERSION}")
     images = get_processed_images(document_ids=document_ids)
@@ -28,3 +28,6 @@ if __name__ == '__main__':
         [CLIP_VERSION] * len(images)
     )))
     logging.info(f"Successfully added {len(embeddings)} documents inside raw_texts table")
+
+if __name__ == '__main__':
+    compute_embeddings()
