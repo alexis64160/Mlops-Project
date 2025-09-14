@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 find_project_root() {
-    local target_file="${1:-.project_root}"  # Default to ".project_root" if no argument given
+    local target_file="${1:-.dsdc_project_root}"  # Default to ".project_root" if no argument given
     local start_points=()
 
     # 1. Add the directory containing this script
