@@ -4,7 +4,6 @@ from pydantic import BaseModel
 from typing import List
 from PIL import Image
 import io
-import numpy as np
 import logging
 
 from dsdc.models.clip import CLIPSingleton
