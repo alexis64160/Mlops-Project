@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:13
+    container_name: dsdc-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - dsdc_pgdata:/var/lib/postgresql/data
+      - ${DSDC_DIR}/services/postgres/.init-db:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432" # TODO: cabler avec config.yaml
+
+  airflow-webserver:
+    image: apache/airflow:2.8.1
+    container_name: airflow-webserver
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
+    volumes:
+      - ../dags:/opt/airflow/dags                # à créer si pas encore fait
+      - ../dsdc:/opt/airflow/dsdc                # ton package Python
+      - ../data:/data                            # données
+      - ../models:/models                        # modèles
+      - ../mlruns:/mlruns                        # artefacts MLflow
+      - ./logs:/opt/airflow/logs                 # logs Airflow
+      - ./plugins:/opt/airflow/plugins           # plugins éventuels
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
+    command: webserver
+    restart: always
+
+  airflow-scheduler:
+    image: apache/airflow:2.8.1
+    container_name: airflow-scheduler
+    depends_on:
+      - airflow-webserver
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../dsdc:/opt/airflow/dsdc
+      - ../data:/data
+      - ../models:/models
+      - ../mlruns:/mlruns
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: scheduler
+    restart: always
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.11.1
+    container_name: mlflow
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    command: >
+      mlflow server 
+      --backend-store-uri postgresql+psycopg2://airflow:airflow@postgres/airflow 
+      --default-artifact-root /mlruns 
+      --host 0.0.0.0 
+      --port 5000
+    volumes:
+      - ../mlruns:/mlruns
+      - ../data:/data
+      - ../models:/models
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+volumes:
+  dsdc_pgdata:
