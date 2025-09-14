@@ -3,7 +3,7 @@ import requests
 import os
 
 from dsdc import PROJECT_ROOT
-API_URL = "http://localhost:8000"  # Change selon ton endpoint réel
+API_URL = "http://localhost:64414"  # Change selon ton endpoint réel
 TEST_IMAGE = PROJECT_ROOT/"tests"/"images"/"processed_image.png"
 TEST_TEXT = "i will survive"
 
