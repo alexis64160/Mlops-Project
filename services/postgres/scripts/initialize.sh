@@ -2,4 +2,4 @@
 
 docker volume create dsdc_pgdata
 
-docker pull postgres:latest
+docker pull postgres:15
