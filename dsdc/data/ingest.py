@@ -39,10 +39,8 @@ def accept_candidate(original_document_path, raw_document_path):
     shutil.move(source, destination)
     shutil.rmtree(source.parent)
 
-if __name__ == "__main__":
-    # original_file_paths = get_images_files_in_directory(CONFIG.paths.to_ingest)
-    # previous line deprecated because documents can be made of several pages (models dont accept that so far).
-    # consequantly, only first page is kept (in alphabetic order)
+
+def ingest_data():
     logging.info(f"Scanning for new images to ingest")
     candidates = []
     for folder in CONFIG.paths.to_ingest.iterdir():
@@ -119,3 +117,5 @@ if __name__ == "__main__":
     if nb_folders + nb_files > 0:
         logging.warning(f"Some files were not ingested and remain in {CONFIG.paths.to_ingest} folder ({nb_files} files + {nb_folders} folders)")
     
+if __name__ == "__main__":
+    ingest_data()

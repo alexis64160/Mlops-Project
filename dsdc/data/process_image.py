@@ -21,7 +21,7 @@ def process(document_id, input_path:Path, output_path:Path):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     image.save(output_path)
 
-if __name__ == "__main__":
+def process_images():
     documents = get_original_documents()
     document_ids = set(map(lambda x:x.id, documents))
     processed_images = get_processed_images()
@@ -53,3 +53,6 @@ if __name__ == "__main__":
             list(map(lambda p:p.relative_to(CONFIG.paths.processed), output_paths)),
             [PROCESSOR_NAME] * len(document_ids)
         )))
+
+if __name__ == "__main__":
+    process_images()
