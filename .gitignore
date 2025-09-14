@@ -10,7 +10,7 @@ build/
 
 # .local files
 .env.secrets
-config.yaml
+/config.yaml
 
 # data and model folders
 /data
