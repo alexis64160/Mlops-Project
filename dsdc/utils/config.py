@@ -73,7 +73,9 @@ def load_config_as_namespace(config_path: Path, project_root: Path) -> SimpleNam
         config_dict = yaml.safe_load(f)
 
     # Traitement spécifique pour `paths`
-    if "paths" in config_dict:
+    if config_dict is None:
+        return SimpleNamespace()
+    elif "paths" in config_dict:
         config_dict["paths"] = process_paths(config_dict["paths"])
 
     return dict_to_namespace(config_dict)
