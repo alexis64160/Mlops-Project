@@ -1,0 +1,7 @@
+# This file defines locally all the configurations values that are required to run the project.
+
+paths:
+    clip_model: models/
+    
+logging:
+    level: INFO
