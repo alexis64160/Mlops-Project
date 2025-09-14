@@ -38,6 +38,14 @@ def get_project_root(marker=".dsdc_project_root") -> Path:
                 break
             current = current.parent
     if not found:
+        current = Path(os.getcwd()).resolve()
+        while current != current.parent:
+            if (current / marker).exists():
+                found = True
+                project_root = current
+                break
+            current = current.parent
+    if not found:
         raise FileNotFoundError(f"Could not find '{marker}' in any parent directory.")
     else:
         return project_root
