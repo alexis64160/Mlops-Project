@@ -12,9 +12,10 @@ build/
 .env.secrets
 /config.yaml
 
-# data and model folders
+# operationnal folders
 /data
 /models
+/logs
 
 # docker .env (dynamically created)
 services/.env
