@@ -172,7 +172,7 @@ uv pip install -e .
 # --------------------- #
 
 mkdir -p data/raw
-mkdir data/processed
+mkdir -p data/processed
 
 # --------------------- #
 # DOWNLOAD CLIP WEIGHTS #
@@ -183,10 +183,10 @@ python $DSDC_DIR/dsdc/scripts/download_clip.py
 # -------------- #
 # PREPARE DOCKER #
 # -------------- #
-./services/postgres/scripts/initialize.sh
 
+docker pull postgres:15
+# TODO: pull toutes images
+# TODO: build toutes images
+# TODO: prune
 
-
-# # création des volumes Docker
-# docker volume create dsdc_psql
-
+$DSDC_DIR/services/postgres/scripts/initialize.sh
