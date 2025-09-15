@@ -40,15 +40,35 @@ if [[ -d "$VENV_PATH" ]]; then
 fi
 
 # Remove installed services
-# Stop and remove containers
-docker ps -a --filter "name=^dsdc" --format "{{.ID}}" | xargs -r docker stop
-sleep 2
-docker ps -a --filter "name=^dsdc" --format "{{.ID}}" | xargs -r docker rm
-# Remove images
-docker images --filter=reference='dsdc*' -q | xargs -r docker rmi
-# Remove volumes
-docker volume ls --format '{{.Name}}' | grep '^dsdc' | xargs -r docker volume rm
+echo "🧩 Step: stopping and removing Docker containers..."
 
+# Stop containers whose names start with "dsdc"
+CONTAINER_IDS=$(docker ps -a --filter "name=^dsdc" --format "{{.ID}}")
+if [[ -n "$CONTAINER_IDS" ]]; then
+  echo "$CONTAINER_IDS" | xargs -r docker stop
+  sleep 2
+  echo "$CONTAINER_IDS" | xargs -r docker rm
+else
+  echo "ℹ️  No matching containers to stop/remove."
+fi
+
+echo "🧩 Step: removing Docker images..."
+
+IMAGE_IDS=$(docker images --filter=reference='dsdc*' -q)
+if [[ -n "$IMAGE_IDS" ]]; then
+  echo "$IMAGE_IDS" | xargs -r docker rmi
+else
+  echo "ℹ️  No matching images to remove."
+fi
+
+echo "🧩 Step: removing Docker volumes..."
+
+VOLUME_NAMES=$(docker volume ls --format '{{.Name}}' | grep '^dsdc' || true)
+if [[ -n "$VOLUME_NAMES" ]]; then
+  echo "$VOLUME_NAMES" | xargs -r docker volume rm
+else
+  echo "ℹ️  No matching volumes to remove."
+fi
 # Remove tmp dir
 if [[ -d "$DSDC_DIR/tmp" ]]; then
   echo "🔸 Removing temporary directory"
