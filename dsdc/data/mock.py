@@ -29,10 +29,12 @@ def pull_cdip_images(minimum_quantity = 500):
         to_download += not_downloaded[not_downloaded.prefix==prefix][["document_id", "label"]].values.tolist()
         prefixes.append(prefix)
     document_ids, labels = zip(*to_download)
+    logging.info(f"preparing to add {len(document_ids)} documents (letters {prefix})")
     # TODO: intégrer un fichier label dans to_ingest (le fichier rvl ne devrait plus servir dans import)
 
     if CONFIG.settings.primarly_use_alternative_cdip_images:
         # copie des images depuis un répertoire local
+        logging.info(f"Looking for files in local repository {CONFIG.paths.alternative_cdip_images}")
         t = time.time()
         tif_amount = 0
         paths = [CONFIG.paths.alternative_cdip_images/f"images{prefix[0]}"/prefix[0]/prefix[1] for prefix in prefixes]
@@ -51,6 +53,7 @@ def pull_cdip_images(minimum_quantity = 500):
 
     else:
         # téléchargement des images
+        logging.info("Downloading images from nist.gov")
         nist_images_base_url = "https://data.nist.gov/od/ds/ark:/88434/mds2-2531/cdip-images/"
         urls = [
             f"{nist_images_base_url}images.{prefix[0]}.{prefix[1]}.tar" for prefix in prefixes
