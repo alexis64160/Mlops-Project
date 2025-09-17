@@ -1,10 +1,6 @@
 from airflow.decorators import dag, task
 from datetime import datetime
-
-from dsdc import CONFIG
-from dsdc.data.mock import build_rvl_csv, pull_cdip_images
-
-
+import logging
 
 default_args = {
     'owner': 'airflow',
@@ -20,6 +16,8 @@ default_args = {
     tags=["dsdc", "mock", "add", "data"],
 )
 def dag_mockup_add_data():
+    from dsdc import CONFIG
+    from dsdc.data.mock import build_rvl_csv, pull_cdip_images
     @task(task_id="ensure_rvl_csv_exists")
     def ensure_rvl_csv_exists():
         if not CONFIG.paths.rvl_csv.exists():
