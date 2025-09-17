@@ -10,7 +10,7 @@ default_args = {
 @dag(
     dag_id="dag_mockup_add_data",
     default_args=default_args,
-    schedule="0 * * * *",  # schedule_interval est déprécié, utiliser schedule
+    schedule="0 0/6 * * *",  
     catchup=False,
     description="Génère des données simulées dans data/to_ingest",
     tags=["dsdc", "mock", "add", "data"],
