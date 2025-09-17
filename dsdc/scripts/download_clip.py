@@ -30,9 +30,10 @@ def download_file(url: str, dest_path: str):
         response.raise_for_status()
 
 # 🔁 Télécharger tous les fichiers
-for filename in FILES:
-    url = f"{BASE_URL}/{filename}"
-    dest_path = os.path.join(DEST_DIR, filename)
-    download_file(url, dest_path)
+if __name__ == "__main__":
+    for filename in FILES:
+        url = f"{BASE_URL}/{filename}"
+        dest_path = os.path.join(DEST_DIR, filename)
+        download_file(url, dest_path)
 
-print("\n🎉 Tous les fichiers ont été téléchargés avec succès.")
+    print("\n🎉 Tous les fichiers ont été téléchargés avec succès.")

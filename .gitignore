@@ -1,5 +1,6 @@
 # venv
 .venv/
+.venv*/
 
 # python files
 __pycache__/
@@ -9,8 +10,15 @@ build/
 
 # .local files
 .env.secrets
-config.yaml
+/config.yaml
 
-# data and model folders
+# operationnal folders
 /data
 /models
+/logs
+
+# docker .env (dynamically created)
+services/.env
+
+# mac files
+.DS_Store
