@@ -15,7 +15,7 @@ default_args = {
     'owner': 'airflow',
     'start_date': datetime(2025, 9, 14),
 }
-BATCH_SIZE = 1000
+BATCH_SIZE = 100
 
 @dag(
     dag_id="ingest_and_process_data",
@@ -24,6 +24,7 @@ BATCH_SIZE = 1000
     catchup=False,
     description="Ingest and process data",
     tags=["dsdc", "ingest", "process", "data"],
+    max_active_runs=1,
 )
 
 def dag_ingest_and_process_data():
