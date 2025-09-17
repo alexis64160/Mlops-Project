@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, TIMESTAMP, Text, Float, ARRAY
 from sqlalchemy.orm import relationship
-from dsdc.db import Base
+from dsdc.db import DSDCBase
 
-class OriginalDocument(Base):
+class OriginalDocument(DSDCBase):
     __tablename__ = 'original_documents'
     
     id = Column(String, primary_key=True)
@@ -16,7 +16,7 @@ class OriginalDocument(Base):
     raw_texts = relationship("RawText", back_populates="document")
 
 
-class Label(Base):
+class Label(DSDCBase):
     __tablename__ = 'labels'
     
     id = Column(Integer, primary_key=True)
@@ -27,7 +27,7 @@ class Label(Base):
     document = relationship("OriginalDocument", back_populates="labels")
 
 
-class ProcessedImage(Base):
+class ProcessedImage(DSDCBase):
     __tablename__ = 'processed_images'
     
     id = Column(Integer, primary_key=True)
@@ -40,7 +40,7 @@ class ProcessedImage(Base):
     embeddings = relationship("Embedding", back_populates="processed_image")
 
 
-class RawText(Base):
+class RawText(DSDCBase):
     __tablename__ = 'raw_texts'
     
     id = Column(Integer, primary_key=True)
@@ -53,7 +53,7 @@ class RawText(Base):
     processed_texts = relationship("ProcessedText", back_populates="raw_text")
 
 
-class ProcessedText(Base):
+class ProcessedText(DSDCBase):
     __tablename__ = 'processed_texts'
     
     id = Column(Integer, primary_key=True)
@@ -66,7 +66,7 @@ class ProcessedText(Base):
     embeddings = relationship("Embedding", back_populates="processed_text")
 
 
-class Embedding(Base):
+class Embedding(DSDCBase):
     __tablename__ = 'embeddings'
     
     id = Column(Integer, primary_key=True)
