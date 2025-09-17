@@ -16,5 +16,6 @@ POSTGRES_DB=$(yq e '.services.postgres.db_name' $DSDC_DIR/config.yaml)
 echo "POSTGRES_DB=$POSTGRES_DB" >> $env_file
 
 cd $DSDC_DIR/services
+export AIRFLOW_UID=$(id -u)
 docker-compose up -d
 
