@@ -3,7 +3,22 @@ from pathlib import Path
 from typing import Union, Optional, List
 
 from dsdc.db import SessionLocal
-from dsdc.db.models import ProcessedImage
+from dsdc.db.models import ProcessedImage, OriginalDocument
+
+
+def get_missing_processed_image_documents() -> List[OriginalDocument]:
+    session = SessionLocal()
+    try:
+        # LEFT OUTER JOIN et filtre sur raw_text NULL
+        result = (
+            session.query(OriginalDocument)
+            .outerjoin(ProcessedImage, ProcessedImage.document_id == OriginalDocument.id)
+            .filter(ProcessedImage.id.is_(None))
+            .all()
+        )
+        return result # [row[0] for row in result]
+    finally:
+        session.close()
 
 
 def get_processed_images(document_ids: Optional[List[str]] = None) -> List[ProcessedImage]:
