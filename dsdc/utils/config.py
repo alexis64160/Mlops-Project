@@ -29,6 +29,9 @@ def get_project_root(marker=".dsdc_project_root") -> Path:
             else:
                 project_root = Path(root_dir)
                 found = True
+                logging.info(
+                    msg=f"DSDC_DIR set to {str(project_root)}"
+                )
     if not found:
         current = Path(__file__).resolve().parent
         while current != current.parent:
@@ -82,13 +85,17 @@ def load_config_as_namespace(config_path: Path, project_root: Path) -> SimpleNam
 
 
 def load_env_file(filepath):
-    env_vars = {}
-    with open(filepath) as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith('#') or '=' not in line:
-                continue
-            key, val = line.split('=', 1)
-            val = shlex.split(val)[0] if val else ''
-            env_vars[key.strip()] = val.strip()
-    return SimpleNamespace(**env_vars)
+    if filepath.exists():
+        env_vars = {}
+        with open(filepath) as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith('#') or '=' not in line:
+                    continue
+                key, val = line.split('=', 1)
+                val = shlex.split(val)[0] if val else ''
+                env_vars[key.strip()] = val.strip()
+        return SimpleNamespace(**env_vars)
+    else:
+        logging.warning(f"no environment file detected")
+        return SimpleNamespace()
