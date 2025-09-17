@@ -44,5 +44,16 @@ def test_services():
             error_message = f"Following tables were not retrieved: {missing_tables}"
             logging.error(error_message)
             raise ValueError(error_message)
-    test_hello_world() >> test_postgres()
+    
+    @task(task_id="test_extract_texts")
+    def test_extract_texts():
+        import requests
+        API_URL="http://dsdc_extract_text:64411/extract_text"
+        logging.info(f"testing connection to extract_text")
+        response = requests.post(API_URL, files={})
+        json_response = response.json()
+        raw_text = json_response.get("extracted_text")
+        version = json_response.get("version")
+    
+    test_hello_world() >> test_postgres() >> test_extract_texts()
 dag = test_services()
