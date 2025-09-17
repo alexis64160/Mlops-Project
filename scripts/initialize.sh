@@ -185,6 +185,9 @@ python $DSDC_DIR/dsdc/scripts/download_clip.py
 # -------------- #
 
 docker pull postgres:15
+cd $DSDC_DIR/services/airflow
+docker build -t dsdc_airflow:latest .
+cd $DSDC_DIR
 # TODO: pull toutes images
 # TODO: build toutes images
 # TODO: prune
