@@ -1,6 +1,5 @@
 import shutil
 import logging
-import pandas as pd
 
 from dsdc import CONFIG
 from dsdc.db.crud.labels import add_labels
@@ -36,15 +35,20 @@ def accept_candidate(original_document_path, raw_document_path):
     source = CONFIG.paths.to_ingest/original_document_path
     destination = CONFIG.paths.raw/raw_document_path
     destination.parent.mkdir(parents=True, exist_ok=True)
+    # logging.info(f"{source} ({source.exists()}) // {destination} ({destination.exists()})")
     shutil.move(source, destination)
     shutil.rmtree(source.parent)
 
-if __name__ == "__main__":
-    # original_file_paths = get_images_files_in_directory(CONFIG.paths.to_ingest)
-    # previous line deprecated because documents can be made of several pages (models dont accept that so far).
-    # consequantly, only first page is kept (in alphabetic order)
+
+def ingest_data(batch_size=None):
     logging.info(f"Scanning for new images to ingest")
     candidates = []
+    if not CONFIG.paths.to_ingest.exists():
+        logging.warning(f"Folder {CONFIG.paths.to_ingest} not found. No data to ingest.")
+        return
+    if not any(CONFIG.paths.to_ingest.iterdir()):
+        logging.warning(f"Folder {CONFIG.paths.to_ingest} is empty. No data to ingest.")
+        return
     for folder in CONFIG.paths.to_ingest.iterdir():
         if folder.is_dir(): # avoid .DS_Store on mac
             images = sorted(get_images_files_in_directory(folder))
@@ -53,6 +57,9 @@ if __name__ == "__main__":
             else:
                 candidates.append(images[0])  # only keeps the first image if a document is made of several
     logging.info(f"found {len(candidates)} images in to ingest")
+    if batch_size is not None and batch_size < len(candidates):
+        candidates = candidates[:batch_size]
+        logging.info(f"limiting ingestion to {len(candidates)} documents (batch_size={batch_size})")
     existing_documents = get_original_documents()
     existing_document_ids = [d.id for d in existing_documents]
     elected_document_ids, raw_document_paths, original_document_paths, labels = [], [], [], []
@@ -109,13 +116,9 @@ if __name__ == "__main__":
         accept_candidate(original_document_path, raw_document_path)
 
     # check that to_ingest is empty
-    nb_files = 0
-    nb_folders = 0
-    for p in CONFIG.paths.to_ingest.iterdir():
-        if p.is_file():
-            nb_files += 1
-        elif p.is_dir():
-            nb_folders += 1
-    if nb_folders + nb_files > 0:
-        logging.warning(f"Some files were not ingested and remain in {CONFIG.paths.to_ingest} folder ({nb_files} files + {nb_folders} folders)")
+    amount_remaining = len(get_images_files_in_directory(CONFIG.paths.to_ingest))
+    if amount_remaining > 0:
+        logging.warning(f"{amount_remaining} images were not ingested and remain in {CONFIG.paths.to_ingest} folder.")
     
+if __name__ == "__main__":
+    ingest_data()

@@ -29,8 +29,19 @@ def get_project_root(marker=".dsdc_project_root") -> Path:
             else:
                 project_root = Path(root_dir)
                 found = True
+                logging.info(
+                    msg=f"DSDC_DIR set to {str(project_root)}"
+                )
     if not found:
         current = Path(__file__).resolve().parent
+        while current != current.parent:
+            if (current / marker).exists():
+                found = True
+                project_root = current
+                break
+            current = current.parent
+    if not found:
+        current = Path(os.getcwd()).resolve()
         while current != current.parent:
             if (current / marker).exists():
                 found = True
@@ -65,20 +76,26 @@ def load_config_as_namespace(config_path: Path, project_root: Path) -> SimpleNam
         config_dict = yaml.safe_load(f)
 
     # Traitement spécifique pour `paths`
-    if "paths" in config_dict:
+    if config_dict is None:
+        return SimpleNamespace()
+    elif "paths" in config_dict:
         config_dict["paths"] = process_paths(config_dict["paths"])
 
     return dict_to_namespace(config_dict)
 
 
 def load_env_file(filepath):
-    env_vars = {}
-    with open(filepath) as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith('#') or '=' not in line:
-                continue
-            key, val = line.split('=', 1)
-            val = shlex.split(val)[0] if val else ''
-            env_vars[key.strip()] = val.strip()
-    return SimpleNamespace(**env_vars)
+    if filepath.exists():
+        env_vars = {}
+        with open(filepath) as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith('#') or '=' not in line:
+                    continue
+                key, val = line.split('=', 1)
+                val = shlex.split(val)[0] if val else ''
+                env_vars[key.strip()] = val.strip()
+        return SimpleNamespace(**env_vars)
+    else:
+        logging.warning(f"no environment file detected")
+        return SimpleNamespace()

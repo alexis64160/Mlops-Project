@@ -1,4 +1,8 @@
-# Python
+# venv
+.venv/
+.venv*/
+
+# python files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -54,6 +58,15 @@ models/clip-vit-base/
 *.log
 .env.secrets
 token.txt
+/config.yaml
+
+# operationnal folders
+/data
+/models
+/logs
+
+# docker .env (dynamically created)
+services/.env
 
 # Docker
 .dockerignore

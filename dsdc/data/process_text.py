@@ -1,23 +1,22 @@
 import re
-import pandas as pd
 import html
 import logging
 import nltk
+from tqdm import tqdm
+
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import PunktSentenceTokenizer
-nltk.download('punkt_tab')
 # Télécharger les ressources NLTK nécessaires
+nltk.download('punkt_tab')
 nltk.download('stopwords')
 nltk.download('punkt')
 
-from dsdc.db.crud.processed_texts import get_missing_processed_text_raw_texts, add_processed_texts
 
-from tqdm import tqdm
 
 STOP_WORDS = set(stopwords.words('english'))
 PG_REGEX = re.compile(r'pgNbr=[0-9]+')
-PROCESSING_VERSION = "Text-processor v1.0.0"
+PROCESSING_VERSION = "1.0.0"
 
 def process_text(text):
     if text:
@@ -49,8 +48,7 @@ def process_text(text):
     # df.loc[:,"ocr_tmp"] = df.ocr_tmp.apply(apply_jamspell)
 
 
-
-if __name__ == '__main__':
+def process_texts():
     raw_texts = get_missing_processed_text_raw_texts()
     logging.info(f"processing text from {len(raw_texts)} documents with {PROCESSING_VERSION}")
     raw_text_ids, processed_texts, versions = [], [], []
@@ -65,3 +63,8 @@ if __name__ == '__main__':
         versions
     ))
     logging.info(f"Successfully added {len(raw_texts)} documents inside raw_texts table")
+    
+if __name__ == '__main__':
+    # import moved here to allow to use module inside docker micro-services
+    from dsdc.db.crud.processed_texts import get_missing_processed_text_raw_texts, add_processed_texts
+    process_texts()
