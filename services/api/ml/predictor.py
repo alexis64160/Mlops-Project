@@ -1,20 +1,16 @@
 from PIL.Image import Image
-import random
+from pathlib import Path
+from dsdc.models.mlp import MLP
+from dsdc.models.clip_mlp import CLIPBasedMLP  # <-- ton fichier qui contient la classe
 
-# Liste de classes
-_CLASSES = ["letter", "form", "e-mail", "handwritten", "advertisement", "scientific report", "scientific publication", "specification", "file folder", "news article", "budget", "invoice", "presentation", "questionnaire", "resume", "memo"]
+# Charge le modèle MLP (mets le vrai chemin de ton fichier entraîné .pkl/.joblib)
+MLP_PATH = Path("artifacts/mlp.pkl")  
+
+clip_mlp = CLIPBasedMLP(str(MLP_PATH))
 
 def predict(image: Image) -> dict:
     """
-    Reçoit une PIL.Image et renvoie un dict JSON.
-    ICI: on simule une prédiction (au hasard).
-
+    Prend une PIL.Image, renvoie le résultat du modèle CLIP + MLP.
     """
-    label = random.choice(_CLASSES)
-    confidence = round(random.uniform(0.5, 0.99), 2)
-    return {
-        "label": label,
-        "confidence": confidence,
-        "width": image.width,
-        "height": image.height,
-    }
+    results = clip_mlp.predict([image])   # on passe une liste (même si 1 image)
+    return results[0]

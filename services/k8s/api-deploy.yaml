@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: mlops
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: api } }
+  template:
+    metadata:
+      labels: { app: api }
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8000"
+    spec:
+      containers:
+        - name: api
+          image: YOUR_REGISTRY/clip-api:latest
+          env:
+            - { name: MLFLOW_TRACKING_URI, value: "http://mlflow.mlops.svc.cluster.local:5000" }
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef: { name: auth-secret, key: jwt }
+          ports: [{ containerPort: 8000 }]

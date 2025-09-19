@@ -1,0 +1,1069 @@
+{
+  "access-control": {
+    "permissions": {
+      "lbac-warning-basic-role": "",
+      "lbac-warning-rule": "警告：该团队可能没有查询数据源的权限。",
+      "lbac-warning-team": "警告：如果未设置 LBAC 规则，则该小组可完全访问数据。"
+    }
+  },
+  "admin": {
+    "role-filter": {
+      "admin-editor-option": "",
+      "multiselect-placeholder": "",
+      "server-admin-option": "服务器管理员",
+      "viewer-option": ""
+    }
+  },
+  "auth-config": {
+    "action-bar": {
+      "content-disable-button": "",
+      "delete": "删除",
+      "disable-button": "禁用",
+      "enabled-badge": "已启用",
+      "more-actions-button": "更多操作",
+      "not-enabled-badge": "未启用",
+      "protocol": "",
+      "save-and-apply-button": "",
+      "save-and-enable-button": "保存并启用",
+      "save-button": "保存",
+      "status": "状态"
+    },
+    "assertion-mapping-unconnected": {
+      "aria-label-name-id-format": "",
+      "assertionAttributeEmail-label-email-attribute": "",
+      "assertionAttributeEmail-placeholder-mail": "",
+      "assertionAttributeExternalUid-label-external-uid": "",
+      "assertionAttributeExternalUid-tooltip-external-uid": "",
+      "assertionAttributeGroups-label-groups-attribute": "",
+      "assertionAttributeLogin-label-login-attribute": "",
+      "assertionAttributeLogin-placeholder-mail": "",
+      "assertionAttributeName-label-name-attribute": "",
+      "assertionAttributeName-placeholder-display-name": "",
+      "assertionAttributeOrg-label-org-attribute": "",
+      "assertionAttributeRole-label-role-attribute": "",
+      "azure-ad-service-account-configuration": "",
+      "clientId-label-client-id": "",
+      "clientSecret-label-client-secret": "",
+      "description-allowed-organizations": "",
+      "description-assertion-attributes-mapping": "",
+      "description-azure-ad-service-account-configuration": "",
+      "description-force-use-graph-api": "",
+      "description-name-identifier-format": "",
+      "description-prevent-synchronizing-users-organization-roles": "",
+      "label-allowed-organizations": "",
+      "label-assertion-attributes-mapping": "",
+      "label-force-use-graph-api": "",
+      "label-name-identifier-format": "",
+      "label-org-mapping": "",
+      "label-role-mapping": "",
+      "label-skip-organization-role-sync": "跳过组织角色同步",
+      "label-user-mapping": "",
+      "orgMapping-label-org-mapping": "",
+      "roleValuesAdmin-label-admin": "管理员",
+      "roleValuesEditor-label-editor": "",
+      "roleValuesGrafanaAdmin-label-grafana-admin": "Grafana 管理员",
+      "roleValuesNone-label-none": "无",
+      "roleValuesViewer-label-viewer": "",
+      "tokenUrl-label-access-token-url": "",
+      "tooltip-assertion-attributes-mapping": "",
+      "tooltip-org-mapping": "",
+      "tooltip-role-mapping": ""
+    },
+    "config-action": {
+      "confirm-modal-body": "",
+      "confirm-modal-confirm-text": "",
+      "confirm-modal-confirmation-text": "删除",
+      "confirm-modal-dismiss-text": "",
+      "confirm-modal-title": ""
+    },
+    "connect-to-idp-unconnected": {
+      "configure-assertions-group-mappings": "",
+      "configure-idp-using-grafana-metadata": "",
+      "copy": "复制",
+      "description-assertion-consumer-service-url": "",
+      "description-idp-metadata": "",
+      "description-metadata-url": "",
+      "description-setup-idp": "",
+      "description-setup-required": "",
+      "description-slo-url": "",
+      "description-sp-metadata-url-entity-id": "",
+      "description-test-connection": "",
+      "finish-configuring-grafana-using-idp-data": "",
+      "label-assertion-consumer-service-url": "",
+      "label-baseencoded-idp-metadata": "",
+      "label-connect-grafana-with-identity-provider": "",
+      "label-idp-metadata": "",
+      "label-metadata-url": "",
+      "label-path-to-idp-metadata-file": "",
+      "label-slo-url": "",
+      "label-sp-metadata-url-entity-id": "",
+      "step-number-1": "1",
+      "step-number-2": "",
+      "step-number-3": ""
+    },
+    "general-unconnected": {
+      "description-allow-signup": "",
+      "description-auto-login": "",
+      "description-display-name-for-this-saml-integration": "",
+      "description-duration-grafana-metadata-valid": "",
+      "description-entity-id": "",
+      "description-identity-provider-initiated-login": "",
+      "description-max-issue-delay": "",
+      "description-relay-state": "",
+      "description-single-logout": "",
+      "displayName-placeholder-saml": "",
+      "label-allow-signup": "",
+      "label-auto-login": "",
+      "label-display-name-for-this-saml-integration": "",
+      "label-entity-id": "",
+      "label-general-settings": "",
+      "label-identity-provider-initiated-login": "",
+      "label-max-issue-delay": "",
+      "label-metadata-valid-duration": "",
+      "label-relay-state": "",
+      "label-single-logout": ""
+    },
+    "input-with-reset": {
+      "reset": "重置"
+    },
+    "key-cert-drawer-unconnected": {
+      "close": "关闭",
+      "description-number-generated-certificate-valid": "",
+      "generate": "",
+      "label-city": "",
+      "label-country-code": "",
+      "label-state": "状态",
+      "label-validity-days": "",
+      "label-your-organization": "",
+      "subtitle-saml-key-and-certificate": "",
+      "title-saml-key-and-certificate": "",
+      "tooltip-generate-the-certificate-and-private-key": ""
+    },
+    "key-cert-unconnected": {
+      "description-baseencoded-grafana-x-certificate": "",
+      "description-baseencoded-private-key": "",
+      "description-path-to-the-grafana-private-key": "",
+      "description-path-to-the-grafana-x-certificate": "",
+      "description-sign-outgoing-requests-to-id-p": "",
+      "description-signature-algorithm": "",
+      "description-signing-and-encryption-key-certificate": "",
+      "generate-key-and-certificate": "",
+      "label-certificate": "",
+      "label-private-key": "",
+      "label-sign-requests": "",
+      "label-signature-algorithm": "",
+      "label-signing-and-encryption-key-certificate": ""
+    },
+    "page-banner": {
+      "aria-label-close-banner": "",
+      "tooltip-close": "关闭"
+    },
+    "SAML": {
+      "button-row-next": "",
+      "button-row-previous": ""
+    },
+    "samlform": {
+      "text-saved": ""
+    },
+    "save-and-test-unconnected": {
+      "button-save-and-enable": "保存并启用",
+      "label-test-and-enable": "",
+      "text-save-and-enable": ""
+    },
+    "text-input-with-reset": {
+      "reset": "重置"
+    }
+  },
+  "banner": {
+    "api": {
+      "result": {
+        "saved": "横幅设置已保存"
+      }
+    },
+    "form": {
+      "button-save": "保存",
+      "button-saving": "正在保存...",
+      "enabled": {
+        "label": "已启用"
+      },
+      "end": {
+        "description": "如果没有选择结束日期，横幅将无限期显示。",
+        "error": "结束时间必须在开始时间之后",
+        "label": "结束时间"
+      },
+      "message": {
+        "description": "横幅的文字内容。支持 Markdown 标记符。",
+        "label": "消息"
+      },
+      "options": {
+        "error": "错误",
+        "info": "信息",
+        "warning": "警告"
+      },
+      "select": {
+        "placeholder": ""
+      },
+      "start": {
+        "description": "横幅将从该日期/时间开始显示。",
+        "label": "开始时间"
+      },
+      "title": "配置横幅",
+      "variant": {
+        "label": "变体"
+      }
+    },
+    "preview": {
+      "message": {
+        "default": "通过修改消息字段更新该预览。"
+      },
+      "title": "预览"
+    }
+  },
+  "caching": {
+    "alert": {
+      "readonly": {
+        "message": "该数据源是通过配置添加的，不能使用用户界面修改缓存。请联系服务器管理员以更新此数据源。",
+        "title": "配置的数据源"
+      }
+    },
+    "cache-clean": {
+      "body-clear-cache": "",
+      "clear-cache": "",
+      "confirm-text-clear-cache": "",
+      "title-clear-cache": ""
+    },
+    "cache-cta": {
+      "enable-button-title": "启用",
+      "enable-button-tittle": "启用",
+      "protip-caching-cannot-enabled-source": "",
+      "protip-caching-not-enabled": "",
+      "protip-link-caching-not-enabled": "了解更多",
+      "title-caching-cannot-enabled-source": "",
+      "title-caching-not-enabled": ""
+    },
+    "cache-settings-disable": {
+      "disable": "禁用"
+    },
+    "cache-settings-form": {
+      "description-query-ttl": "",
+      "description-resource-ttl": "",
+      "description-timetolive-resources-cache-items-milliseconds-example": "",
+      "description-use-default-ttl": "",
+      "label-query-ttl": "",
+      "label-use-default-ttl": "",
+      "resource-ttl": "",
+      "save": "保存"
+    },
+    "data-source-cache": {
+      "caching-heading": "",
+      "query-catching": "",
+      "upgrade-content-author-dashboards": "",
+      "upgrade-content-description": "",
+      "upgrade-content-load-dashboards": "",
+      "upgrade-content-save-money": ""
+    }
+  },
+  "explore": {
+    "query-library": {
+      "cancel": "取消",
+      "default-description": "公开",
+      "query-template-add-error": "尝试将此查询保存到库时出错",
+      "query-template-added": "已成功将查询保存到库中",
+      "query-template-edit-error": "尝试编辑此查询时出错",
+      "query-template-edited": "查询模板已成功编辑",
+      "save": "保存"
+    },
+    "query-template-modal": {
+      "add-info": "您即将保存此查询。保存后，您就可以在查询库中轻松访问，供今后使用和参考。",
+      "add-title": "添加到查询库",
+      "data-source-name": "数据源名称",
+      "description": "描述",
+      "edit-info": "您即将编辑此查询。保存后，您就可以在查询库中轻松访问，供今后使用和参考。",
+      "query": "查询",
+      "title": "标题"
+    },
+    "query-template-modall": {
+      "data-source-type": "数据源类型"
+    }
+  },
+  "export": {
+    "pdf": {
+      "cancel-button": "取消",
+      "download-button": "生成 PDF",
+      "image-alt": "PDF 预览",
+      "info-text": "将数据面板导出为 PDF 文档",
+      "layout-label": "布局",
+      "orientation-label": "方向",
+      "title": "导出数据面板 PDF",
+      "zoom-description": "放大以增大文本，或缩小以在每个面板中查看更多数据（如表格列）。",
+      "zoom-label": "缩放"
+    }
+  },
+  "groupsync": {
+    "empty-state": {
+      "pro-tip": "想通过身份提供商中的组来管理 Grafana 访问权限？为 Grafana RBAC 角色创建组映射。<2>了解更多</2>",
+      "title": "您尚未创建任何组映射"
+    },
+    "group-sync-editor": {
+      "body-delete-group-mappings": "",
+      "close-button-drawer": "关闭",
+      "confirm-text-delete-group-mappings": "删除",
+      "delete-group-mapping": "",
+      "new-button-drawer": "新建",
+      "new-group-mapping": "",
+      "placeholder-search-by-group-id": "",
+      "text-deprecated-feature": "",
+      "title-delete-group-mappings": "",
+      "title-deprecated-feature": ""
+    },
+    "new-mapping-form": {
+      "label-group-id": "",
+      "label-roles": "角色",
+      "save": "保存"
+    }
+  },
+  "licensing": {
+    "customer-support-button": {
+      "contact-customer-support": ""
+    },
+    "expires-soon": {
+      "title-grafana-enterprise-license-expire": "",
+      "sub-title-license-expiration_other": ""
+    },
+    "has-expired": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-has-expired": ""
+    },
+    "is-invalid": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-is-invalid": ""
+    },
+    "license-info": {
+      "aria-label-details-about-license-grafana-cloud": "",
+      "card-content-account": "",
+      "card-content-active-licensed-users": "",
+      "card-content-anonymous-users": "",
+      "card-content-authenticated-users": "",
+      "card-content-company": "",
+      "card-content-license-expires": "",
+      "card-content-license-expires-tooltip": "",
+      "card-content-lid": "",
+      "card-content-none": "无",
+      "card-content-product": "",
+      "card-content-products": "",
+      "card-content-purchase-date": "",
+      "card-content-token-auto-update": "",
+      "card-content-token-expires": "",
+      "card-content-token-id": "",
+      "card-content-token-issued": "",
+      "card-content-token-usage-billing-off": "关",
+      "card-content-url-name": "URL",
+      "card-content-url-tooltip": "",
+      "card-content-usage-billing": "",
+      "card-content-usage-billing-on": "",
+      "card-content-usage-billing-tooltip": "",
+      "edition-notice-licensing-info": "",
+      "edition-notice-problem-licensing-info": "",
+      "license-alert": "",
+      "license-details": "",
+      "license-token-info": "",
+      "renew-token": "",
+      "renewing": "",
+      "text-loading-licensing-info": "",
+      "title-contact-support-renew-token-visit-cloud": "",
+      "title-have-a-license": "",
+      "title-license": "许可",
+      "title-license-token-renewed": "",
+      "title-token": "令牌",
+      "title-utilization": "",
+      "utilization-footer": "",
+      "utilization-info": "",
+      "card-content-anonymous-users-tooltip_other": ""
+    },
+    "license-token-upload": {
+      "instance-url": "",
+      "upload-a-new-token": "",
+      "uploading": ""
+    },
+    "max-users-reached": {
+      "title-exceeded-included-number-active-users": "",
+      "upgrade-your-license-link": "",
+      "upgrade-your-license-no-link": "",
+      "upgrade-your-license-subtitle_other": ""
+    },
+    "page-alert": {
+      "learn-about-enterprise-licenses": ""
+    },
+    "token-expires-soon": {
+      "title-grafana-enterprise-token-needs-renewed": "",
+      "sub-title-token-expiration_other": ""
+    }
+  },
+  "meta-analytics": {
+    "analytics-drawer": {
+      "public-dashboards-tab-label": "公共仪表板",
+      "shared-dashboards-tab-label": "共享的数据面板",
+      "stats-tab-label": "统计信息",
+      "text-access-usage-insights-during-trial-grafana": "",
+      "title-dashboard-insights": "",
+      "users-activity-tab-label": ""
+    },
+    "analytics-public-dashboards-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": "",
+      "views-last-month-title": ""
+    },
+    "analytics-stats-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": ""
+    },
+    "analytics-toolbar-button": {
+      "tooltip-dashboard-insights": ""
+    },
+    "analytics-upgrade-drawer": {
+      "description-usage-insights-provide-detailed-information-about": "",
+      "title-dashboard-insights": ""
+    },
+    "analytics-users-tab": {
+      "aria-label-recent-users-table": "",
+      "aria-label-user-box-title": "",
+      "aria-label-user-information-box": "",
+      "aria-label-version-history-button": "",
+      "created-user-box": "已创建",
+      "dashboard-version-history": "",
+      "format-date-currently-viewing": "",
+      "format-date-last-hour": "",
+      "format-date-today": "今天",
+      "format-date-yesterday": "昨天",
+      "last-dashboard-viewers": "",
+      "last-edited-user-box": "",
+      "last-viewed-user-box": "",
+      "user-views-data-frame-user-field": "用户",
+      "user-views-data-frame-when-field": "",
+      "views-last-month-title": ""
+    },
+    "data-source-insights": {
+      "available-source": "",
+      "average-load-duration-last-month-title": "",
+      "errors-last-month-title": "",
+      "queries-last-month-title": "",
+      "text-enable-source-usage-insights-during-trial": "",
+      "text-feature-not-available-expired-license": "",
+      "title-feature-available-expired-license": "",
+      "title-read-more-license-expiration": ""
+    },
+    "data-source-insights-upgrade": {
+      "clean-instance-list-item": "",
+      "demonstrate-and-improve-list-item": "",
+      "description-usage-insights-provide-detailed-information-about": "",
+      "keep-performant-list-item": "",
+      "review-insights-list-item": ""
+    }
+  },
+  "permissions": {
+    "data-source-permissions": {
+      "text-enable-source-permissions-during-trial-grafana": ""
+    },
+    "permissions-upgrade-content": {
+      "description-source-permissions-protect-sensitive-limiting-access": "",
+      "source-permissions-protect-clean-experience-list-item": "",
+      "source-permissions-protect-sensitive-data-list-item": "",
+      "source-permissions-protect-share-access-list-item": ""
+    }
+  },
+  "plugins": {
+    "sandbox": {
+      "enable-sandbox-label": "前端沙盒",
+      "enable-sandbox-tooltip": "前端沙盒在隔离环境中运行前端代码，限制对全局浏览器范围的访问，并将用户界面修改限制在插件区域内。",
+      "enable-sandbox-tooltip-link": "阅读更多"
+    }
+  },
+  "public-dashboard": {
+    "email-sharing": {
+      "success-confirm-access": "访问权限已确认！",
+      "success-resend-recipient-invitation": "已重新发送电子邮件邀请。",
+      "success-revoke-access-description": "您已成功撤销 {{recipientEmail}} 的访问权限。",
+      "success-revoke-access-title": "访问权限已撤销",
+      "success-revoke-all-accesses-description": "已成功移除 {{email}} 对所有公共数据面板的访问权限。",
+      "success-revoke-all-accesses-title": "访问权限已撤销",
+      "success-send-recipient-invitation": "电子邮件邀请已发送。"
+    }
+  },
+  "public-dashboards": {
+    "confirm-access-page": {
+      "confirm-access": "",
+      "login-subtitle": "",
+      "login-title": ""
+    },
+    "request-view-access-page": {
+      "access-requested": "",
+      "label-email": "电子邮箱",
+      "placeholder-email": "电子邮件",
+      "register-pattern-invalid-email": "无效电子邮箱",
+      "register-required-email": "电子邮箱是必填项",
+      "request-access": ""
+    }
+  },
+  "query-library": {
+    "actions": {
+      "delete-query-button": "删除查询",
+      "select-query-button": "选择查询"
+    },
+    "delete-modal": {
+      "body-text": "您即将从查询库中移除此查询。该操作无法撤销。想要继续吗？",
+      "confirm-button": "删除查询",
+      "title": "删除查询"
+    },
+    "drawer": {
+      "title": "查询库"
+    },
+    "edit-modal": {
+      "title": "编辑查询"
+    },
+    "empty-state": {
+      "message": "开始从 Explore 中添加它们，也可在编辑数据面板时添加",
+      "title": "您还没有将任何查询保存到库中"
+    },
+    "error-state": {
+      "title": "出问题了！"
+    },
+    "extra-info-modal": {
+      "data-loss": "虽然可能性不大，但在实验阶段可能会发生一些数据丢失。",
+      "info": "查询库处于实验模式。您可以在这里保存查询并与团队共享。保存查询后，整个组织都可以使用。",
+      "limit": "目前，我们将每个组织的已保存查询数限制为 1000",
+      "title": "查询库"
+    },
+    "filters": {
+      "datasource-label": "数据源名称",
+      "search-placeholder": "",
+      "user-label": "用户名"
+    },
+    "not-found": {
+      "message": "尝试调整搜索或筛选标准",
+      "title": "未找到结果"
+    },
+    "notifications": {
+      "query-deleted": "查询已删除"
+    },
+    "query-details": {
+      "author": "作者",
+      "datasource": "数据源",
+      "date-added": "已添加日期",
+      "description": "描述",
+      "edit-button": "编辑查询",
+      "make-query-visible": ""
+    },
+    "query-template": {
+      "error": "尝试加载查询模板元数据时出错：{{error}}"
+    },
+    "user-info": {
+      "error": "尝试从库中获取用户信息时出错：{{error}}"
+    }
+  },
+  "query-operation": {
+    "header": {
+      "save-to-query-library": "保存到查询库",
+      "save-to-query-library-new": "新功能：保存到查询库"
+    }
+  },
+  "recorded-queries": {
+    "create-recorded-query-unconnected": {
+      "alert-severity-succesful": "",
+      "alert-severity-test": "",
+      "aria-label-start-recording-query-button": "",
+      "contact-support": "",
+      "count-rows-returned": "",
+      "description-decide-often-record-query": "",
+      "description-give-this-query-a-name": "",
+      "description-provide-a-description-for-this-query": "",
+      "description-select-value-template-variable": "",
+      "done-button": {
+        "aria-label-cancel-recording-query-button": "",
+        "aria-label-close-recording-query-button": "",
+        "cancel": "取消",
+        "close": "关闭"
+      },
+      "label": {
+        "relative-time-range": ""
+      },
+      "label-count-query-results": "",
+      "label-description": "描述",
+      "label-interval": "间隔",
+      "label-name": "名称",
+      "label-template-variables": "模板变量",
+      "query-relative-time-range": "",
+      "results-alert-message": "",
+      "start-recording-query": "",
+      "success-alert-message": "",
+      "sync-button": {
+        "aria-label-test-the-recorded-query": ""
+      },
+      "title-create-recorded-query": ""
+    },
+    "data-source-filter": {
+      "filter-by-data-source": "",
+      "placeholder-select-a-data-source": "选取数据源"
+    },
+    "empty-recorded-query-list": {
+      "message": "",
+      "pro-tip": ""
+    },
+    "query-card": {
+      "interval-content": "",
+      "interval-range": "",
+      "query-expression": ""
+    },
+    "recorded-queries-config-unconnected": {
+      "body-delete": "",
+      "confirm-text-delete": "删除",
+      "edit-remote-write-target": "",
+      "queries-to-display": {
+        "buttons": {
+          "aria-label-delete-recorded-query": "",
+          "aria-label-pause-recorded-query": "",
+          "aria-label-resume-recorded-query": "",
+          "delete": "删除"
+        }
+      },
+      "title-delete": "删除"
+    },
+    "recorded-queries-deprecation-notice": {
+      "description": "",
+      "title-deprecation-notice": ""
+    },
+    "recorded-query-add-modal-unconnected": {
+      "add": "添加",
+      "cancel": "取消",
+      "new-recorded-query-alert": "",
+      "no-queries-available": "",
+      "recorded-query": "",
+      "title-add-recorded-query": ""
+    },
+    "write-target-config-unconnected": {
+      "aria-label-write-target-config-remote-write-path": "",
+      "aria-label-write-target-config-save": "",
+      "aria-label-write-target-config-select-data-source": "",
+      "label-remote-write-path": "",
+      "placeholder-select-a-data-source": "选取数据源",
+      "save": "保存",
+      "select-data-source-label": ""
+    }
+  },
+  "report": {
+    "report-header": {
+      "time-range": "",
+      "title": ""
+    }
+  },
+  "reporting": {
+    "button-row": {
+      "next-step": "",
+      "previous-step": ""
+    },
+    "create-report": {
+      "alert-title": "",
+      "loading-report": "",
+      "title": ""
+    },
+    "errors": {
+      "action-message": "请与您的 Grafana 管理员联系以安装插件。",
+      "no-renderer-description": "要生成 PDF 报告，必须安装 <2>Grafana Image Renderer</2> 插件。",
+      "no-renderer-title": "未安装图像渲染器插件",
+      "old-renderer-description": "要生成 CSV 文件，必须更新 <2>Grafana Image Renderer</2> 插件。",
+      "old-renderer-title": "您使用的是旧版本的图像渲染器插件"
+    },
+    "image-preview": {
+      "invalid-image": ""
+    },
+    "page": {
+      "empty-button": "",
+      "empty-pro-tip": "",
+      "empty-title": "",
+      "settings-button": ""
+    },
+    "page-actions": {
+      "discard-button": "丢弃",
+      "save-as-draft-button": "",
+      "update-button": ""
+    },
+    "report-footer": {
+      "page-pagination": ""
+    },
+    "report-form": {
+      "edit-step": ""
+    },
+    "report-list": {
+      "content-pause-report": "",
+      "content-resume-report": "",
+      "delete-report": ""
+    },
+    "schedule": {
+      "frecuency-custom-input-label": "重复频率",
+      "frecuency-custom-select-label": "",
+      "frecuency-custom-select-placeholder": "",
+      "frecuency-date-picker-label": "",
+      "frecuency-date-picker-placeholder": "选择日期",
+      "frecuency-end-date-label": "结束日期",
+      "frecuency-end-time-label": "结束时间",
+      "frecuency-last-day-label": "在每月的最后一天发送",
+      "frecuency-last-day-warning": "",
+      "frecuency-send-later": "",
+      "frecuency-send-now": "",
+      "frecuency-start-time-label": "开始时间",
+      "frecuency-time-zone-label": "时区",
+      "frecuency-workdays-label": "仅在周一至周五发送",
+      "report-schedule-end-date-label": "",
+      "report-schedule-end-date-placeholder": "没有结束"
+    },
+    "settings": {
+      "alert-title": "",
+      "attachment-settings-fieldset-label": "附件设置",
+      "drawer-title": "",
+      "email-branding-fieldset-label": "电子邮件品牌",
+      "email-footer-field-label": "电子邮件页脚",
+      "email-logo-image-preview-altText": "公司徽标预览",
+      "email-logo-url-field-description": "徽标将显示在电子邮件标题中。支持的格式：png、jpg、gif。",
+      "email-logo-url-field-label": "公司徽标 URL",
+      "embedded-image-header": "嵌入图像",
+      "embedded-image-theme-picker-description": "主题将应用于电子邮件中嵌入的数据面板图像。",
+      "footer-link-field-label": "页脚链接文本",
+      "footer-link-url-field-label": "页脚链接 URL",
+      "none-footer-label": "无",
+      "pdf-header": "PDF",
+      "pdf-theme-picker-description": "主题将应用于报告所附的 PDF。",
+      "report-logo-image-preview-altText": "公司徽标预览",
+      "report-logo-url-field-description": "徽标将显示在文件页脚。支持的格式：png、jpg、gif。",
+      "report-logo-url-field-label": "公司徽标 URL",
+      "save-button": "保存",
+      "sent-by-footer-label": "发送者",
+      "settings-subtitle": "管理报告模板设置。"
+    }
+  },
+  "reports": {
+    "all-template-alert": {
+      "description-not-supported": "",
+      "title-not-supported": "不支持"
+    },
+    "confirm": {
+      "edit": "编辑"
+    },
+    "create-report-tab": {
+      "create-report-using-this-dashboard": "",
+      "description-reporting-allows-automatically-generate-dashboards-grafana": "",
+      "get-started-with-reporting": "",
+      "learn-more": "了解更多",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "dashbord-report-renderer": {
+      "title-unsupported-dashboard-layout": ""
+    },
+    "edit-actions": {
+      "aria-label-delete-report": "",
+      "edit-report": "",
+      "pause-button": "暂停",
+      "resume-button": "恢复",
+      "title-delete-report": "",
+      "tooltip-delete": "删除"
+    },
+    "format-report": {
+      "aria-label-zoom": "缩放",
+      "description-enlarge-table-columns-panel": "放大以增大文本，或缩小以在每个面板中查看更多数据（如表格列）。",
+      "label-combine-dashboard": "",
+      "label-configure-multiple-pdfs": "",
+      "label-configure-report-header": "",
+      "label-format-report": "",
+      "label-layout": "布局",
+      "label-orientation": "朝向",
+      "label-show-template-variables": "",
+      "label-style-the-pdf": "",
+      "label-zoom": "缩放",
+      "preview-pdf": "",
+      "tooltip-download-table-panel": ""
+    },
+    "highlight-trial-report": {
+      "get-started-with-reporting": "",
+      "get-started-with-reporting-text": "",
+      "learn-more": "了解更多",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "report-upgrade-content": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "reports-list-page": {
+      "render-list": {
+        "create-a-new-report": "",
+        "placeholder-search-reports-report-dashboard-recipients": "",
+        "text-create-unlimited-reports-during-trial-grafana": ""
+      }
+    },
+    "schedule": {
+      "label-frequency": "频率",
+      "label-schedule": "",
+      "label-start-date": "开始日期",
+      "label-time": "时间"
+    },
+    "select-dashboard": {
+      "aria-label-source-dashboard": "源数据面板",
+      "description-time-range": "",
+      "label-source-dashboard": "源数据面板",
+      "label-template-variables": "模板变量",
+      "label-time-range": "时间范围"
+    },
+    "select-dashboards": {
+      "add-another-dashboard": "",
+      "label-select-dashboard": "",
+      "remove-dashboard": ""
+    },
+    "send-test-email-modal": {
+      "cancel": "取消",
+      "label-email": "电子邮箱",
+      "label-use-emails-from-report": "",
+      "send": "发送",
+      "title-send-test-email": ""
+    },
+    "share": {
+      "description-address-appear-reply-field-email": "",
+      "description-separate-multiple-emails-comma-semicolon": "",
+      "email-info-button": "如果该字段留空，报告名称将被用作电子邮件主题",
+      "email-subject": "电子邮件主题",
+      "label-include-a-dashboard-link": "",
+      "label-message": "消息",
+      "label-recipients": "收件人",
+      "label-replyto-email-address": "",
+      "label-report-name": "报告名称",
+      "label-share": "",
+      "name-placeholder-system-status-report": "",
+      "recipients-placeholder-recipients-email-addresses-press-enter": "输入收件人的电子邮件地址，然后按 Enter 键",
+      "send-test-email": "",
+      "subject-placeholder-email-subject": "电子邮件主题",
+      "title-sending-test-email": ""
+    },
+    "share-pdfbase": {
+      "cancel": "取消",
+      "save-as-pdf": ""
+    },
+    "unavailable-feature-info-box": {
+      "title-feature-available-expired-license": ""
+    },
+    "upgrade-report": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "variables-preview": {
+      "none": ""
+    }
+  },
+  "saml-connect-to-idp": {
+    "validate-idp-metadata": {
+      "require-one": "应定义一种元数据类型"
+    }
+  },
+  "share-dashboard": {
+    "menu": {
+      "export-pdf-title": "导出为 PDF",
+      "schedule-report-title": "安排报告计划"
+    }
+  },
+  "share-report": {
+    "actions": {
+      "download-csv-label": "下载 CSV",
+      "downloading-label": "",
+      "preview-pdf-label": "",
+      "report-settings-label": ""
+    },
+    "attachments": {
+      "combine-one-file": "将所有数据面板 PDF 合并为一个文件",
+      "csv-tables": "附上表格面板数据 CSV 文件",
+      "layout": "布局",
+      "orientation": "朝向",
+      "orientation-tooltip": "朝向选择将应用于数据面板 PDF、表格数据和 PDF 附录",
+      "pdf-format": "PDF 格式",
+      "pdf-report": "以 PDF 格式附上报告",
+      "pdf-tables": "附上单独的表格数据 PDF",
+      "pdf-tables-appendix": "将表格数据作为 PDF 附录包含在内",
+      "section-title": "附件",
+      "show-template-variables": "在标题中显示模板变量",
+      "zoom": "缩放比例"
+    },
+    "back-button-text": "",
+    "confirm-delete": {
+      "button": "",
+      "description": "",
+      "title": ""
+    },
+    "create-report": "",
+    "dashboard": {
+      "add-dashboard": "添加数据面板",
+      "dashboard-required": "数据面板为必填项",
+      "delete-dashboard-tooltip": "删除此数据面板",
+      "repeated-template-variables-description": "在一个报告中多次添加同一个数据面板时，首先选择的模板变量会应用到报告中该数据面板的所有实例。",
+      "section-title": "仪表板",
+      "source-dashboard-label": "源数据面板",
+      "template-variables-title": "自定义模板变量",
+      "time-range-description": "",
+      "time-range-label": "时间范围",
+      "view-dashboard-tooltip": "查看数据面板"
+    },
+    "discard-changes": {
+      "discard-button": "丢弃",
+      "text": "",
+      "title": ""
+    },
+    "email-configuration": {
+      "add-dashboard-image-label": "嵌入数据面板图像",
+      "add-dashboard-url-label": "包含数据面板链接",
+      "dashboard-image-settings-description": "数据面板图像设置可在常规<1>报告设置</1>中调整",
+      "invalid-email": "无效电子邮箱",
+      "message-label": "消息",
+      "message-placeholder": "输入一条消息",
+      "reply-to-label": "回复电子邮件地址",
+      "section-title": "电子邮件设置",
+      "subject-description": "如果该字段留空，报告名称将被用作电子邮件主题",
+      "subject-label": "电子邮件主题"
+    },
+    "empty-list": {
+      "description": "",
+      "title": ""
+    },
+    "error-form": {
+      "title": ""
+    },
+    "error-list": {
+      "title": ""
+    },
+    "loading-form": "",
+    "loading-report": "",
+    "loading-report-form": "",
+    "loading-reports": "",
+    "recipients": {
+      "field-label": "收件人",
+      "invalid-email": "无效的电子邮箱：{{email}}",
+      "invalid-emails": "无效的电子邮箱：{{emails}}",
+      "placeholder": "输入收件人的电子邮件地址，然后按 Enter 键",
+      "recipients-required": "收件人为必填项",
+      "section-title": "收件人",
+      "tooltip": "用逗号或分号分隔多个电子邮件地址"
+    },
+    "report-name": {
+      "label": "报告名称",
+      "required": "报告名称为必填项"
+    },
+    "save-draft": {
+      "button": "保存草稿",
+      "saving-button": ""
+    },
+    "schedule": {
+      "end-date": "结束日期",
+      "end-date-invalid": "结束日期必须大于或等于开始日期",
+      "end-date-placeholder": "没有结束",
+      "end-time": "结束时间",
+      "frequency": "频率",
+      "interval-amount-min": "间隔量必须至少为 2",
+      "interval-amount-required": "间隔量为必填项",
+      "last-day-of-month": "在每月的最后一天发送",
+      "monthly-schedule-alert-title": "注意：没有 {{ dayNumber }} 天的月份不会发送报告。选择较早的日期或选择“在每月的最后一天发送”，以便在每月底发送报告。",
+      "repeat-every": "重复频率",
+      "repeat-every-placeholder": "例如 2",
+      "repeat-interval-frequency-placeholder": "例如：小时",
+      "section-title": "安排计划",
+      "send-time": "安排计划",
+      "start-date": "开始日期",
+      "start-date-placeholder": "选择日期",
+      "start-date-required": "开始日期为必填项",
+      "start-time": "开始时间",
+      "time-zone": "时区",
+      "workdays-only": "仅在周一至周五发送"
+    },
+    "schedule-report": {
+      "button": "安排报告计划",
+      "scheduling-button": ""
+    },
+    "see-all-reports": "",
+    "send-preview": {
+      "button": "发送预览",
+      "cancel": "取消",
+      "email": "电子邮箱",
+      "email-description": "",
+      "email-required": "电子邮箱是必填项",
+      "send": "发送",
+      "sending": "",
+      "title": "发送预览",
+      "use-report-emails": ""
+    },
+    "settings": {
+      "loading": ""
+    },
+    "state": "",
+    "update-report": {
+      "button": "",
+      "delete-button": "删除",
+      "pause-button": "暂停",
+      "pausing-button": "",
+      "resume-button": "恢复",
+      "resuming-button": "",
+      "updating-button": ""
+    }
+  },
+  "shared": {
+    "resource-picker": {
+      "placeholder-select-color": ""
+    }
+  },
+  "team-lbac": {
+    "create-team-lbacform": {
+      "label-rule": "规则",
+      "label-team": "团队",
+      "new-lbac-rule": "",
+      "new-lbac-rule-example": "",
+      "save": "保存"
+    },
+    "editable-cell": {
+      "empty-rule": ""
+    },
+    "team-label": {
+      "placeholder": ""
+    },
+    "team-lbaceditor-unconnected": {
+      "add-a-lbac-rule": "",
+      "add-query-permissions": "",
+      "add-team-lbac-rules": "",
+      "clear-filter": "清除",
+      "clear-filter-aria-label": "清除筛选器",
+      "content-found-recommendation": "",
+      "description-data-access": "",
+      "ensure-proper-access-control-please-follow": "",
+      "filter-results-multiple": "",
+      "filter-results-single": "",
+      "filter-teams-aria-label": "",
+      "filter-teams-placeholder": "",
+      "hide-access-control-recommendations": "",
+      "hide-lbac-rule": "",
+      "label-selector": "",
+      "lbac-description": "",
+      "lbac-labelbased-access-control": "",
+      "lbac-rules-note": "",
+      "learn-more-about-lbac-rules": "",
+      "remove-unrestricted-access": "",
+      "role-warning-list": "",
+      "show-access-control-recommendations": "",
+      "sort-teams-ascending": "",
+      "sort-teams-descending": "",
+      "team": "团队",
+      "title-access-control-recommendations": "",
+      "title-data-access": ""
+    },
+    "team-rules-row": {
+      "aria-label-add-team-rule": "",
+      "aria-label-delete-rule": "删除规则",
+      "aria-label-edit-team-rule": "",
+      "cancel": "取消",
+      "or": "",
+      "save": "保存",
+      "tooltip-add-new-rule": "",
+      "tooltip-provisioned-rule": ""
+    }
+  }
+}

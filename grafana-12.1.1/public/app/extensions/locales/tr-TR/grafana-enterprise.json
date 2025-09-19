@@ -1,0 +1,1073 @@
+{
+  "access-control": {
+    "permissions": {
+      "lbac-warning-basic-role": "",
+      "lbac-warning-rule": "Uyarı: Bu ekibin veri kaynağını sorgulama izni olmayabilir.",
+      "lbac-warning-team": "Uyarı: LBAC kuralları ayarlanmadıysa bu ekip tam veri erişimine sahiptir."
+    }
+  },
+  "admin": {
+    "role-filter": {
+      "admin-editor-option": "",
+      "multiselect-placeholder": "",
+      "server-admin-option": "Sunucu yöneticisi",
+      "viewer-option": ""
+    }
+  },
+  "auth-config": {
+    "action-bar": {
+      "content-disable-button": "",
+      "delete": "Sil",
+      "disable-button": "Devre dışı bırak",
+      "enabled-badge": "Etkin",
+      "more-actions-button": "Daha fazla işlem",
+      "not-enabled-badge": "Devre dışı",
+      "protocol": "",
+      "save-and-apply-button": "",
+      "save-and-enable-button": "Kaydet ve etkinleştir",
+      "save-button": "Kaydet",
+      "status": "Durum"
+    },
+    "assertion-mapping-unconnected": {
+      "aria-label-name-id-format": "",
+      "assertionAttributeEmail-label-email-attribute": "",
+      "assertionAttributeEmail-placeholder-mail": "",
+      "assertionAttributeExternalUid-label-external-uid": "",
+      "assertionAttributeExternalUid-tooltip-external-uid": "",
+      "assertionAttributeGroups-label-groups-attribute": "",
+      "assertionAttributeLogin-label-login-attribute": "",
+      "assertionAttributeLogin-placeholder-mail": "",
+      "assertionAttributeName-label-name-attribute": "",
+      "assertionAttributeName-placeholder-display-name": "",
+      "assertionAttributeOrg-label-org-attribute": "",
+      "assertionAttributeRole-label-role-attribute": "",
+      "azure-ad-service-account-configuration": "",
+      "clientId-label-client-id": "",
+      "clientSecret-label-client-secret": "",
+      "description-allowed-organizations": "",
+      "description-assertion-attributes-mapping": "",
+      "description-azure-ad-service-account-configuration": "",
+      "description-force-use-graph-api": "",
+      "description-name-identifier-format": "",
+      "description-prevent-synchronizing-users-organization-roles": "",
+      "label-allowed-organizations": "",
+      "label-assertion-attributes-mapping": "",
+      "label-force-use-graph-api": "",
+      "label-name-identifier-format": "",
+      "label-org-mapping": "",
+      "label-role-mapping": "",
+      "label-skip-organization-role-sync": "Kuruluş rolü eşitlemesini atla",
+      "label-user-mapping": "",
+      "orgMapping-label-org-mapping": "",
+      "roleValuesAdmin-label-admin": "",
+      "roleValuesEditor-label-editor": "",
+      "roleValuesGrafanaAdmin-label-grafana-admin": "Grafana Yöneticisi",
+      "roleValuesNone-label-none": "Yok",
+      "roleValuesViewer-label-viewer": "",
+      "tokenUrl-label-access-token-url": "",
+      "tooltip-assertion-attributes-mapping": "",
+      "tooltip-org-mapping": "",
+      "tooltip-role-mapping": ""
+    },
+    "config-action": {
+      "confirm-modal-body": "",
+      "confirm-modal-confirm-text": "",
+      "confirm-modal-confirmation-text": "sil",
+      "confirm-modal-dismiss-text": "",
+      "confirm-modal-title": ""
+    },
+    "connect-to-idp-unconnected": {
+      "configure-assertions-group-mappings": "",
+      "configure-idp-using-grafana-metadata": "",
+      "copy": "Kopyala",
+      "description-assertion-consumer-service-url": "",
+      "description-idp-metadata": "",
+      "description-metadata-url": "",
+      "description-setup-idp": "",
+      "description-setup-required": "",
+      "description-slo-url": "",
+      "description-sp-metadata-url-entity-id": "",
+      "description-test-connection": "",
+      "finish-configuring-grafana-using-idp-data": "",
+      "label-assertion-consumer-service-url": "",
+      "label-baseencoded-idp-metadata": "",
+      "label-connect-grafana-with-identity-provider": "",
+      "label-idp-metadata": "",
+      "label-metadata-url": "",
+      "label-path-to-idp-metadata-file": "",
+      "label-slo-url": "",
+      "label-sp-metadata-url-entity-id": "",
+      "step-number-1": "1",
+      "step-number-2": "",
+      "step-number-3": ""
+    },
+    "general-unconnected": {
+      "description-allow-signup": "",
+      "description-auto-login": "",
+      "description-display-name-for-this-saml-integration": "",
+      "description-duration-grafana-metadata-valid": "",
+      "description-entity-id": "",
+      "description-identity-provider-initiated-login": "",
+      "description-max-issue-delay": "",
+      "description-relay-state": "",
+      "description-single-logout": "",
+      "displayName-placeholder-saml": "",
+      "label-allow-signup": "",
+      "label-auto-login": "",
+      "label-display-name-for-this-saml-integration": "",
+      "label-entity-id": "",
+      "label-general-settings": "",
+      "label-identity-provider-initiated-login": "",
+      "label-max-issue-delay": "",
+      "label-metadata-valid-duration": "",
+      "label-relay-state": "",
+      "label-single-logout": ""
+    },
+    "input-with-reset": {
+      "reset": "Sıfırla"
+    },
+    "key-cert-drawer-unconnected": {
+      "close": "Kapat",
+      "description-number-generated-certificate-valid": "",
+      "generate": "",
+      "label-city": "",
+      "label-country-code": "",
+      "label-state": "Durum",
+      "label-validity-days": "",
+      "label-your-organization": "",
+      "subtitle-saml-key-and-certificate": "",
+      "title-saml-key-and-certificate": "",
+      "tooltip-generate-the-certificate-and-private-key": ""
+    },
+    "key-cert-unconnected": {
+      "description-baseencoded-grafana-x-certificate": "",
+      "description-baseencoded-private-key": "",
+      "description-path-to-the-grafana-private-key": "",
+      "description-path-to-the-grafana-x-certificate": "",
+      "description-sign-outgoing-requests-to-id-p": "",
+      "description-signature-algorithm": "",
+      "description-signing-and-encryption-key-certificate": "",
+      "generate-key-and-certificate": "",
+      "label-certificate": "",
+      "label-private-key": "",
+      "label-sign-requests": "",
+      "label-signature-algorithm": "",
+      "label-signing-and-encryption-key-certificate": ""
+    },
+    "page-banner": {
+      "aria-label-close-banner": "",
+      "tooltip-close": "Kapat"
+    },
+    "SAML": {
+      "button-row-next": "",
+      "button-row-previous": ""
+    },
+    "samlform": {
+      "text-saved": ""
+    },
+    "save-and-test-unconnected": {
+      "button-save-and-enable": "Kaydet ve etkinleştir",
+      "label-test-and-enable": "",
+      "text-save-and-enable": ""
+    },
+    "text-input-with-reset": {
+      "reset": "Sıfırla"
+    }
+  },
+  "banner": {
+    "api": {
+      "result": {
+        "saved": "Banner ayarları kaydedildi"
+      }
+    },
+    "form": {
+      "button-save": "Kaydet",
+      "button-saving": "Kaydediliyor…",
+      "enabled": {
+        "label": "Etkin"
+      },
+      "end": {
+        "description": "Bitiş tarihi seçilmezse başlık süresiz olarak görüntülenir.",
+        "error": "Bitiş zamanı başlangıç zamanından sonra olmalıdır",
+        "label": "Bitiş zamanı:"
+      },
+      "message": {
+        "description": "Banner'ın metin içeriği. Markdown desteklenmektedir.",
+        "label": "Mesaj"
+      },
+      "options": {
+        "error": "Hata",
+        "info": "Bilgi",
+        "warning": "Uyarı"
+      },
+      "select": {
+        "placeholder": ""
+      },
+      "start": {
+        "description": "Banner, bu tarih ve saatten itibaren gösterilecektir.",
+        "label": "Başlama zamanı:"
+      },
+      "title": "Banner'ı yapılandır",
+      "variant": {
+        "label": "Değişken"
+      }
+    },
+    "preview": {
+      "message": {
+        "default": "Bu ön izlemeyi, mesaj alanını değiştirerek güncelleyin."
+      },
+      "title": "Ön izleme"
+    }
+  },
+  "caching": {
+    "alert": {
+      "readonly": {
+        "message": "Bu veri kaynağı yapılandırma ile eklendi ve önbellekleme, arabirim üzerinden değiştirilemez. Bu veri kaynağını güncellemek için lütfen sunucu yöneticinizle iletişime geçin.",
+        "title": "Sağlanan veri kaynağı"
+      }
+    },
+    "cache-clean": {
+      "body-clear-cache": "",
+      "clear-cache": "",
+      "confirm-text-clear-cache": "",
+      "title-clear-cache": ""
+    },
+    "cache-cta": {
+      "enable-button-title": "Etkinleştir",
+      "enable-button-tittle": "Etkinleştir",
+      "protip-caching-cannot-enabled-source": "",
+      "protip-caching-not-enabled": "",
+      "protip-link-caching-not-enabled": "Daha fazla bilgi edinin",
+      "title-caching-cannot-enabled-source": "",
+      "title-caching-not-enabled": ""
+    },
+    "cache-settings-disable": {
+      "disable": "Devre dışı bırak"
+    },
+    "cache-settings-form": {
+      "description-query-ttl": "",
+      "description-resource-ttl": "",
+      "description-timetolive-resources-cache-items-milliseconds-example": "",
+      "description-use-default-ttl": "",
+      "label-query-ttl": "",
+      "label-use-default-ttl": "",
+      "resource-ttl": "",
+      "save": "Kaydet"
+    },
+    "data-source-cache": {
+      "caching-heading": "",
+      "query-catching": "",
+      "upgrade-content-author-dashboards": "",
+      "upgrade-content-description": "",
+      "upgrade-content-load-dashboards": "",
+      "upgrade-content-save-money": ""
+    }
+  },
+  "explore": {
+    "query-library": {
+      "cancel": "İptal",
+      "default-description": "Herkese açık",
+      "query-template-add-error": "Bu sorgu kütüphaneye kaydedilirken hata oluştu",
+      "query-template-added": "Bu sorgu başarıyla kütüphaneye kaydedildi",
+      "query-template-edit-error": "Bu sorgu düzenlenirken hata oluştu",
+      "query-template-edited": "Sorgu şablonu başarıyla düzenlendi",
+      "save": "Kaydet"
+    },
+    "query-template-modal": {
+      "add-info": "Bu sorguyu kaydetmek üzeresiniz. Kaydettikten sonra sorgu kitaplığından kolayca erişebilir ve ileride kullanabilirsiniz.",
+      "add-title": "Sorgu kütüphanesine ekle",
+      "data-source-name": "Veri kaynağı adı",
+      "description": "Açıklama",
+      "edit-info": "Bu sorguyu düzenlemek üzeresiniz. Kaydettikten sonra sorgu kitaplığından kolayca erişebilir ve ileride kullanabilirsiniz.",
+      "query": "Sorgu",
+      "title": "Başlık"
+    },
+    "query-template-modall": {
+      "data-source-type": "Veri kaynağı türü"
+    }
+  },
+  "export": {
+    "pdf": {
+      "cancel-button": "İptal",
+      "download-button": "PDF oluştur",
+      "image-alt": "PDF ön izlemesi",
+      "info-text": "Panoyu PDF belgesi olarak dışa aktarın",
+      "layout-label": "Düzen",
+      "orientation-label": "Yön",
+      "title": "Panoyu PDF olarak dışa aktar",
+      "zoom-description": "Metni büyütmek için yakınlaştırın veya her panelde daha fazla veri (örneğin tablo sütunları) görmek için uzaklaştırın.",
+      "zoom-label": "Yakınlaştır"
+    }
+  },
+  "groupsync": {
+    "empty-state": {
+      "pro-tip": "Grafana erişimini Kimlik Sağlayıcınızdaki gruplar aracılığıyla yönetmek mi istiyorsunuz? Grafana RBAC rollerine grup eşlemeleri oluşturun. <2>Daha fazla bilgi edinin</2>",
+      "title": "Henüz bir grup eşleme oluşturmadınız"
+    },
+    "group-sync-editor": {
+      "body-delete-group-mappings": "",
+      "close-button-drawer": "Kapat",
+      "confirm-text-delete-group-mappings": "Sil",
+      "delete-group-mapping": "",
+      "new-button-drawer": "Yeni",
+      "new-group-mapping": "",
+      "placeholder-search-by-group-id": "",
+      "text-deprecated-feature": "",
+      "title-delete-group-mappings": "",
+      "title-deprecated-feature": ""
+    },
+    "new-mapping-form": {
+      "label-group-id": "",
+      "label-roles": "Roller",
+      "save": "Kaydet"
+    }
+  },
+  "licensing": {
+    "customer-support-button": {
+      "contact-customer-support": ""
+    },
+    "expires-soon": {
+      "title-grafana-enterprise-license-expire": "",
+      "sub-title-license-expiration_one": "",
+      "sub-title-license-expiration_other": ""
+    },
+    "has-expired": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-has-expired": ""
+    },
+    "is-invalid": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-is-invalid": ""
+    },
+    "license-info": {
+      "aria-label-details-about-license-grafana-cloud": "",
+      "card-content-account": "",
+      "card-content-active-licensed-users": "",
+      "card-content-anonymous-users": "",
+      "card-content-authenticated-users": "",
+      "card-content-company": "",
+      "card-content-license-expires": "",
+      "card-content-license-expires-tooltip": "",
+      "card-content-lid": "",
+      "card-content-none": "Yok",
+      "card-content-product": "",
+      "card-content-products": "",
+      "card-content-purchase-date": "",
+      "card-content-token-auto-update": "",
+      "card-content-token-expires": "",
+      "card-content-token-id": "",
+      "card-content-token-issued": "",
+      "card-content-token-usage-billing-off": "Kapalı",
+      "card-content-url-name": "URL",
+      "card-content-url-tooltip": "",
+      "card-content-usage-billing": "",
+      "card-content-usage-billing-on": "",
+      "card-content-usage-billing-tooltip": "",
+      "edition-notice-licensing-info": "",
+      "edition-notice-problem-licensing-info": "",
+      "license-alert": "",
+      "license-details": "",
+      "license-token-info": "",
+      "renew-token": "",
+      "renewing": "",
+      "text-loading-licensing-info": "",
+      "title-contact-support-renew-token-visit-cloud": "",
+      "title-have-a-license": "",
+      "title-license": "Lisans",
+      "title-license-token-renewed": "",
+      "title-token": "Belirteç",
+      "title-utilization": "",
+      "utilization-footer": "",
+      "utilization-info": "",
+      "card-content-anonymous-users-tooltip_one": "",
+      "card-content-anonymous-users-tooltip_other": ""
+    },
+    "license-token-upload": {
+      "instance-url": "",
+      "upload-a-new-token": "",
+      "uploading": ""
+    },
+    "max-users-reached": {
+      "title-exceeded-included-number-active-users": "",
+      "upgrade-your-license-link": "",
+      "upgrade-your-license-no-link": "",
+      "upgrade-your-license-subtitle_one": "",
+      "upgrade-your-license-subtitle_other": ""
+    },
+    "page-alert": {
+      "learn-about-enterprise-licenses": ""
+    },
+    "token-expires-soon": {
+      "title-grafana-enterprise-token-needs-renewed": "",
+      "sub-title-token-expiration_one": "",
+      "sub-title-token-expiration_other": ""
+    }
+  },
+  "meta-analytics": {
+    "analytics-drawer": {
+      "public-dashboards-tab-label": "Herkese açık panolar",
+      "shared-dashboards-tab-label": "Paylaşılan panolar",
+      "stats-tab-label": "İstatistikler",
+      "text-access-usage-insights-during-trial-grafana": "",
+      "title-dashboard-insights": "",
+      "users-activity-tab-label": ""
+    },
+    "analytics-public-dashboards-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": "",
+      "views-last-month-title": ""
+    },
+    "analytics-stats-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": ""
+    },
+    "analytics-toolbar-button": {
+      "tooltip-dashboard-insights": ""
+    },
+    "analytics-upgrade-drawer": {
+      "description-usage-insights-provide-detailed-information-about": "",
+      "title-dashboard-insights": ""
+    },
+    "analytics-users-tab": {
+      "aria-label-recent-users-table": "",
+      "aria-label-user-box-title": "",
+      "aria-label-user-information-box": "",
+      "aria-label-version-history-button": "",
+      "created-user-box": "Oluşturuldu",
+      "dashboard-version-history": "",
+      "format-date-currently-viewing": "",
+      "format-date-last-hour": "",
+      "format-date-today": "Bugün",
+      "format-date-yesterday": "Dün",
+      "last-dashboard-viewers": "",
+      "last-edited-user-box": "",
+      "last-viewed-user-box": "",
+      "user-views-data-frame-user-field": "Kullanıcı",
+      "user-views-data-frame-when-field": "",
+      "views-last-month-title": ""
+    },
+    "data-source-insights": {
+      "available-source": "",
+      "average-load-duration-last-month-title": "",
+      "errors-last-month-title": "",
+      "queries-last-month-title": "",
+      "text-enable-source-usage-insights-during-trial": "",
+      "text-feature-not-available-expired-license": "",
+      "title-feature-available-expired-license": "",
+      "title-read-more-license-expiration": ""
+    },
+    "data-source-insights-upgrade": {
+      "clean-instance-list-item": "",
+      "demonstrate-and-improve-list-item": "",
+      "description-usage-insights-provide-detailed-information-about": "",
+      "keep-performant-list-item": "",
+      "review-insights-list-item": ""
+    }
+  },
+  "permissions": {
+    "data-source-permissions": {
+      "text-enable-source-permissions-during-trial-grafana": ""
+    },
+    "permissions-upgrade-content": {
+      "description-source-permissions-protect-sensitive-limiting-access": "",
+      "source-permissions-protect-clean-experience-list-item": "",
+      "source-permissions-protect-sensitive-data-list-item": "",
+      "source-permissions-protect-share-access-list-item": ""
+    }
+  },
+  "plugins": {
+    "sandbox": {
+      "enable-sandbox-label": "Ön Uç Korumalı Alanı",
+      "enable-sandbox-tooltip": "Ön uç korumalı alanı, ön uç kodunu izole bir ortamda çalıştırarak küresel tarayıcı kapsamına erişimi kısıtlar ve arabirim değişikliklerini yalnızca eklenti alanıyla sınırlar.",
+      "enable-sandbox-tooltip-link": "Daha fazlasını okuyun"
+    }
+  },
+  "public-dashboard": {
+    "email-sharing": {
+      "success-confirm-access": "Erişim onaylandı!",
+      "success-resend-recipient-invitation": "E-posta daveti yeniden gönderildi.",
+      "success-revoke-access-description": "{{recipientEmail}} için erişimi başarıyla iptal ettiniz.",
+      "success-revoke-access-title": "Erişim İptal Edildi",
+      "success-revoke-all-accesses-description": "{{email}} için tüm genel panolara erişim başarıyla kaldırıldı.",
+      "success-revoke-all-accesses-title": "Erişim İptal Edildi",
+      "success-send-recipient-invitation": "E-posta daveti gönderildi."
+    }
+  },
+  "public-dashboards": {
+    "confirm-access-page": {
+      "confirm-access": "",
+      "login-subtitle": "",
+      "login-title": ""
+    },
+    "request-view-access-page": {
+      "access-requested": "",
+      "label-email": "E-posta",
+      "placeholder-email": "e-posta",
+      "register-pattern-invalid-email": "Geçersiz e-posta",
+      "register-required-email": "E-posta gereklidir",
+      "request-access": ""
+    }
+  },
+  "query-library": {
+    "actions": {
+      "delete-query-button": "Sorguyu sil",
+      "select-query-button": "Sorgu seç"
+    },
+    "delete-modal": {
+      "body-text": "Bu sorguyu sorgu kitaplığından kaldırmak üzeresiniz. Bu işlem geri alınamaz. Devam etmek ister misiniz?",
+      "confirm-button": "Sorguyu silme",
+      "title": "Sorguyu silme"
+    },
+    "drawer": {
+      "title": "Sorgu kitaplığı"
+    },
+    "edit-modal": {
+      "title": "Sorguyu düzenleyin"
+    },
+    "empty-state": {
+      "message": "Bunları Keşfet'ten veya bir panoyu düzenlerken eklemeye başlayın",
+      "title": "Henüz kütüphaneye bir sorgu kaydetmediniz"
+    },
+    "error-state": {
+      "title": "Bir şeyler ters gitti!"
+    },
+    "extra-info-modal": {
+      "data-loss": "Düşük bir ihtimal olsa da deney aşamasında bazı veri kayıpları meydana gelebilir.",
+      "info": "Sorgu kitaplığı şu anda deneysel moddadır. Sorgularınızı kaydedip ekibinizle paylaşabileceğiniz bir alandır. Kaydedilen sorgular tüm kuruluşun kullanımına sunulacaktır.",
+      "limit": "Şu anda kuruluş başına kaydedilebilecek sorgu sayısı 1000 ile sınırlandırılmıştır",
+      "title": "Sorgu kitaplığı"
+    },
+    "filters": {
+      "datasource-label": "Veri kaynağı ad(lar)ı",
+      "search-placeholder": "",
+      "user-label": "Kullanıcı adları"
+    },
+    "not-found": {
+      "message": "Arama veya filtre ölçütlerinizi ayarlamayı deneyin",
+      "title": "Sonuç bulunamadı"
+    },
+    "notifications": {
+      "query-deleted": "Sorgu silindi"
+    },
+    "query-details": {
+      "author": "Yazar",
+      "datasource": "Veri kaynağı",
+      "date-added": "Ekleme Tarihi",
+      "description": "Açıklama",
+      "edit-button": "Sorguyu düzenle",
+      "make-query-visible": ""
+    },
+    "query-template": {
+      "error": "Sorgu şablonu meta verileri yüklenirken hata oluştu: {{error}}"
+    },
+    "user-info": {
+      "error": "Kütüphaneden kullanıcı bilgileri alınırken hata oluştu: {{error}}"
+    }
+  },
+  "query-operation": {
+    "header": {
+      "save-to-query-library": "Sorgu kütüphanesine kaydet",
+      "save-to-query-library-new": "Yeni: Sorgu kütüphanesine kaydet"
+    }
+  },
+  "recorded-queries": {
+    "create-recorded-query-unconnected": {
+      "alert-severity-succesful": "",
+      "alert-severity-test": "",
+      "aria-label-start-recording-query-button": "",
+      "contact-support": "",
+      "count-rows-returned": "",
+      "description-decide-often-record-query": "",
+      "description-give-this-query-a-name": "",
+      "description-provide-a-description-for-this-query": "",
+      "description-select-value-template-variable": "",
+      "done-button": {
+        "aria-label-cancel-recording-query-button": "",
+        "aria-label-close-recording-query-button": "",
+        "cancel": "İptal et",
+        "close": "Kapat"
+      },
+      "label": {
+        "relative-time-range": ""
+      },
+      "label-count-query-results": "",
+      "label-description": "Açıklama",
+      "label-interval": "Aralık",
+      "label-name": "Ad",
+      "label-template-variables": "Şablon değişkenleri",
+      "query-relative-time-range": "",
+      "results-alert-message": "",
+      "start-recording-query": "",
+      "success-alert-message": "",
+      "sync-button": {
+        "aria-label-test-the-recorded-query": ""
+      },
+      "title-create-recorded-query": ""
+    },
+    "data-source-filter": {
+      "filter-by-data-source": "",
+      "placeholder-select-a-data-source": "Bir veri kaynağı seçin"
+    },
+    "empty-recorded-query-list": {
+      "message": "",
+      "pro-tip": ""
+    },
+    "query-card": {
+      "interval-content": "",
+      "interval-range": "",
+      "query-expression": ""
+    },
+    "recorded-queries-config-unconnected": {
+      "body-delete": "",
+      "confirm-text-delete": "Sil",
+      "edit-remote-write-target": "",
+      "queries-to-display": {
+        "buttons": {
+          "aria-label-delete-recorded-query": "",
+          "aria-label-pause-recorded-query": "",
+          "aria-label-resume-recorded-query": "",
+          "delete": "Sil"
+        }
+      },
+      "title-delete": "Sil"
+    },
+    "recorded-queries-deprecation-notice": {
+      "description": "",
+      "title-deprecation-notice": ""
+    },
+    "recorded-query-add-modal-unconnected": {
+      "add": "Ekle",
+      "cancel": "İptal et",
+      "new-recorded-query-alert": "",
+      "no-queries-available": "",
+      "recorded-query": "",
+      "title-add-recorded-query": ""
+    },
+    "write-target-config-unconnected": {
+      "aria-label-write-target-config-remote-write-path": "",
+      "aria-label-write-target-config-save": "",
+      "aria-label-write-target-config-select-data-source": "",
+      "label-remote-write-path": "",
+      "placeholder-select-a-data-source": "Bir veri kaynağı seçin",
+      "save": "Kaydet",
+      "select-data-source-label": ""
+    }
+  },
+  "report": {
+    "report-header": {
+      "time-range": "",
+      "title": ""
+    }
+  },
+  "reporting": {
+    "button-row": {
+      "next-step": "",
+      "previous-step": ""
+    },
+    "create-report": {
+      "alert-title": "",
+      "loading-report": "",
+      "title": ""
+    },
+    "errors": {
+      "action-message": "Lütfen eklentiyi yüklemek için Grafana yöneticinizle iletişime geçin.",
+      "no-renderer-description": "PDF raporları oluşturmak için <2>Grafana Görüntü İşleme</2> eklentisini yüklemeniz gerekir.",
+      "no-renderer-title": "Görüntü işleme eklentisi yüklü değil",
+      "old-renderer-description": "CSV dosyaları oluşturmak için <2>Grafana Görüntü İşleme</2> eklentisini güncellemeniz gerekir.",
+      "old-renderer-title": "Görüntü işleme eklentisinin eski bir sürümünü kullanıyorsunuz"
+    },
+    "image-preview": {
+      "invalid-image": ""
+    },
+    "page": {
+      "empty-button": "",
+      "empty-pro-tip": "",
+      "empty-title": "",
+      "settings-button": ""
+    },
+    "page-actions": {
+      "discard-button": "Vazgeç",
+      "save-as-draft-button": "",
+      "update-button": ""
+    },
+    "report-footer": {
+      "page-pagination": ""
+    },
+    "report-form": {
+      "edit-step": ""
+    },
+    "report-list": {
+      "content-pause-report": "",
+      "content-resume-report": "",
+      "delete-report": ""
+    },
+    "schedule": {
+      "frecuency-custom-input-label": "Tekrarlama sıklığı:",
+      "frecuency-custom-select-label": "",
+      "frecuency-custom-select-placeholder": "",
+      "frecuency-date-picker-label": "",
+      "frecuency-date-picker-placeholder": "Tarih seçin",
+      "frecuency-end-date-label": "Bitiş tarihi",
+      "frecuency-end-time-label": "Bitiş zamanı",
+      "frecuency-last-day-label": "Her ayın son günü gönder",
+      "frecuency-last-day-warning": "",
+      "frecuency-send-later": "",
+      "frecuency-send-now": "",
+      "frecuency-start-time-label": "Başlangıç zamanı",
+      "frecuency-time-zone-label": "Zaman dilimi",
+      "frecuency-workdays-label": "Yalnızca pazartesiden cumaya gönder",
+      "report-schedule-end-date-label": "",
+      "report-schedule-end-date-placeholder": "Sona ermiyor"
+    },
+    "settings": {
+      "alert-title": "",
+      "attachment-settings-fieldset-label": "Ek ayarları",
+      "drawer-title": "",
+      "email-branding-fieldset-label": "E-posta markalama",
+      "email-footer-field-label": "E-posta alt bilgisi",
+      "email-logo-image-preview-altText": "Şirket logosu ön izlemesi",
+      "email-logo-url-field-description": "Logo, e-posta başlığında görüntülenecektir. Desteklenen biçimler: png, jpg, gif.",
+      "email-logo-url-field-label": "Şirket logosu URL'si",
+      "embedded-image-header": "Eklenmiş görsel",
+      "embedded-image-theme-picker-description": "Tema, e-postaya eklenmiş pano görseline uygulanacaktır.",
+      "footer-link-field-label": "Alt bilgi bağlantı metni",
+      "footer-link-url-field-label": "Alt bilgi bağlantı URL'si",
+      "none-footer-label": "Yok",
+      "pdf-header": "PDF",
+      "pdf-theme-picker-description": "Tema, rapora eklenen PDF belgesine uygulanacaktır.",
+      "report-logo-image-preview-altText": "Şirket logosu ön izlemesi",
+      "report-logo-url-field-description": "Logo, belge alt bilgisinde görüntülenecektir. Desteklenen biçimler: png, jpg, gif.",
+      "report-logo-url-field-label": "Şirket logosu URL'si",
+      "save-button": "Kaydet",
+      "sent-by-footer-label": "Gönderen",
+      "settings-subtitle": "Rapor şablonu ayarlarını yönetin."
+    }
+  },
+  "reports": {
+    "all-template-alert": {
+      "description-not-supported": "",
+      "title-not-supported": "Desteklemiyor"
+    },
+    "confirm": {
+      "edit": "Düzenle"
+    },
+    "create-report-tab": {
+      "create-report-using-this-dashboard": "",
+      "description-reporting-allows-automatically-generate-dashboards-grafana": "",
+      "get-started-with-reporting": "",
+      "learn-more": "Daha fazla bilgi edinin",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "dashbord-report-renderer": {
+      "title-unsupported-dashboard-layout": ""
+    },
+    "edit-actions": {
+      "aria-label-delete-report": "",
+      "edit-report": "",
+      "pause-button": "Duraklat",
+      "resume-button": "Devam et",
+      "title-delete-report": "",
+      "tooltip-delete": "Sil"
+    },
+    "format-report": {
+      "aria-label-zoom": "Yakınlaştır",
+      "description-enlarge-table-columns-panel": "Metni büyütmek için yakınlaştırın veya her panelde daha fazla veri (örneğin tablo sütunları) görmek için uzaklaştırın.",
+      "label-combine-dashboard": "",
+      "label-configure-multiple-pdfs": "",
+      "label-configure-report-header": "",
+      "label-format-report": "",
+      "label-layout": "Düzen",
+      "label-orientation": "Yönlendirme",
+      "label-show-template-variables": "",
+      "label-style-the-pdf": "",
+      "label-zoom": "Yakınlaştır",
+      "preview-pdf": "",
+      "tooltip-download-table-panel": ""
+    },
+    "highlight-trial-report": {
+      "get-started-with-reporting": "",
+      "get-started-with-reporting-text": "",
+      "learn-more": "Daha fazla bilgi edinin",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "report-upgrade-content": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "reports-list-page": {
+      "render-list": {
+        "create-a-new-report": "",
+        "placeholder-search-reports-report-dashboard-recipients": "",
+        "text-create-unlimited-reports-during-trial-grafana": ""
+      }
+    },
+    "schedule": {
+      "label-frequency": "Sıklık",
+      "label-schedule": "",
+      "label-start-date": "Başlangıç tarihi",
+      "label-time": "Zaman"
+    },
+    "select-dashboard": {
+      "aria-label-source-dashboard": "Kaynak pano",
+      "description-time-range": "",
+      "label-source-dashboard": "Kaynak pano",
+      "label-template-variables": "Şablon değişkenleri",
+      "label-time-range": "Zaman aralığı"
+    },
+    "select-dashboards": {
+      "add-another-dashboard": "",
+      "label-select-dashboard": "",
+      "remove-dashboard": ""
+    },
+    "send-test-email-modal": {
+      "cancel": "İptal et",
+      "label-email": "E-posta",
+      "label-use-emails-from-report": "",
+      "send": "Gönder",
+      "title-send-test-email": ""
+    },
+    "share": {
+      "description-address-appear-reply-field-email": "",
+      "description-separate-multiple-emails-comma-semicolon": "",
+      "email-info-button": "Bu alan boş bırakılırsa rapor adı e-posta konusu olarak kullanılacaktır",
+      "email-subject": "E-posta konusu",
+      "label-include-a-dashboard-link": "",
+      "label-message": "Mesaj",
+      "label-recipients": "Alıcılar",
+      "label-replyto-email-address": "",
+      "label-report-name": "Rapor adı",
+      "label-share": "",
+      "name-placeholder-system-status-report": "",
+      "recipients-placeholder-recipients-email-addresses-press-enter": "Alıcının e-posta adreslerini yazın ve Enter tuşuna basın",
+      "send-test-email": "",
+      "subject-placeholder-email-subject": "E-posta konusu",
+      "title-sending-test-email": ""
+    },
+    "share-pdfbase": {
+      "cancel": "İptal et",
+      "save-as-pdf": ""
+    },
+    "unavailable-feature-info-box": {
+      "title-feature-available-expired-license": ""
+    },
+    "upgrade-report": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "variables-preview": {
+      "none": ""
+    }
+  },
+  "saml-connect-to-idp": {
+    "validate-idp-metadata": {
+      "require-one": "Bir meta veri türü tanımlanmalıdır"
+    }
+  },
+  "share-dashboard": {
+    "menu": {
+      "export-pdf-title": "PDF olarak dışa aktar",
+      "schedule-report-title": "Rapor zamanla"
+    }
+  },
+  "share-report": {
+    "actions": {
+      "download-csv-label": "CSV olarak indir",
+      "downloading-label": "",
+      "preview-pdf-label": "",
+      "report-settings-label": ""
+    },
+    "attachments": {
+      "combine-one-file": "Tüm pano PDF'lerini tek bir dosyada birleştir",
+      "csv-tables": "Tablo paneli verilerinin bir CSV dosyasını ekleyin",
+      "layout": "Düzen",
+      "orientation": "Yönlendirme",
+      "orientation-tooltip": "Seçilen yönlendirme pano PDF'ine, tablo verilerine ve PDF ekine uygulanacaktır",
+      "pdf-format": "PDF biçimi",
+      "pdf-report": "Raporu PDF olarak ekleyin",
+      "pdf-tables": "Tablo verilerinin ayrı bir PDF dosyasını ekleyin",
+      "pdf-tables-appendix": "Tablo verilerini PDF eki olarak dahil et",
+      "section-title": "Ekler",
+      "show-template-variables": "Üst bilgide şablon değişkenlerini göster",
+      "zoom": "Yakınlaştırma ölçeği"
+    },
+    "back-button-text": "",
+    "confirm-delete": {
+      "button": "",
+      "description": "",
+      "title": ""
+    },
+    "create-report": "",
+    "dashboard": {
+      "add-dashboard": "Pano ekle",
+      "dashboard-required": "Pano seçilmesi zorunludur",
+      "delete-dashboard-tooltip": "Bu panoyu sil",
+      "repeated-template-variables-description": "Bir raporda aynı panoyu birden fazla kez eklerken, ilk seçtiğiniz şablon değişkenleri rapordaki o panonun tüm örneklerine uygulanır.",
+      "section-title": "Panolar",
+      "source-dashboard-label": "Kaynak pano",
+      "template-variables-title": "Şablon değişkenlerini özelleştir",
+      "time-range-description": "",
+      "time-range-label": "Zaman aralığı",
+      "view-dashboard-tooltip": "Panoyu görüntüle"
+    },
+    "discard-changes": {
+      "discard-button": "Vazgeç",
+      "text": "",
+      "title": ""
+    },
+    "email-configuration": {
+      "add-dashboard-image-label": "Pano görseli ekle",
+      "add-dashboard-url-label": "Pano bağlantısını ekle",
+      "dashboard-image-settings-description": "Pano görsel ayarları genel <1>rapor ayarlarından</1> yapılabilir.",
+      "invalid-email": "Geçersiz e-posta",
+      "message-label": "Mesaj",
+      "message-placeholder": "Mesaj girin",
+      "reply-to-label": "Yanıt e-posta adresi",
+      "section-title": "E-posta ayarları",
+      "subject-description": "Bu alan boş bırakılırsa rapor adı e-posta konusu olarak kullanılacaktır",
+      "subject-label": "E-posta konusu"
+    },
+    "empty-list": {
+      "description": "",
+      "title": ""
+    },
+    "error-form": {
+      "title": ""
+    },
+    "error-list": {
+      "title": ""
+    },
+    "loading-form": "",
+    "loading-report": "",
+    "loading-report-form": "",
+    "loading-reports": "",
+    "recipients": {
+      "field-label": "Alıcılar",
+      "invalid-email": "Geçersiz e-posta: {{email}}",
+      "invalid-emails": "Geçersiz e-postalar: {{emails}}",
+      "placeholder": "Alıcının e-posta adreslerini yazın ve Enter tuşuna basın",
+      "recipients-required": "Alıcılar belirtilmelidir",
+      "section-title": "Alıcılar",
+      "tooltip": "Farklı e-posta adreslerini virgülle veya noktalı virgülle birbirinden ayırın"
+    },
+    "report-name": {
+      "label": "Rapor adı",
+      "required": "Rapor adı gereklidir"
+    },
+    "save-draft": {
+      "button": "Taslağı kaydet",
+      "saving-button": ""
+    },
+    "schedule": {
+      "end-date": "Bitiş tarihi",
+      "end-date-invalid": "Bitiş tarihi, başlangıç tarihi ile aynı veya ondan sonra olmalıdır",
+      "end-date-placeholder": "Sona ermiyor",
+      "end-time": "Bitiş zamanı",
+      "frequency": "Sıklık",
+      "interval-amount-min": "Aralık adedi en az 2 olmalıdır",
+      "interval-amount-required": "Aralık adedi gereklidir",
+      "last-day-of-month": "Her ayın son günü gönder",
+      "monthly-schedule-alert-title": "Not: Seçilen {{ dayNumber }} günü olmayan aylarda rapor gönderilmeyecektir. Daha erken bir tarih seçin veya her ayın sonunda rapor göndermek için \"Her ayın son günü gönder\" seçeneğini işaretleyin.",
+      "repeat-every": "Tekrarlama sıklığı:",
+      "repeat-every-placeholder": "Örn. 2",
+      "repeat-interval-frequency-placeholder": "örn. saatler",
+      "section-title": "Zamanlama",
+      "send-time": "Zamanlama",
+      "start-date": "Başlangıç tarihi",
+      "start-date-placeholder": "Tarih seçin",
+      "start-date-required": "Başlangıç tarihi belirtilmelidir",
+      "start-time": "Başlangıç zamanı",
+      "time-zone": "Zaman dilimi",
+      "workdays-only": "Yalnızca pazartesiden cumaya gönder"
+    },
+    "schedule-report": {
+      "button": "Rapor zamanla",
+      "scheduling-button": ""
+    },
+    "see-all-reports": "",
+    "send-preview": {
+      "button": "Ön izleme gönder",
+      "cancel": "İptal",
+      "email": "E-posta",
+      "email-description": "Farklı e-posta adreslerini virgülle veya noktalı virgülle birbirinden ayırın",
+      "email-required": "E-posta gereklidir",
+      "send": "Gönder",
+      "sending": "",
+      "title": "Ön izleme gönder",
+      "use-report-emails": ""
+    },
+    "settings": {
+      "loading": ""
+    },
+    "state": "",
+    "update-report": {
+      "button": "",
+      "delete-button": "Sil",
+      "pause-button": "Duraklat",
+      "pausing-button": "",
+      "resume-button": "Devam et",
+      "resuming-button": "",
+      "updating-button": ""
+    }
+  },
+  "shared": {
+    "resource-picker": {
+      "placeholder-select-color": ""
+    }
+  },
+  "team-lbac": {
+    "create-team-lbacform": {
+      "label-rule": "Kural",
+      "label-team": "Ekip",
+      "new-lbac-rule": "",
+      "new-lbac-rule-example": "",
+      "save": "Kaydet"
+    },
+    "editable-cell": {
+      "empty-rule": ""
+    },
+    "team-label": {
+      "placeholder": ""
+    },
+    "team-lbaceditor-unconnected": {
+      "add-a-lbac-rule": "",
+      "add-query-permissions": "",
+      "add-team-lbac-rules": "",
+      "clear-filter": "Temizle",
+      "clear-filter-aria-label": "Filtreyi temizle",
+      "content-found-recommendation": "",
+      "description-data-access": "",
+      "ensure-proper-access-control-please-follow": "",
+      "filter-results-multiple": "",
+      "filter-results-single": "",
+      "filter-teams-aria-label": "",
+      "filter-teams-placeholder": "",
+      "hide-access-control-recommendations": "",
+      "hide-lbac-rule": "",
+      "label-selector": "",
+      "lbac-description": "",
+      "lbac-labelbased-access-control": "",
+      "lbac-rules-note": "",
+      "learn-more-about-lbac-rules": "",
+      "remove-unrestricted-access": "",
+      "role-warning-list": "",
+      "show-access-control-recommendations": "",
+      "sort-teams-ascending": "",
+      "sort-teams-descending": "",
+      "team": "Ekip",
+      "title-access-control-recommendations": "",
+      "title-data-access": ""
+    },
+    "team-rules-row": {
+      "aria-label-add-team-rule": "",
+      "aria-label-delete-rule": "Kuralı sil",
+      "aria-label-edit-team-rule": "",
+      "cancel": "İptal et",
+      "or": "",
+      "save": "Kaydet",
+      "tooltip-add-new-rule": "",
+      "tooltip-provisioned-rule": ""
+    }
+  }
+}

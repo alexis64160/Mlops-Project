@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/couet-lannesandre/Desktop/Formation/Mlops-Project/mlruns/0/cb6782c9e3e0463c878caaaa2c34c001/artifacts
+end_time: 1758205443734
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cb6782c9e3e0463c878caaaa2c34c001
+run_name: inference
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758205443727
+status: 3
+tags: []
+user_id: couet-lannesandre

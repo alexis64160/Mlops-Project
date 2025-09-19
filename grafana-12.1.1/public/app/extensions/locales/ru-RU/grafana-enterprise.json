@@ -1,0 +1,1081 @@
+{
+  "access-control": {
+    "permissions": {
+      "lbac-warning-basic-role": "",
+      "lbac-warning-rule": "Предупреждение. У этой команды может не быть разрешения на запрос источника данных.",
+      "lbac-warning-team": "Предупреждение. Эта команда имеет полный доступ к данным, если не установлены правила LBAC."
+    }
+  },
+  "admin": {
+    "role-filter": {
+      "admin-editor-option": "",
+      "multiselect-placeholder": "",
+      "server-admin-option": "Администратор сервера",
+      "viewer-option": ""
+    }
+  },
+  "auth-config": {
+    "action-bar": {
+      "content-disable-button": "",
+      "delete": "Удалить",
+      "disable-button": "Отключить",
+      "enabled-badge": "Включено",
+      "more-actions-button": "Другие действия",
+      "not-enabled-badge": "Не включена",
+      "protocol": "",
+      "save-and-apply-button": "",
+      "save-and-enable-button": "Сохранить и включить",
+      "save-button": "Сохранить",
+      "status": "Статус"
+    },
+    "assertion-mapping-unconnected": {
+      "aria-label-name-id-format": "",
+      "assertionAttributeEmail-label-email-attribute": "",
+      "assertionAttributeEmail-placeholder-mail": "",
+      "assertionAttributeExternalUid-label-external-uid": "",
+      "assertionAttributeExternalUid-tooltip-external-uid": "",
+      "assertionAttributeGroups-label-groups-attribute": "",
+      "assertionAttributeLogin-label-login-attribute": "",
+      "assertionAttributeLogin-placeholder-mail": "",
+      "assertionAttributeName-label-name-attribute": "",
+      "assertionAttributeName-placeholder-display-name": "",
+      "assertionAttributeOrg-label-org-attribute": "",
+      "assertionAttributeRole-label-role-attribute": "",
+      "azure-ad-service-account-configuration": "",
+      "clientId-label-client-id": "",
+      "clientSecret-label-client-secret": "",
+      "description-allowed-organizations": "",
+      "description-assertion-attributes-mapping": "",
+      "description-azure-ad-service-account-configuration": "",
+      "description-force-use-graph-api": "",
+      "description-name-identifier-format": "",
+      "description-prevent-synchronizing-users-organization-roles": "",
+      "label-allowed-organizations": "",
+      "label-assertion-attributes-mapping": "",
+      "label-force-use-graph-api": "",
+      "label-name-identifier-format": "",
+      "label-org-mapping": "",
+      "label-role-mapping": "",
+      "label-skip-organization-role-sync": "Пропустить синхронизацию ролей организации",
+      "label-user-mapping": "",
+      "orgMapping-label-org-mapping": "",
+      "roleValuesAdmin-label-admin": "",
+      "roleValuesEditor-label-editor": "",
+      "roleValuesGrafanaAdmin-label-grafana-admin": "Администратор Grafana",
+      "roleValuesNone-label-none": "Нет",
+      "roleValuesViewer-label-viewer": "",
+      "tokenUrl-label-access-token-url": "",
+      "tooltip-assertion-attributes-mapping": "",
+      "tooltip-org-mapping": "",
+      "tooltip-role-mapping": ""
+    },
+    "config-action": {
+      "confirm-modal-body": "",
+      "confirm-modal-confirm-text": "",
+      "confirm-modal-confirmation-text": "удалить",
+      "confirm-modal-dismiss-text": "",
+      "confirm-modal-title": ""
+    },
+    "connect-to-idp-unconnected": {
+      "configure-assertions-group-mappings": "",
+      "configure-idp-using-grafana-metadata": "",
+      "copy": "Копировать",
+      "description-assertion-consumer-service-url": "",
+      "description-idp-metadata": "",
+      "description-metadata-url": "",
+      "description-setup-idp": "",
+      "description-setup-required": "",
+      "description-slo-url": "",
+      "description-sp-metadata-url-entity-id": "",
+      "description-test-connection": "",
+      "finish-configuring-grafana-using-idp-data": "",
+      "label-assertion-consumer-service-url": "",
+      "label-baseencoded-idp-metadata": "",
+      "label-connect-grafana-with-identity-provider": "",
+      "label-idp-metadata": "",
+      "label-metadata-url": "",
+      "label-path-to-idp-metadata-file": "",
+      "label-slo-url": "",
+      "label-sp-metadata-url-entity-id": "",
+      "step-number-1": "1",
+      "step-number-2": "",
+      "step-number-3": ""
+    },
+    "general-unconnected": {
+      "description-allow-signup": "",
+      "description-auto-login": "",
+      "description-display-name-for-this-saml-integration": "",
+      "description-duration-grafana-metadata-valid": "",
+      "description-entity-id": "",
+      "description-identity-provider-initiated-login": "",
+      "description-max-issue-delay": "",
+      "description-relay-state": "",
+      "description-single-logout": "",
+      "displayName-placeholder-saml": "",
+      "label-allow-signup": "",
+      "label-auto-login": "",
+      "label-display-name-for-this-saml-integration": "",
+      "label-entity-id": "",
+      "label-general-settings": "",
+      "label-identity-provider-initiated-login": "",
+      "label-max-issue-delay": "",
+      "label-metadata-valid-duration": "",
+      "label-relay-state": "",
+      "label-single-logout": ""
+    },
+    "input-with-reset": {
+      "reset": "Сброс"
+    },
+    "key-cert-drawer-unconnected": {
+      "close": "Закрыть",
+      "description-number-generated-certificate-valid": "",
+      "generate": "",
+      "label-city": "",
+      "label-country-code": "",
+      "label-state": "Состояние",
+      "label-validity-days": "",
+      "label-your-organization": "",
+      "subtitle-saml-key-and-certificate": "",
+      "title-saml-key-and-certificate": "",
+      "tooltip-generate-the-certificate-and-private-key": ""
+    },
+    "key-cert-unconnected": {
+      "description-baseencoded-grafana-x-certificate": "",
+      "description-baseencoded-private-key": "",
+      "description-path-to-the-grafana-private-key": "",
+      "description-path-to-the-grafana-x-certificate": "",
+      "description-sign-outgoing-requests-to-id-p": "",
+      "description-signature-algorithm": "",
+      "description-signing-and-encryption-key-certificate": "",
+      "generate-key-and-certificate": "",
+      "label-certificate": "",
+      "label-private-key": "",
+      "label-sign-requests": "",
+      "label-signature-algorithm": "",
+      "label-signing-and-encryption-key-certificate": ""
+    },
+    "page-banner": {
+      "aria-label-close-banner": "",
+      "tooltip-close": "Закрыть"
+    },
+    "SAML": {
+      "button-row-next": "",
+      "button-row-previous": ""
+    },
+    "samlform": {
+      "text-saved": ""
+    },
+    "save-and-test-unconnected": {
+      "button-save-and-enable": "Сохранить и включить",
+      "label-test-and-enable": "",
+      "text-save-and-enable": ""
+    },
+    "text-input-with-reset": {
+      "reset": "Сброс"
+    }
+  },
+  "banner": {
+    "api": {
+      "result": {
+        "saved": "Параметры баннера сохранены"
+      }
+    },
+    "form": {
+      "button-save": "Сохранить",
+      "button-saving": "Сохранение...",
+      "enabled": {
+        "label": "Включено"
+      },
+      "end": {
+        "description": "Если дата окончания не выбрана, баннер отображается бесконечно.",
+        "error": "Время окончания должно быть позже времени начала",
+        "label": "Окончание в"
+      },
+      "message": {
+        "description": "Текстовое содержимое баннера. Поддерживает разметку.",
+        "label": "Сообщение"
+      },
+      "options": {
+        "error": "Ошибка",
+        "info": "Информация",
+        "warning": "Предупреждение"
+      },
+      "select": {
+        "placeholder": ""
+      },
+      "start": {
+        "description": "Баннер будет отображаться начиная с этой даты/времени.",
+        "label": "Начало в"
+      },
+      "title": "Настроить баннер",
+      "variant": {
+        "label": "Вариант"
+      }
+    },
+    "preview": {
+      "message": {
+        "default": "Обновите предварительный просмотр, изменив поле сообщения."
+      },
+      "title": "Предварительный просмотр"
+    }
+  },
+  "caching": {
+    "alert": {
+      "readonly": {
+        "message": "Этот источник данных был добавлен с помощью конфигурации. Кэширование не может быть изменено с помощью пользовательского интерфейса. Чтобы обновить этот источник данных, обратитесь к администратору сервера.",
+        "title": "Подготовленный источник данных"
+      }
+    },
+    "cache-clean": {
+      "body-clear-cache": "",
+      "clear-cache": "",
+      "confirm-text-clear-cache": "",
+      "title-clear-cache": ""
+    },
+    "cache-cta": {
+      "enable-button-title": "Включить",
+      "enable-button-tittle": "Включить",
+      "protip-caching-cannot-enabled-source": "",
+      "protip-caching-not-enabled": "",
+      "protip-link-caching-not-enabled": "Подробнее",
+      "title-caching-cannot-enabled-source": "",
+      "title-caching-not-enabled": ""
+    },
+    "cache-settings-disable": {
+      "disable": "Отключить"
+    },
+    "cache-settings-form": {
+      "description-query-ttl": "",
+      "description-resource-ttl": "",
+      "description-timetolive-resources-cache-items-milliseconds-example": "",
+      "description-use-default-ttl": "",
+      "label-query-ttl": "",
+      "label-use-default-ttl": "",
+      "resource-ttl": "",
+      "save": "Сохранить"
+    },
+    "data-source-cache": {
+      "caching-heading": "",
+      "query-catching": "",
+      "upgrade-content-author-dashboards": "",
+      "upgrade-content-description": "",
+      "upgrade-content-load-dashboards": "",
+      "upgrade-content-save-money": ""
+    }
+  },
+  "explore": {
+    "query-library": {
+      "cancel": "Отмена",
+      "default-description": "Общедоступный",
+      "query-template-add-error": "Ошибка при попытке сохранить этот запрос в библиотеке",
+      "query-template-added": "Запрос сохранен в библиотеке",
+      "query-template-edit-error": "Ошибка при попытке изменить этот запрос",
+      "query-template-edited": "Шаблон запроса изменен",
+      "save": "Сохранить"
+    },
+    "query-template-modal": {
+      "add-info": "Вы собираетесь сохранить этот запрос. После сохранения к нему можно быстро перейти из библиотеки запросов, чтобы просмотреть и использовать.",
+      "add-title": "Добавить в библиотеку запросов",
+      "data-source-name": "Имя источника данных",
+      "description": "Описание",
+      "edit-info": "Вы собираетесь изменить этот запрос. После сохранения к нему можно быстро перейти из библиотеки запросов, чтобы просмотреть и использовать.",
+      "query": "Запрос",
+      "title": "Название"
+    },
+    "query-template-modall": {
+      "data-source-type": "Тип источника данных"
+    }
+  },
+  "export": {
+    "pdf": {
+      "cancel-button": "Отмена",
+      "download-button": "Создать PDF",
+      "image-alt": "Предварительный просмотр PDF",
+      "info-text": "Экспорт дашборда в виде документа PDF",
+      "layout-label": "Расположение",
+      "orientation-label": "Ориентация",
+      "title": "Экспорт документа PDF дашборда",
+      "zoom-description": "Увеличьте масштаб, чтобы увеличить текст, или уменьшите масштаб, чтобы увидеть больше данных (например, столбцы таблицы) на панели.",
+      "zoom-label": "Масштаб"
+    }
+  },
+  "groupsync": {
+    "empty-state": {
+      "pro-tip": "Хотите управлять доступом к Grafana через группы в вашем поставщике идентификации? Создайте сопоставления групп с ролями RBAC в Grafana. <2>Подробнее</2>",
+      "title": "Вы еще не создали ни одного сопоставления групп"
+    },
+    "group-sync-editor": {
+      "body-delete-group-mappings": "",
+      "close-button-drawer": "Закрыть",
+      "confirm-text-delete-group-mappings": "Удалить",
+      "delete-group-mapping": "",
+      "new-button-drawer": "Новое",
+      "new-group-mapping": "",
+      "placeholder-search-by-group-id": "",
+      "text-deprecated-feature": "",
+      "title-delete-group-mappings": "",
+      "title-deprecated-feature": ""
+    },
+    "new-mapping-form": {
+      "label-group-id": "",
+      "label-roles": "Роли",
+      "save": "Сохранить"
+    }
+  },
+  "licensing": {
+    "customer-support-button": {
+      "contact-customer-support": ""
+    },
+    "expires-soon": {
+      "title-grafana-enterprise-license-expire": "",
+      "sub-title-license-expiration_one": "",
+      "sub-title-license-expiration_few": "",
+      "sub-title-license-expiration_many": "",
+      "sub-title-license-expiration_other": ""
+    },
+    "has-expired": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-has-expired": ""
+    },
+    "is-invalid": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-is-invalid": ""
+    },
+    "license-info": {
+      "aria-label-details-about-license-grafana-cloud": "",
+      "card-content-account": "",
+      "card-content-active-licensed-users": "",
+      "card-content-anonymous-users": "",
+      "card-content-authenticated-users": "",
+      "card-content-company": "",
+      "card-content-license-expires": "",
+      "card-content-license-expires-tooltip": "",
+      "card-content-lid": "",
+      "card-content-none": "Нет",
+      "card-content-product": "",
+      "card-content-products": "",
+      "card-content-purchase-date": "",
+      "card-content-token-auto-update": "",
+      "card-content-token-expires": "",
+      "card-content-token-id": "",
+      "card-content-token-issued": "",
+      "card-content-token-usage-billing-off": "Выкл.",
+      "card-content-url-name": "URL",
+      "card-content-url-tooltip": "",
+      "card-content-usage-billing": "",
+      "card-content-usage-billing-on": "",
+      "card-content-usage-billing-tooltip": "",
+      "edition-notice-licensing-info": "",
+      "edition-notice-problem-licensing-info": "",
+      "license-alert": "",
+      "license-details": "",
+      "license-token-info": "",
+      "renew-token": "",
+      "renewing": "",
+      "text-loading-licensing-info": "",
+      "title-contact-support-renew-token-visit-cloud": "",
+      "title-have-a-license": "",
+      "title-license": "Лицензия",
+      "title-license-token-renewed": "",
+      "title-token": "Токен",
+      "title-utilization": "",
+      "utilization-footer": "",
+      "utilization-info": "",
+      "card-content-anonymous-users-tooltip_one": "",
+      "card-content-anonymous-users-tooltip_few": "",
+      "card-content-anonymous-users-tooltip_many": "",
+      "card-content-anonymous-users-tooltip_other": ""
+    },
+    "license-token-upload": {
+      "instance-url": "",
+      "upload-a-new-token": "",
+      "uploading": ""
+    },
+    "max-users-reached": {
+      "title-exceeded-included-number-active-users": "",
+      "upgrade-your-license-link": "",
+      "upgrade-your-license-no-link": "",
+      "upgrade-your-license-subtitle_one": "",
+      "upgrade-your-license-subtitle_few": "",
+      "upgrade-your-license-subtitle_many": "",
+      "upgrade-your-license-subtitle_other": ""
+    },
+    "page-alert": {
+      "learn-about-enterprise-licenses": ""
+    },
+    "token-expires-soon": {
+      "title-grafana-enterprise-token-needs-renewed": "",
+      "sub-title-token-expiration_one": "",
+      "sub-title-token-expiration_few": "",
+      "sub-title-token-expiration_many": "",
+      "sub-title-token-expiration_other": ""
+    }
+  },
+  "meta-analytics": {
+    "analytics-drawer": {
+      "public-dashboards-tab-label": "Общедоступные дашборды",
+      "shared-dashboards-tab-label": "Совместно используемые дашборды",
+      "stats-tab-label": "Статистика",
+      "text-access-usage-insights-during-trial-grafana": "",
+      "title-dashboard-insights": "",
+      "users-activity-tab-label": ""
+    },
+    "analytics-public-dashboards-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": "",
+      "views-last-month-title": ""
+    },
+    "analytics-stats-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": ""
+    },
+    "analytics-toolbar-button": {
+      "tooltip-dashboard-insights": ""
+    },
+    "analytics-upgrade-drawer": {
+      "description-usage-insights-provide-detailed-information-about": "",
+      "title-dashboard-insights": ""
+    },
+    "analytics-users-tab": {
+      "aria-label-recent-users-table": "",
+      "aria-label-user-box-title": "",
+      "aria-label-user-information-box": "",
+      "aria-label-version-history-button": "",
+      "created-user-box": "Создан",
+      "dashboard-version-history": "",
+      "format-date-currently-viewing": "",
+      "format-date-last-hour": "",
+      "format-date-today": "Сегодня",
+      "format-date-yesterday": "Вчера",
+      "last-dashboard-viewers": "",
+      "last-edited-user-box": "",
+      "last-viewed-user-box": "",
+      "user-views-data-frame-user-field": "Пользователь",
+      "user-views-data-frame-when-field": "",
+      "views-last-month-title": ""
+    },
+    "data-source-insights": {
+      "available-source": "",
+      "average-load-duration-last-month-title": "",
+      "errors-last-month-title": "",
+      "queries-last-month-title": "",
+      "text-enable-source-usage-insights-during-trial": "",
+      "text-feature-not-available-expired-license": "",
+      "title-feature-available-expired-license": "",
+      "title-read-more-license-expiration": ""
+    },
+    "data-source-insights-upgrade": {
+      "clean-instance-list-item": "",
+      "demonstrate-and-improve-list-item": "",
+      "description-usage-insights-provide-detailed-information-about": "",
+      "keep-performant-list-item": "",
+      "review-insights-list-item": ""
+    }
+  },
+  "permissions": {
+    "data-source-permissions": {
+      "text-enable-source-permissions-during-trial-grafana": ""
+    },
+    "permissions-upgrade-content": {
+      "description-source-permissions-protect-sensitive-limiting-access": "",
+      "source-permissions-protect-clean-experience-list-item": "",
+      "source-permissions-protect-sensitive-data-list-item": "",
+      "source-permissions-protect-share-access-list-item": ""
+    }
+  },
+  "plugins": {
+    "sandbox": {
+      "enable-sandbox-label": "«Песочница» фронтенда",
+      "enable-sandbox-tooltip": "«Песочница» фронтенда выполняет клиентский код изолированно, ограничивая доступ к глобальной области браузера и изменения в пользовательском интерфейсе областью плагинов.",
+      "enable-sandbox-tooltip-link": "Узнать больше"
+    }
+  },
+  "public-dashboard": {
+    "email-sharing": {
+      "success-confirm-access": "Доступ подтвержден",
+      "success-resend-recipient-invitation": "Приглашение по электронной почте отправлено повторно.",
+      "success-revoke-access-description": "Вы отозвали доступ для {{recipientEmail}}.",
+      "success-revoke-access-title": "Доступ отозван",
+      "success-revoke-all-accesses-description": "Доступ {{email}} ко всем общедоступным дашбордам закрыт.",
+      "success-revoke-all-accesses-title": "Доступ отозван",
+      "success-send-recipient-invitation": "Приглашение по электронной почте отправлено."
+    }
+  },
+  "public-dashboards": {
+    "confirm-access-page": {
+      "confirm-access": "",
+      "login-subtitle": "",
+      "login-title": ""
+    },
+    "request-view-access-page": {
+      "access-requested": "",
+      "label-email": "Адрес электронной почты",
+      "placeholder-email": "адрес электронной почты",
+      "register-pattern-invalid-email": "Недопустимый адрес электронной почты",
+      "register-required-email": "Введите адрес электронной почты",
+      "request-access": ""
+    }
+  },
+  "query-library": {
+    "actions": {
+      "delete-query-button": "Удалить запрос",
+      "select-query-button": "Выбрать запрос"
+    },
+    "delete-modal": {
+      "body-text": "Вы собираетесь удалить этот запрос из библиотеки запросов. Это действие не может быть отменено. Хотите продолжить?",
+      "confirm-button": "Удалить запрос",
+      "title": "Удалить запрос"
+    },
+    "drawer": {
+      "title": "Библиотека запросов"
+    },
+    "edit-modal": {
+      "title": "Редактирование запроса"
+    },
+    "empty-state": {
+      "message": "Начните добавлять их из Explore или при редактировании дашборда",
+      "title": "Вы еще не сохранили ни одного запроса в библиотеке"
+    },
+    "error-state": {
+      "title": "Неизвестная ошибка"
+    },
+    "extra-info-modal": {
+      "data-loss": "Несмотря на малую вероятность, на экспериментальном этапе может произойти потеря некоторых данных.",
+      "info": "Библиотека запросов работает в экспериментальном режиме. Здесь можно сохранять запросы и делиться ими со своей командой. После сохранения запрос будет доступен для использования всей организации.",
+      "limit": "В настоящее время мы ограничиваем количество сохраненных запросов для каждой организации до 1000",
+      "title": "Библиотека запросов"
+    },
+    "filters": {
+      "datasource-label": "Названия источников данных",
+      "search-placeholder": "",
+      "user-label": "Имя пользователя"
+    },
+    "not-found": {
+      "message": "Попробуйте изменить критерии поиска или фильтра",
+      "title": "Результаты не найдены"
+    },
+    "notifications": {
+      "query-deleted": "Запрос удален"
+    },
+    "query-details": {
+      "author": "Автор",
+      "datasource": "Источник данных",
+      "date-added": "Дата добавления",
+      "description": "Описание",
+      "edit-button": "Редактировать запрос",
+      "make-query-visible": ""
+    },
+    "query-template": {
+      "error": "Ошибка при попытке загрузить метаданные шаблона запроса: {{error}}"
+    },
+    "user-info": {
+      "error": "Ошибка при попытке получить информацию о пользователе из библиотеки: {{error}}"
+    }
+  },
+  "query-operation": {
+    "header": {
+      "save-to-query-library": "Сохранить в библиотеке запросов",
+      "save-to-query-library-new": "Новое: сохранить в библиотеке запросов"
+    }
+  },
+  "recorded-queries": {
+    "create-recorded-query-unconnected": {
+      "alert-severity-succesful": "",
+      "alert-severity-test": "",
+      "aria-label-start-recording-query-button": "",
+      "contact-support": "",
+      "count-rows-returned": "",
+      "description-decide-often-record-query": "",
+      "description-give-this-query-a-name": "",
+      "description-provide-a-description-for-this-query": "",
+      "description-select-value-template-variable": "",
+      "done-button": {
+        "aria-label-cancel-recording-query-button": "",
+        "aria-label-close-recording-query-button": "",
+        "cancel": "Отмена",
+        "close": "Закрыть"
+      },
+      "label": {
+        "relative-time-range": ""
+      },
+      "label-count-query-results": "",
+      "label-description": "Описание",
+      "label-interval": "Интервал",
+      "label-name": "Имя",
+      "label-template-variables": "Переменные шаблона",
+      "query-relative-time-range": "",
+      "results-alert-message": "",
+      "start-recording-query": "",
+      "success-alert-message": "",
+      "sync-button": {
+        "aria-label-test-the-recorded-query": ""
+      },
+      "title-create-recorded-query": ""
+    },
+    "data-source-filter": {
+      "filter-by-data-source": "",
+      "placeholder-select-a-data-source": "Выбрать источник данных"
+    },
+    "empty-recorded-query-list": {
+      "message": "",
+      "pro-tip": ""
+    },
+    "query-card": {
+      "interval-content": "",
+      "interval-range": "",
+      "query-expression": ""
+    },
+    "recorded-queries-config-unconnected": {
+      "body-delete": "",
+      "confirm-text-delete": "Удалить",
+      "edit-remote-write-target": "",
+      "queries-to-display": {
+        "buttons": {
+          "aria-label-delete-recorded-query": "",
+          "aria-label-pause-recorded-query": "",
+          "aria-label-resume-recorded-query": "",
+          "delete": "Удалить"
+        }
+      },
+      "title-delete": "Удалить"
+    },
+    "recorded-queries-deprecation-notice": {
+      "description": "",
+      "title-deprecation-notice": ""
+    },
+    "recorded-query-add-modal-unconnected": {
+      "add": "Добавить",
+      "cancel": "Отмена",
+      "new-recorded-query-alert": "",
+      "no-queries-available": "",
+      "recorded-query": "",
+      "title-add-recorded-query": ""
+    },
+    "write-target-config-unconnected": {
+      "aria-label-write-target-config-remote-write-path": "",
+      "aria-label-write-target-config-save": "",
+      "aria-label-write-target-config-select-data-source": "",
+      "label-remote-write-path": "",
+      "placeholder-select-a-data-source": "Выбрать источник данных",
+      "save": "Сохранить",
+      "select-data-source-label": ""
+    }
+  },
+  "report": {
+    "report-header": {
+      "time-range": "",
+      "title": ""
+    }
+  },
+  "reporting": {
+    "button-row": {
+      "next-step": "",
+      "previous-step": ""
+    },
+    "create-report": {
+      "alert-title": "",
+      "loading-report": "",
+      "title": ""
+    },
+    "errors": {
+      "action-message": "Чтобы установить плагин, обратитесь к администратору Grafana.",
+      "no-renderer-description": "Чтобы создавать отчеты PDF, необходимо установить плагин визуализации изображений <2>Grafana Image Renderer</2>.",
+      "no-renderer-title": "Плагин визуализации изображений не установлен",
+      "old-renderer-description": "Чтобы создавать файлы CSV, необходимо обновить плагин визуализации изображений <2>Grafana Image Renderer</2>.",
+      "old-renderer-title": "Вы используете старую версию плагина визуализации изображений"
+    },
+    "image-preview": {
+      "invalid-image": ""
+    },
+    "page": {
+      "empty-button": "",
+      "empty-pro-tip": "",
+      "empty-title": "",
+      "settings-button": ""
+    },
+    "page-actions": {
+      "discard-button": "Отменить",
+      "save-as-draft-button": "",
+      "update-button": ""
+    },
+    "report-footer": {
+      "page-pagination": ""
+    },
+    "report-form": {
+      "edit-step": ""
+    },
+    "report-list": {
+      "content-pause-report": "",
+      "content-resume-report": "",
+      "delete-report": ""
+    },
+    "schedule": {
+      "frecuency-custom-input-label": "Повторять каждые",
+      "frecuency-custom-select-label": "",
+      "frecuency-custom-select-placeholder": "",
+      "frecuency-date-picker-label": "",
+      "frecuency-date-picker-placeholder": "Выбрать дату",
+      "frecuency-end-date-label": "Дата окончания",
+      "frecuency-end-time-label": "Время окончания",
+      "frecuency-last-day-label": "Отправить в последний день месяца",
+      "frecuency-last-day-warning": "",
+      "frecuency-send-later": "",
+      "frecuency-send-now": "",
+      "frecuency-start-time-label": "Время начала",
+      "frecuency-time-zone-label": "Часовой пояс",
+      "frecuency-workdays-label": "Отправлять только с понедельника по пятницу",
+      "report-schedule-end-date-label": "",
+      "report-schedule-end-date-placeholder": "Не заканчивается"
+    },
+    "settings": {
+      "alert-title": "",
+      "attachment-settings-fieldset-label": "Параметры вложений",
+      "drawer-title": "",
+      "email-branding-fieldset-label": "Брендинг электронной почты",
+      "email-footer-field-label": "Нижний колонтитул электронной почты",
+      "email-logo-image-preview-altText": "Предварительный просмотр логотипа компании",
+      "email-logo-url-field-description": "Логотип будет отображаться в заголовке электронного письма. Поддерживаемые форматы: png, jpg, gif.",
+      "email-logo-url-field-label": "URL-адрес логотипа компании",
+      "embedded-image-header": "Встроенное изображение",
+      "embedded-image-theme-picker-description": "Тема будет применена к изображению дашборда, встроенному в электронное письмо.",
+      "footer-link-field-label": "Текст ссылки нижнего колонтитула",
+      "footer-link-url-field-label": "URL-адрес ссылки нижнего колонтитула",
+      "none-footer-label": "Нет",
+      "pdf-header": "PDF",
+      "pdf-theme-picker-description": "Тема будет применена к PDF-файлу, прикрепленному к отчету.",
+      "report-logo-image-preview-altText": "Предварительный просмотр логотипа компании",
+      "report-logo-url-field-description": "Логотип будет отображаться в нижнем колонтитуле документа. Поддерживаемые форматы: png, jpg, gif.",
+      "report-logo-url-field-label": "URL-адрес логотипа компании",
+      "save-button": "Сохранить",
+      "sent-by-footer-label": "Отправлено",
+      "settings-subtitle": "Управление параметрами шаблона отчета"
+    }
+  },
+  "reports": {
+    "all-template-alert": {
+      "description-not-supported": "",
+      "title-not-supported": "Не поддерживается"
+    },
+    "confirm": {
+      "edit": "Редактировать"
+    },
+    "create-report-tab": {
+      "create-report-using-this-dashboard": "",
+      "description-reporting-allows-automatically-generate-dashboards-grafana": "",
+      "get-started-with-reporting": "",
+      "learn-more": "Подробнее",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "dashbord-report-renderer": {
+      "title-unsupported-dashboard-layout": ""
+    },
+    "edit-actions": {
+      "aria-label-delete-report": "",
+      "edit-report": "",
+      "pause-button": "Пауза",
+      "resume-button": "Возобновить",
+      "title-delete-report": "",
+      "tooltip-delete": "Удалить"
+    },
+    "format-report": {
+      "aria-label-zoom": "Масштаб",
+      "description-enlarge-table-columns-panel": "Увеличьте масштаб, чтобы увеличить текст, или уменьшите масштаб, чтобы увидеть больше данных (например, столбцы таблицы) на панели.",
+      "label-combine-dashboard": "",
+      "label-configure-multiple-pdfs": "",
+      "label-configure-report-header": "",
+      "label-format-report": "",
+      "label-layout": "Макет",
+      "label-orientation": "Ориентация",
+      "label-show-template-variables": "",
+      "label-style-the-pdf": "",
+      "label-zoom": "Масштаб",
+      "preview-pdf": "",
+      "tooltip-download-table-panel": ""
+    },
+    "highlight-trial-report": {
+      "get-started-with-reporting": "",
+      "get-started-with-reporting-text": "",
+      "learn-more": "Подробнее",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "report-upgrade-content": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "reports-list-page": {
+      "render-list": {
+        "create-a-new-report": "",
+        "placeholder-search-reports-report-dashboard-recipients": "",
+        "text-create-unlimited-reports-during-trial-grafana": ""
+      }
+    },
+    "schedule": {
+      "label-frequency": "Частота",
+      "label-schedule": "",
+      "label-start-date": "Дата начала",
+      "label-time": "Время"
+    },
+    "select-dashboard": {
+      "aria-label-source-dashboard": "Исходный дашборд",
+      "description-time-range": "",
+      "label-source-dashboard": "Исходный дашборд",
+      "label-template-variables": "Переменные шаблона",
+      "label-time-range": "Временной диапазон"
+    },
+    "select-dashboards": {
+      "add-another-dashboard": "",
+      "label-select-dashboard": "",
+      "remove-dashboard": ""
+    },
+    "send-test-email-modal": {
+      "cancel": "Отмена",
+      "label-email": "Адрес электронной почты",
+      "label-use-emails-from-report": "",
+      "send": "Отправить",
+      "title-send-test-email": ""
+    },
+    "share": {
+      "description-address-appear-reply-field-email": "",
+      "description-separate-multiple-emails-comma-semicolon": "",
+      "email-info-button": "Если это поле оставить пустым, в качестве темы электронного письма будет использоваться имя отчета.",
+      "email-subject": "Тема электронного письма",
+      "label-include-a-dashboard-link": "",
+      "label-message": "Сообщение",
+      "label-recipients": "Получатели",
+      "label-replyto-email-address": "",
+      "label-report-name": "Имя отчета",
+      "label-share": "",
+      "name-placeholder-system-status-report": "",
+      "recipients-placeholder-recipients-email-addresses-press-enter": "Введите адреса электронной почты получателей и нажмите клавишу Enter",
+      "send-test-email": "",
+      "subject-placeholder-email-subject": "Тема электронного письма",
+      "title-sending-test-email": ""
+    },
+    "share-pdfbase": {
+      "cancel": "Отмена",
+      "save-as-pdf": ""
+    },
+    "unavailable-feature-info-box": {
+      "title-feature-available-expired-license": ""
+    },
+    "upgrade-report": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "variables-preview": {
+      "none": ""
+    }
+  },
+  "saml-connect-to-idp": {
+    "validate-idp-metadata": {
+      "require-one": "Необходимо задать тип метаданных"
+    }
+  },
+  "share-dashboard": {
+    "menu": {
+      "export-pdf-title": "Экспорт в формате PDF",
+      "schedule-report-title": "Запланировать отчет"
+    }
+  },
+  "share-report": {
+    "actions": {
+      "download-csv-label": "Загрузить CSV",
+      "downloading-label": "",
+      "preview-pdf-label": "",
+      "report-settings-label": ""
+    },
+    "attachments": {
+      "combine-one-file": "Объединить все PDF-файлы дашбордов в один файл",
+      "csv-tables": "Прикрепить CSV-файл с данными табличной панели",
+      "layout": "Макет",
+      "orientation": "Ориентация",
+      "orientation-tooltip": "Выбранная ориентация будет применена к PDF-файлу дашборда, данным таблицы и приложению в формате PDF",
+      "pdf-format": "Формат PDF",
+      "pdf-report": "Прикрепить отчет в формате PDF",
+      "pdf-tables": "Прикрепить отдельный PDF-файл с данными таблицы",
+      "pdf-tables-appendix": "Включить данные таблицы в виде приложения в формате PDF",
+      "section-title": "Вложения",
+      "show-template-variables": "Показать переменные шаблона в заголовке",
+      "zoom": "Масштаб"
+    },
+    "back-button-text": "",
+    "confirm-delete": {
+      "button": "",
+      "description": "",
+      "title": ""
+    },
+    "create-report": "",
+    "dashboard": {
+      "add-dashboard": "Добавить дашборд",
+      "dashboard-required": "Укажите дашборд",
+      "delete-dashboard-tooltip": "Удалить этот дашборд",
+      "repeated-template-variables-description": "Когда один и тот же дашборд несколько раз добавляется в один отчет, переменные шаблона, которые вы выбрали первыми, применяются ко всем экземплярам этого дашборда в отчете.",
+      "section-title": "Дашборды",
+      "source-dashboard-label": "Исходный дашборд",
+      "template-variables-title": "Настроить переменные шаблона",
+      "time-range-description": "",
+      "time-range-label": "Временной диапазон",
+      "view-dashboard-tooltip": "Просмотр дашборда"
+    },
+    "discard-changes": {
+      "discard-button": "Отменить",
+      "text": "",
+      "title": ""
+    },
+    "email-configuration": {
+      "add-dashboard-image-label": "Встроить изображение дашборда",
+      "add-dashboard-url-label": "Включить ссылку на дашборд",
+      "dashboard-image-settings-description": "Настройки изображения дашборда можно изменить в общих <1>параметрах отчета</1>",
+      "invalid-email": "Недопустимый адрес электронной почты",
+      "message-label": "Сообщение",
+      "message-placeholder": "Ввести сообщение",
+      "reply-to-label": "Адрес электронной почты для ответа",
+      "section-title": "Настройки электронной почты",
+      "subject-description": "Если это поле оставить пустым, в качестве темы электронного письма будет использоваться имя отчета.",
+      "subject-label": "Тема электронного письма"
+    },
+    "empty-list": {
+      "description": "",
+      "title": ""
+    },
+    "error-form": {
+      "title": ""
+    },
+    "error-list": {
+      "title": ""
+    },
+    "loading-form": "",
+    "loading-report": "",
+    "loading-report-form": "",
+    "loading-reports": "",
+    "recipients": {
+      "field-label": "Получатели",
+      "invalid-email": "Недопустимый адрес электронной почты: {{email}}",
+      "invalid-emails": "Недопустимые адреса электронной почты: {{emails}}",
+      "placeholder": "Введите адреса электронной почты получателей и нажмите клавишу Enter",
+      "recipients-required": "Укажите получателей",
+      "section-title": "Получатели",
+      "tooltip": "Разделите несколько адресов электронной почты запятой или точкой с запятой"
+    },
+    "report-name": {
+      "label": "Имя отчета",
+      "required": "Требуется указать имя отчета"
+    },
+    "save-draft": {
+      "button": "Сохранить черновик",
+      "saving-button": ""
+    },
+    "schedule": {
+      "end-date": "Дата окончания",
+      "end-date-invalid": "Дата окончания должна быть позднее даты начала или совпадать с ней",
+      "end-date-placeholder": "Не заканчивается",
+      "end-time": "Время окончания",
+      "frequency": "Частота",
+      "interval-amount-min": "Интервал должен быть не менее 2",
+      "interval-amount-required": "Укажите интервал",
+      "last-day-of-month": "Отправить в последний день месяца",
+      "monthly-schedule-alert-title": "Примечание. Отчеты не будут отправляться за месяцы, в которых количество дней не достигает {{ dayNumber }}. Выберите более раннюю дату или установите параметр «Отправить в последний день месяца», чтобы отправлять отчеты в конце каждого месяца.",
+      "repeat-every": "Повторять каждые",
+      "repeat-every-placeholder": "например 2",
+      "repeat-interval-frequency-placeholder": "например ч",
+      "section-title": "График",
+      "send-time": "График",
+      "start-date": "Дата начала",
+      "start-date-placeholder": "Выбрать дату",
+      "start-date-required": "Укажите дату начала",
+      "start-time": "Время начала",
+      "time-zone": "Часовой пояс",
+      "workdays-only": "Отправлять только с понедельника по пятницу"
+    },
+    "schedule-report": {
+      "button": "Запланировать отчет",
+      "scheduling-button": ""
+    },
+    "see-all-reports": "",
+    "send-preview": {
+      "button": "Отправить предварительный просмотр",
+      "cancel": "Отмена",
+      "email": "Адрес электронной почты",
+      "email-description": "Разделите несколько адресов электронной почты запятой или точкой с запятой",
+      "email-required": "Введите адрес электронной почты",
+      "send": "Отправить",
+      "sending": "",
+      "title": "Отправить предварительный просмотр",
+      "use-report-emails": ""
+    },
+    "settings": {
+      "loading": ""
+    },
+    "state": "",
+    "update-report": {
+      "button": "",
+      "delete-button": "Удалить",
+      "pause-button": "Пауза",
+      "pausing-button": "",
+      "resume-button": "Возобновить",
+      "resuming-button": "",
+      "updating-button": ""
+    }
+  },
+  "shared": {
+    "resource-picker": {
+      "placeholder-select-color": ""
+    }
+  },
+  "team-lbac": {
+    "create-team-lbacform": {
+      "label-rule": "Правило",
+      "label-team": "Команда",
+      "new-lbac-rule": "",
+      "new-lbac-rule-example": "",
+      "save": "Сохранить"
+    },
+    "editable-cell": {
+      "empty-rule": ""
+    },
+    "team-label": {
+      "placeholder": ""
+    },
+    "team-lbaceditor-unconnected": {
+      "add-a-lbac-rule": "",
+      "add-query-permissions": "",
+      "add-team-lbac-rules": "",
+      "clear-filter": "Очистить",
+      "clear-filter-aria-label": "Очистить фильтр",
+      "content-found-recommendation": "",
+      "description-data-access": "",
+      "ensure-proper-access-control-please-follow": "",
+      "filter-results-multiple": "",
+      "filter-results-single": "",
+      "filter-teams-aria-label": "",
+      "filter-teams-placeholder": "",
+      "hide-access-control-recommendations": "",
+      "hide-lbac-rule": "",
+      "label-selector": "",
+      "lbac-description": "",
+      "lbac-labelbased-access-control": "",
+      "lbac-rules-note": "",
+      "learn-more-about-lbac-rules": "",
+      "remove-unrestricted-access": "",
+      "role-warning-list": "",
+      "show-access-control-recommendations": "",
+      "sort-teams-ascending": "",
+      "sort-teams-descending": "",
+      "team": "Команда",
+      "title-access-control-recommendations": "",
+      "title-data-access": ""
+    },
+    "team-rules-row": {
+      "aria-label-add-team-rule": "",
+      "aria-label-delete-rule": "Удаление правила",
+      "aria-label-edit-team-rule": "",
+      "cancel": "Отмена",
+      "or": "",
+      "save": "Сохранить",
+      "tooltip-add-new-rule": "",
+      "tooltip-provisioned-rule": ""
+    }
+  }
+}

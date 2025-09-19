@@ -1,0 +1,1081 @@
+{
+  "access-control": {
+    "permissions": {
+      "lbac-warning-basic-role": "",
+      "lbac-warning-rule": "Ostrzeżenie: ten zespół może nie mieć uprawnień do wysyłania zapytań do źródła danych.",
+      "lbac-warning-team": "Ostrzeżenie: ten zespół ma pełny dostęp do danych, jeśli nie ustawiono żadnych reguł LBAC."
+    }
+  },
+  "admin": {
+    "role-filter": {
+      "admin-editor-option": "",
+      "multiselect-placeholder": "",
+      "server-admin-option": "Administrator serwera",
+      "viewer-option": ""
+    }
+  },
+  "auth-config": {
+    "action-bar": {
+      "content-disable-button": "",
+      "delete": "Usuń",
+      "disable-button": "Wyłącz",
+      "enabled-badge": "Włączone",
+      "more-actions-button": "Więcej działań",
+      "not-enabled-badge": "Niewłączone",
+      "protocol": "",
+      "save-and-apply-button": "",
+      "save-and-enable-button": "Zapisz i włącz",
+      "save-button": "Zapisz",
+      "status": "Status"
+    },
+    "assertion-mapping-unconnected": {
+      "aria-label-name-id-format": "",
+      "assertionAttributeEmail-label-email-attribute": "",
+      "assertionAttributeEmail-placeholder-mail": "",
+      "assertionAttributeExternalUid-label-external-uid": "",
+      "assertionAttributeExternalUid-tooltip-external-uid": "",
+      "assertionAttributeGroups-label-groups-attribute": "",
+      "assertionAttributeLogin-label-login-attribute": "",
+      "assertionAttributeLogin-placeholder-mail": "",
+      "assertionAttributeName-label-name-attribute": "",
+      "assertionAttributeName-placeholder-display-name": "",
+      "assertionAttributeOrg-label-org-attribute": "",
+      "assertionAttributeRole-label-role-attribute": "",
+      "azure-ad-service-account-configuration": "",
+      "clientId-label-client-id": "",
+      "clientSecret-label-client-secret": "",
+      "description-allowed-organizations": "",
+      "description-assertion-attributes-mapping": "",
+      "description-azure-ad-service-account-configuration": "",
+      "description-force-use-graph-api": "",
+      "description-name-identifier-format": "",
+      "description-prevent-synchronizing-users-organization-roles": "",
+      "label-allowed-organizations": "",
+      "label-assertion-attributes-mapping": "",
+      "label-force-use-graph-api": "",
+      "label-name-identifier-format": "",
+      "label-org-mapping": "",
+      "label-role-mapping": "",
+      "label-skip-organization-role-sync": "Pomiń synchronizację ról w organizacji",
+      "label-user-mapping": "",
+      "orgMapping-label-org-mapping": "",
+      "roleValuesAdmin-label-admin": "",
+      "roleValuesEditor-label-editor": "",
+      "roleValuesGrafanaAdmin-label-grafana-admin": "Administrator usługi Grafana",
+      "roleValuesNone-label-none": "Brak",
+      "roleValuesViewer-label-viewer": "",
+      "tokenUrl-label-access-token-url": "",
+      "tooltip-assertion-attributes-mapping": "",
+      "tooltip-org-mapping": "",
+      "tooltip-role-mapping": ""
+    },
+    "config-action": {
+      "confirm-modal-body": "",
+      "confirm-modal-confirm-text": "",
+      "confirm-modal-confirmation-text": "usuń",
+      "confirm-modal-dismiss-text": "",
+      "confirm-modal-title": ""
+    },
+    "connect-to-idp-unconnected": {
+      "configure-assertions-group-mappings": "",
+      "configure-idp-using-grafana-metadata": "",
+      "copy": "Kopiuj",
+      "description-assertion-consumer-service-url": "",
+      "description-idp-metadata": "",
+      "description-metadata-url": "",
+      "description-setup-idp": "",
+      "description-setup-required": "",
+      "description-slo-url": "",
+      "description-sp-metadata-url-entity-id": "",
+      "description-test-connection": "",
+      "finish-configuring-grafana-using-idp-data": "",
+      "label-assertion-consumer-service-url": "",
+      "label-baseencoded-idp-metadata": "",
+      "label-connect-grafana-with-identity-provider": "",
+      "label-idp-metadata": "",
+      "label-metadata-url": "",
+      "label-path-to-idp-metadata-file": "",
+      "label-slo-url": "",
+      "label-sp-metadata-url-entity-id": "",
+      "step-number-1": "1",
+      "step-number-2": "",
+      "step-number-3": ""
+    },
+    "general-unconnected": {
+      "description-allow-signup": "",
+      "description-auto-login": "",
+      "description-display-name-for-this-saml-integration": "",
+      "description-duration-grafana-metadata-valid": "",
+      "description-entity-id": "",
+      "description-identity-provider-initiated-login": "",
+      "description-max-issue-delay": "",
+      "description-relay-state": "",
+      "description-single-logout": "",
+      "displayName-placeholder-saml": "",
+      "label-allow-signup": "",
+      "label-auto-login": "",
+      "label-display-name-for-this-saml-integration": "",
+      "label-entity-id": "",
+      "label-general-settings": "",
+      "label-identity-provider-initiated-login": "",
+      "label-max-issue-delay": "",
+      "label-metadata-valid-duration": "",
+      "label-relay-state": "",
+      "label-single-logout": ""
+    },
+    "input-with-reset": {
+      "reset": "Zresetuj"
+    },
+    "key-cert-drawer-unconnected": {
+      "close": "Zamknij",
+      "description-number-generated-certificate-valid": "",
+      "generate": "",
+      "label-city": "",
+      "label-country-code": "",
+      "label-state": "Stan",
+      "label-validity-days": "",
+      "label-your-organization": "",
+      "subtitle-saml-key-and-certificate": "",
+      "title-saml-key-and-certificate": "",
+      "tooltip-generate-the-certificate-and-private-key": ""
+    },
+    "key-cert-unconnected": {
+      "description-baseencoded-grafana-x-certificate": "",
+      "description-baseencoded-private-key": "",
+      "description-path-to-the-grafana-private-key": "",
+      "description-path-to-the-grafana-x-certificate": "",
+      "description-sign-outgoing-requests-to-id-p": "",
+      "description-signature-algorithm": "",
+      "description-signing-and-encryption-key-certificate": "",
+      "generate-key-and-certificate": "",
+      "label-certificate": "",
+      "label-private-key": "",
+      "label-sign-requests": "",
+      "label-signature-algorithm": "",
+      "label-signing-and-encryption-key-certificate": ""
+    },
+    "page-banner": {
+      "aria-label-close-banner": "",
+      "tooltip-close": "Zamknij"
+    },
+    "SAML": {
+      "button-row-next": "",
+      "button-row-previous": ""
+    },
+    "samlform": {
+      "text-saved": ""
+    },
+    "save-and-test-unconnected": {
+      "button-save-and-enable": "Zapisz i włącz",
+      "label-test-and-enable": "",
+      "text-save-and-enable": ""
+    },
+    "text-input-with-reset": {
+      "reset": "Zresetuj"
+    }
+  },
+  "banner": {
+    "api": {
+      "result": {
+        "saved": "Ustawienia banerów zapisane"
+      }
+    },
+    "form": {
+      "button-save": "Zapisz",
+      "button-saving": "Zapisywanie…",
+      "enabled": {
+        "label": "Włączone"
+      },
+      "end": {
+        "description": "Jeśli nie wybrano daty zakończenia, baner jest wyświetlany bezterminowo.",
+        "error": "Czas zakończenia musi być późniejszy niż czas rozpoczęcia.",
+        "label": "Kończy się: "
+      },
+      "message": {
+        "description": "Treść tekstowa baneru. Można stosować znaczniki markdown.",
+        "label": "Wiadomość"
+      },
+      "options": {
+        "error": "Błąd",
+        "info": "Informacje",
+        "warning": "Ostrzeżenie"
+      },
+      "select": {
+        "placeholder": ""
+      },
+      "start": {
+        "description": "Baner będzie wyświetlany od tej daty/godziny.",
+        "label": "Rozpoczyna się o"
+      },
+      "title": "Konfiguruj baner",
+      "variant": {
+        "label": "Wariant"
+      }
+    },
+    "preview": {
+      "message": {
+        "default": "Zaktualizuj ten podgląd, modyfikując pole wiadomości."
+      },
+      "title": "Podgląd"
+    }
+  },
+  "caching": {
+    "alert": {
+      "readonly": {
+        "message": "To źródło danych zostało dodane przez konfigurację i buforowania nie można modyfikować za pomocą interfejsu użytkownika. Skontaktuj się z administratorem serwera, aby zaktualizować to źródło danych.",
+        "title": "Udostępnione źródło danych"
+      }
+    },
+    "cache-clean": {
+      "body-clear-cache": "",
+      "clear-cache": "",
+      "confirm-text-clear-cache": "",
+      "title-clear-cache": ""
+    },
+    "cache-cta": {
+      "enable-button-title": "Włącz",
+      "enable-button-tittle": "Włącz",
+      "protip-caching-cannot-enabled-source": "",
+      "protip-caching-not-enabled": "",
+      "protip-link-caching-not-enabled": "Dowiedz się więcej",
+      "title-caching-cannot-enabled-source": "",
+      "title-caching-not-enabled": ""
+    },
+    "cache-settings-disable": {
+      "disable": "Wyłącz"
+    },
+    "cache-settings-form": {
+      "description-query-ttl": "",
+      "description-resource-ttl": "",
+      "description-timetolive-resources-cache-items-milliseconds-example": "",
+      "description-use-default-ttl": "",
+      "label-query-ttl": "",
+      "label-use-default-ttl": "",
+      "resource-ttl": "",
+      "save": "Zapisz"
+    },
+    "data-source-cache": {
+      "caching-heading": "",
+      "query-catching": "",
+      "upgrade-content-author-dashboards": "",
+      "upgrade-content-description": "",
+      "upgrade-content-load-dashboards": "",
+      "upgrade-content-save-money": ""
+    }
+  },
+  "explore": {
+    "query-library": {
+      "cancel": "Anuluj",
+      "default-description": "Publiczny",
+      "query-template-add-error": "Błąd podczas próby zapisania tego zapytania w bibliotece",
+      "query-template-added": "Zapytanie zostało pomyślnie zapisane w bibliotece",
+      "query-template-edit-error": "Błąd podczas próby edycji tego zapytania",
+      "query-template-edited": "Szablon zapytania edytowany pomyślnie",
+      "save": "Zapisz"
+    },
+    "query-template-modal": {
+      "add-info": "Zamierzasz zapisać to zapytanie. Po zapisaniu możesz łatwo uzyskać do niego dostęp w bibliotece zapytań, aby wykorzystać je w przyszłości.",
+      "add-title": "Dodaj do biblioteki zapytań",
+      "data-source-name": "Nazwa źródła danych",
+      "description": "Opis",
+      "edit-info": "Zamierzasz edytować to zapytanie. Po zapisaniu możesz łatwo uzyskać do niego dostęp w bibliotece zapytań, aby wykorzystać je w przyszłości.",
+      "query": "Zapytanie",
+      "title": "Tytuł"
+    },
+    "query-template-modall": {
+      "data-source-type": "Typ źródła danych"
+    }
+  },
+  "export": {
+    "pdf": {
+      "cancel-button": "Anuluj",
+      "download-button": "Wygeneruj PDF",
+      "image-alt": "Podgląd PDF",
+      "info-text": "Eksportuj pulpit jako dokument PDF",
+      "layout-label": "Układ",
+      "orientation-label": "Orientacja",
+      "title": "Eksportuj plik PDF z pulpitem",
+      "zoom-description": "Przybliż, aby powiększyć tekst, lub oddal, aby zmieścić w panelu więcej danych (takich jak kolumny tabeli).",
+      "zoom-label": "Powiększenie"
+    }
+  },
+  "groupsync": {
+    "empty-state": {
+      "pro-tip": "Chcesz zarządzać dostępem do usługi Grafana za pośrednictwem grup u dostawcy tożsamości? Utwórz mapowania grup do ról RBAC usługi Grafana. <2>Więcej informacji</2>",
+      "title": "Nie utworzono jeszcze żadnych mapowań grupy"
+    },
+    "group-sync-editor": {
+      "body-delete-group-mappings": "",
+      "close-button-drawer": "Zamknij",
+      "confirm-text-delete-group-mappings": "Usuń",
+      "delete-group-mapping": "",
+      "new-button-drawer": "Nowy",
+      "new-group-mapping": "",
+      "placeholder-search-by-group-id": "",
+      "text-deprecated-feature": "",
+      "title-delete-group-mappings": "",
+      "title-deprecated-feature": ""
+    },
+    "new-mapping-form": {
+      "label-group-id": "",
+      "label-roles": "Role",
+      "save": "Zapisz"
+    }
+  },
+  "licensing": {
+    "customer-support-button": {
+      "contact-customer-support": ""
+    },
+    "expires-soon": {
+      "title-grafana-enterprise-license-expire": "",
+      "sub-title-license-expiration_one": "",
+      "sub-title-license-expiration_few": "",
+      "sub-title-license-expiration_many": "",
+      "sub-title-license-expiration_other": ""
+    },
+    "has-expired": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-has-expired": ""
+    },
+    "is-invalid": {
+      "sub-title-licensing-reader": "",
+      "title-your-grafana-enterprise-license-is-invalid": ""
+    },
+    "license-info": {
+      "aria-label-details-about-license-grafana-cloud": "",
+      "card-content-account": "",
+      "card-content-active-licensed-users": "",
+      "card-content-anonymous-users": "",
+      "card-content-authenticated-users": "",
+      "card-content-company": "",
+      "card-content-license-expires": "",
+      "card-content-license-expires-tooltip": "",
+      "card-content-lid": "",
+      "card-content-none": "Brak",
+      "card-content-product": "",
+      "card-content-products": "",
+      "card-content-purchase-date": "",
+      "card-content-token-auto-update": "",
+      "card-content-token-expires": "",
+      "card-content-token-id": "",
+      "card-content-token-issued": "",
+      "card-content-token-usage-billing-off": "Wył.",
+      "card-content-url-name": "URL",
+      "card-content-url-tooltip": "",
+      "card-content-usage-billing": "",
+      "card-content-usage-billing-on": "",
+      "card-content-usage-billing-tooltip": "",
+      "edition-notice-licensing-info": "",
+      "edition-notice-problem-licensing-info": "",
+      "license-alert": "",
+      "license-details": "",
+      "license-token-info": "",
+      "renew-token": "",
+      "renewing": "",
+      "text-loading-licensing-info": "",
+      "title-contact-support-renew-token-visit-cloud": "",
+      "title-have-a-license": "",
+      "title-license": "Licencja",
+      "title-license-token-renewed": "",
+      "title-token": "Token",
+      "title-utilization": "",
+      "utilization-footer": "",
+      "utilization-info": "",
+      "card-content-anonymous-users-tooltip_one": "",
+      "card-content-anonymous-users-tooltip_few": "",
+      "card-content-anonymous-users-tooltip_many": "",
+      "card-content-anonymous-users-tooltip_other": ""
+    },
+    "license-token-upload": {
+      "instance-url": "",
+      "upload-a-new-token": "",
+      "uploading": ""
+    },
+    "max-users-reached": {
+      "title-exceeded-included-number-active-users": "",
+      "upgrade-your-license-link": "",
+      "upgrade-your-license-no-link": "",
+      "upgrade-your-license-subtitle_one": "",
+      "upgrade-your-license-subtitle_few": "",
+      "upgrade-your-license-subtitle_many": "",
+      "upgrade-your-license-subtitle_other": ""
+    },
+    "page-alert": {
+      "learn-about-enterprise-licenses": ""
+    },
+    "token-expires-soon": {
+      "title-grafana-enterprise-token-needs-renewed": "",
+      "sub-title-token-expiration_one": "",
+      "sub-title-token-expiration_few": "",
+      "sub-title-token-expiration_many": "",
+      "sub-title-token-expiration_other": ""
+    }
+  },
+  "meta-analytics": {
+    "analytics-drawer": {
+      "public-dashboards-tab-label": "Pulpity publiczne",
+      "shared-dashboards-tab-label": "Udostępnione pulpity",
+      "stats-tab-label": "Statystyki",
+      "text-access-usage-insights-during-trial-grafana": "",
+      "title-dashboard-insights": "",
+      "users-activity-tab-label": ""
+    },
+    "analytics-public-dashboards-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": "",
+      "views-last-month-title": ""
+    },
+    "analytics-stats-tab": {
+      "daily-query-count-cached-queries-label": "",
+      "daily-query-count-title": "",
+      "errors-last-month-title": "",
+      "no-data": ""
+    },
+    "analytics-toolbar-button": {
+      "tooltip-dashboard-insights": ""
+    },
+    "analytics-upgrade-drawer": {
+      "description-usage-insights-provide-detailed-information-about": "",
+      "title-dashboard-insights": ""
+    },
+    "analytics-users-tab": {
+      "aria-label-recent-users-table": "",
+      "aria-label-user-box-title": "",
+      "aria-label-user-information-box": "",
+      "aria-label-version-history-button": "",
+      "created-user-box": "Utworzono",
+      "dashboard-version-history": "",
+      "format-date-currently-viewing": "",
+      "format-date-last-hour": "",
+      "format-date-today": "Dzisiaj",
+      "format-date-yesterday": "Wczoraj",
+      "last-dashboard-viewers": "",
+      "last-edited-user-box": "",
+      "last-viewed-user-box": "",
+      "user-views-data-frame-user-field": "Użytkownik",
+      "user-views-data-frame-when-field": "",
+      "views-last-month-title": ""
+    },
+    "data-source-insights": {
+      "available-source": "",
+      "average-load-duration-last-month-title": "",
+      "errors-last-month-title": "",
+      "queries-last-month-title": "",
+      "text-enable-source-usage-insights-during-trial": "",
+      "text-feature-not-available-expired-license": "",
+      "title-feature-available-expired-license": "",
+      "title-read-more-license-expiration": ""
+    },
+    "data-source-insights-upgrade": {
+      "clean-instance-list-item": "",
+      "demonstrate-and-improve-list-item": "",
+      "description-usage-insights-provide-detailed-information-about": "",
+      "keep-performant-list-item": "",
+      "review-insights-list-item": ""
+    }
+  },
+  "permissions": {
+    "data-source-permissions": {
+      "text-enable-source-permissions-during-trial-grafana": ""
+    },
+    "permissions-upgrade-content": {
+      "description-source-permissions-protect-sensitive-limiting-access": "",
+      "source-permissions-protect-clean-experience-list-item": "",
+      "source-permissions-protect-sensitive-data-list-item": "",
+      "source-permissions-protect-share-access-list-item": ""
+    }
+  },
+  "plugins": {
+    "sandbox": {
+      "enable-sandbox-label": "Front-end Sandbox",
+      "enable-sandbox-tooltip": "Front-end Sandbox uruchamia kod frontendu w izolacji, ograniczając dostęp do globalnego zakresu przeglądarki i ograniczając modyfikacje interfejsu użytkownika do obszaru wtyczki.",
+      "enable-sandbox-tooltip-link": "Czytaj więcej"
+    }
+  },
+  "public-dashboard": {
+    "email-sharing": {
+      "success-confirm-access": "Dostęp potwierdzony!",
+      "success-resend-recipient-invitation": "Zaproszenie e-mail zostało wysłane ponownie.",
+      "success-revoke-access-description": "Dostęp z konta {{recipientEmail}} został pomyślnie cofnięty.",
+      "success-revoke-access-title": "Cofnięto dostęp",
+      "success-revoke-all-accesses-description": "Dostęp konta {{email}} do wszystkich pulpitów publicznych został pomyślnie usunięty.",
+      "success-revoke-all-accesses-title": "Cofnięto dostęp",
+      "success-send-recipient-invitation": "Zaproszenie e-mail zostało wysłane."
+    }
+  },
+  "public-dashboards": {
+    "confirm-access-page": {
+      "confirm-access": "",
+      "login-subtitle": "",
+      "login-title": ""
+    },
+    "request-view-access-page": {
+      "access-requested": "",
+      "label-email": "E-mail",
+      "placeholder-email": "e-mail",
+      "register-pattern-invalid-email": "Błędny e-mail",
+      "register-required-email": "E-mail jest wymagany",
+      "request-access": ""
+    }
+  },
+  "query-library": {
+    "actions": {
+      "delete-query-button": "Usuń zapytanie",
+      "select-query-button": "Wybierz zapytanie"
+    },
+    "delete-modal": {
+      "body-text": "Zamierzasz usunąć to zapytanie z biblioteki zapytań. To działanie jest nieodwracalne. Czy chcesz kontynuować? ",
+      "confirm-button": "Usuń zapytanie",
+      "title": "Usuń zapytanie"
+    },
+    "drawer": {
+      "title": "Biblioteka zapytań"
+    },
+    "edit-modal": {
+      "title": "Edytuj zapytanie"
+    },
+    "empty-state": {
+      "message": "Zacznij dodawać je z opcji „Eksploruj” lub podczas edycji panelu",
+      "title": "Nie zapisano jeszcze żadnych zapytań w bibliotece"
+    },
+    "error-state": {
+      "title": "Coś poszło nie tak!"
+    },
+    "extra-info-modal": {
+      "data-loss": "Chociaż jest to mało prawdopodobne, podczas fazy eksperymentalnej może wystąpić utrata części danych.",
+      "info": "Biblioteka zapytań działa w trybie eksperymentalnym. Jest to miejsce, w którym możesz zapisywać swoje zapytania i udostępniać je zespołowi. Zapisane zapytania będą dostępne dla całej organizacji.",
+      "limit": "Obecnie obowiązuje ograniczenie do 1000 zapisanych zapytań na organizację",
+      "title": "Biblioteka zapytań"
+    },
+    "filters": {
+      "datasource-label": "Nazwy źródeł danych",
+      "search-placeholder": "",
+      "user-label": "Nazwy użytkowników"
+    },
+    "not-found": {
+      "message": "Spróbuj dostosować kryteria wyszukiwania lub filtrowania",
+      "title": "Brak wyników"
+    },
+    "notifications": {
+      "query-deleted": "Usunięto zapytanie"
+    },
+    "query-details": {
+      "author": "Autor",
+      "datasource": "Źródło danych",
+      "date-added": "Dodano datę",
+      "description": "Opis",
+      "edit-button": "Edytuj zapytanie",
+      "make-query-visible": ""
+    },
+    "query-template": {
+      "error": "Błąd podczas próby załadowania metadanych szablonu zapytania: {{error}}"
+    },
+    "user-info": {
+      "error": "Błąd podczas próby uzyskania informacji o użytkowniku z biblioteki: {{error}}"
+    }
+  },
+  "query-operation": {
+    "header": {
+      "save-to-query-library": "Zapisz w bibliotece zapytań",
+      "save-to-query-library-new": "Nowość: Zapisz w bibliotece zapytań"
+    }
+  },
+  "recorded-queries": {
+    "create-recorded-query-unconnected": {
+      "alert-severity-succesful": "",
+      "alert-severity-test": "",
+      "aria-label-start-recording-query-button": "",
+      "contact-support": "",
+      "count-rows-returned": "",
+      "description-decide-often-record-query": "",
+      "description-give-this-query-a-name": "",
+      "description-provide-a-description-for-this-query": "",
+      "description-select-value-template-variable": "",
+      "done-button": {
+        "aria-label-cancel-recording-query-button": "",
+        "aria-label-close-recording-query-button": "",
+        "cancel": "Anuluj",
+        "close": "Zamknij"
+      },
+      "label": {
+        "relative-time-range": ""
+      },
+      "label-count-query-results": "",
+      "label-description": "Opis",
+      "label-interval": "Interwał",
+      "label-name": "Imię",
+      "label-template-variables": "Zmienne szablonu",
+      "query-relative-time-range": "",
+      "results-alert-message": "",
+      "start-recording-query": "",
+      "success-alert-message": "",
+      "sync-button": {
+        "aria-label-test-the-recorded-query": ""
+      },
+      "title-create-recorded-query": ""
+    },
+    "data-source-filter": {
+      "filter-by-data-source": "",
+      "placeholder-select-a-data-source": "Wybierz źródło danych"
+    },
+    "empty-recorded-query-list": {
+      "message": "",
+      "pro-tip": ""
+    },
+    "query-card": {
+      "interval-content": "",
+      "interval-range": "",
+      "query-expression": ""
+    },
+    "recorded-queries-config-unconnected": {
+      "body-delete": "",
+      "confirm-text-delete": "Usuń",
+      "edit-remote-write-target": "",
+      "queries-to-display": {
+        "buttons": {
+          "aria-label-delete-recorded-query": "",
+          "aria-label-pause-recorded-query": "",
+          "aria-label-resume-recorded-query": "",
+          "delete": "Usuń"
+        }
+      },
+      "title-delete": "Usuń"
+    },
+    "recorded-queries-deprecation-notice": {
+      "description": "",
+      "title-deprecation-notice": ""
+    },
+    "recorded-query-add-modal-unconnected": {
+      "add": "Dodaj",
+      "cancel": "Anuluj",
+      "new-recorded-query-alert": "",
+      "no-queries-available": "",
+      "recorded-query": "",
+      "title-add-recorded-query": ""
+    },
+    "write-target-config-unconnected": {
+      "aria-label-write-target-config-remote-write-path": "",
+      "aria-label-write-target-config-save": "",
+      "aria-label-write-target-config-select-data-source": "",
+      "label-remote-write-path": "",
+      "placeholder-select-a-data-source": "Wybierz źródło danych",
+      "save": "Zapisz",
+      "select-data-source-label": ""
+    }
+  },
+  "report": {
+    "report-header": {
+      "time-range": "",
+      "title": ""
+    }
+  },
+  "reporting": {
+    "button-row": {
+      "next-step": "",
+      "previous-step": ""
+    },
+    "create-report": {
+      "alert-title": "",
+      "loading-report": "",
+      "title": ""
+    },
+    "errors": {
+      "action-message": "Skontaktuj się z administratorem usługi Grafana, aby zainstalować wtyczkę.",
+      "no-renderer-description": "Aby wygenerować raporty w formacie PDF, musisz zainstalować wtyczkę <2>renderowania obrazów w usłudze Grafana</2>.",
+      "no-renderer-title": "Nie zainstalowano wtyczki renderowania obrazów",
+      "old-renderer-description": "Aby wygenerować pliki CSV, musisz zaktualizować wtyczkę <2>renderowania obrazów w usłudze Grafana</2>.",
+      "old-renderer-title": "Używasz starej wersji wtyczki renderowania obrazu"
+    },
+    "image-preview": {
+      "invalid-image": ""
+    },
+    "page": {
+      "empty-button": "",
+      "empty-pro-tip": "",
+      "empty-title": "",
+      "settings-button": ""
+    },
+    "page-actions": {
+      "discard-button": "Odrzuć",
+      "save-as-draft-button": "",
+      "update-button": ""
+    },
+    "report-footer": {
+      "page-pagination": ""
+    },
+    "report-form": {
+      "edit-step": ""
+    },
+    "report-list": {
+      "content-pause-report": "",
+      "content-resume-report": "",
+      "delete-report": ""
+    },
+    "schedule": {
+      "frecuency-custom-input-label": "Powtarzaj co",
+      "frecuency-custom-select-label": "",
+      "frecuency-custom-select-placeholder": "",
+      "frecuency-date-picker-label": "",
+      "frecuency-date-picker-placeholder": "Wybierz datę",
+      "frecuency-end-date-label": "Data zakończenia",
+      "frecuency-end-time-label": "Czas zakończenia",
+      "frecuency-last-day-label": "Wysyłaj ostatniego dnia miesiąca",
+      "frecuency-last-day-warning": "",
+      "frecuency-send-later": "",
+      "frecuency-send-now": "",
+      "frecuency-start-time-label": "Czas rozpoczęcia",
+      "frecuency-time-zone-label": "Strefa czasowa",
+      "frecuency-workdays-label": "Wysyłaj tylko od poniedziałku do piątku",
+      "report-schedule-end-date-label": "",
+      "report-schedule-end-date-placeholder": "Nie kończy się"
+    },
+    "settings": {
+      "alert-title": "",
+      "attachment-settings-fieldset-label": "Ustawienia załączników",
+      "drawer-title": "",
+      "email-branding-fieldset-label": "Dodawanie marki we wiadomościach e-mail",
+      "email-footer-field-label": "Stopka e-maila",
+      "email-logo-image-preview-altText": "Podgląd logo firmy",
+      "email-logo-url-field-description": "Logo zostanie wyświetlone w nagłówku wiadomości e-mail. Obsługiwane formaty: png, jpg, gif.",
+      "email-logo-url-field-label": "Adres URL logo firmy",
+      "embedded-image-header": "Osadzony obraz",
+      "embedded-image-theme-picker-description": "Motyw zostanie zastosowany do obrazu pulpitu nawigacyjnego osadzonego w wiadomości e-mail.",
+      "footer-link-field-label": "Tekst linku w stopce",
+      "footer-link-url-field-label": "URL linku w stopce",
+      "none-footer-label": "Brak",
+      "pdf-header": "PDF",
+      "pdf-theme-picker-description": "Motyw zostanie zastosowany do pliku PDF dołączonego do raportu.",
+      "report-logo-image-preview-altText": "Podgląd logo firmy",
+      "report-logo-url-field-description": "Logo zostanie wyświetlone w stopce dokumentu. Obsługiwane formaty: png, jpg, gif.",
+      "report-logo-url-field-label": "Adres URL logo firmy",
+      "save-button": "Zapisz",
+      "sent-by-footer-label": "Wysłane przez",
+      "settings-subtitle": "Zarządzaj ustawieniami szablonów raportów."
+    }
+  },
+  "reports": {
+    "all-template-alert": {
+      "description-not-supported": "",
+      "title-not-supported": "Nieobsługiwane"
+    },
+    "confirm": {
+      "edit": "Edytuj"
+    },
+    "create-report-tab": {
+      "create-report-using-this-dashboard": "",
+      "description-reporting-allows-automatically-generate-dashboards-grafana": "",
+      "get-started-with-reporting": "",
+      "learn-more": "Dowiedz się więcej",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "dashbord-report-renderer": {
+      "title-unsupported-dashboard-layout": ""
+    },
+    "edit-actions": {
+      "aria-label-delete-report": "",
+      "edit-report": "",
+      "pause-button": "Wstrzymaj",
+      "resume-button": "Wznów",
+      "title-delete-report": "",
+      "tooltip-delete": "Usuń"
+    },
+    "format-report": {
+      "aria-label-zoom": "Powiększenie",
+      "description-enlarge-table-columns-panel": "Przybliż, aby powiększyć tekst, lub oddal, aby zmieścić w panelu więcej danych (takich jak kolumny tabeli).",
+      "label-combine-dashboard": "",
+      "label-configure-multiple-pdfs": "",
+      "label-configure-report-header": "",
+      "label-format-report": "",
+      "label-layout": "Układ",
+      "label-orientation": "Orientacja",
+      "label-show-template-variables": "",
+      "label-style-the-pdf": "",
+      "label-zoom": "Powiększenie",
+      "preview-pdf": "",
+      "tooltip-download-table-panel": ""
+    },
+    "highlight-trial-report": {
+      "get-started-with-reporting": "",
+      "get-started-with-reporting-text": "",
+      "learn-more": "Dowiedz się więcej",
+      "text-create-unlimited-reports-during-trial-grafana": ""
+    },
+    "report-upgrade-content": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "reports-list-page": {
+      "render-list": {
+        "create-a-new-report": "",
+        "placeholder-search-reports-report-dashboard-recipients": "",
+        "text-create-unlimited-reports-during-trial-grafana": ""
+      }
+    },
+    "schedule": {
+      "label-frequency": "Częstotliwość",
+      "label-schedule": "",
+      "label-start-date": "Data rozpoczęcia",
+      "label-time": "Czas"
+    },
+    "select-dashboard": {
+      "aria-label-source-dashboard": "Pulpit źródłowy",
+      "description-time-range": "",
+      "label-source-dashboard": "Pulpit źródłowy",
+      "label-template-variables": "Zmienne szablonu",
+      "label-time-range": "Zakres czasu"
+    },
+    "select-dashboards": {
+      "add-another-dashboard": "",
+      "label-select-dashboard": "",
+      "remove-dashboard": ""
+    },
+    "send-test-email-modal": {
+      "cancel": "Anuluj",
+      "label-email": "E-mail",
+      "label-use-emails-from-report": "",
+      "send": "Wyślij",
+      "title-send-test-email": ""
+    },
+    "share": {
+      "description-address-appear-reply-field-email": "",
+      "description-separate-multiple-emails-comma-semicolon": "",
+      "email-info-button": "Jeśli to pole pozostanie puste, w temacie wiadomości zostanie użyta nazwa raportu",
+      "email-subject": "Temat e-maila",
+      "label-include-a-dashboard-link": "",
+      "label-message": "Wiadomość",
+      "label-recipients": "Odbiorcy",
+      "label-replyto-email-address": "",
+      "label-report-name": "Nazwa raportu",
+      "label-share": "",
+      "name-placeholder-system-status-report": "",
+      "recipients-placeholder-recipients-email-addresses-press-enter": "Wpisz adresy e-mail odbiorców i naciśnij Enter",
+      "send-test-email": "",
+      "subject-placeholder-email-subject": "Temat e-maila",
+      "title-sending-test-email": ""
+    },
+    "share-pdfbase": {
+      "cancel": "Anuluj",
+      "save-as-pdf": ""
+    },
+    "unavailable-feature-info-box": {
+      "title-feature-available-expired-license": ""
+    },
+    "upgrade-report": {
+      "description-reporting-allows-automatically-generate-dashboards-grafana": ""
+    },
+    "variables-preview": {
+      "none": ""
+    }
+  },
+  "saml-connect-to-idp": {
+    "validate-idp-metadata": {
+      "require-one": "Należy zdefiniować jeden typ metadanych"
+    }
+  },
+  "share-dashboard": {
+    "menu": {
+      "export-pdf-title": "Eksportuj jako PDF",
+      "schedule-report-title": "Zaplanuj raportowanie"
+    }
+  },
+  "share-report": {
+    "actions": {
+      "download-csv-label": "Pobierz plik CSV",
+      "downloading-label": "",
+      "preview-pdf-label": "",
+      "report-settings-label": ""
+    },
+    "attachments": {
+      "combine-one-file": "Połącz wszystkie pliki PDF pulpitów w jeden plik",
+      "csv-tables": "Załącz plik CSV z danymi z panelu tabeli",
+      "layout": "Układ",
+      "orientation": "Orientacja",
+      "orientation-tooltip": "Wybór orientacji zostanie zastosowany do pliku PDF pulpitu, danych z tabeli i załącznika PDF",
+      "pdf-format": "Format PDF",
+      "pdf-report": "Załącz raport jako plik PDF",
+      "pdf-tables": "Załącz osobny plik PDF z danymi z tabeli",
+      "pdf-tables-appendix": "Uwzględnij dane z tabeli jako załącznik PDF",
+      "section-title": "Załączniki",
+      "show-template-variables": "Pokaż zmienne szablonu w nagłówku",
+      "zoom": "Skala powiększenia"
+    },
+    "back-button-text": "",
+    "confirm-delete": {
+      "button": "",
+      "description": "",
+      "title": ""
+    },
+    "create-report": "",
+    "dashboard": {
+      "add-dashboard": "Dodaj pulpit",
+      "dashboard-required": "Pulpit jest wymagany",
+      "delete-dashboard-tooltip": "Usuń ten pulpit",
+      "repeated-template-variables-description": "Podczas wielokrotnego dodawania tego samego pulpitu w jednym raporcie zmienne szablonu, które zostały wybrane jako pierwsze, są stosowane do wszystkich wystąpień tego pulpitu w raporcie.",
+      "section-title": "Pulpity",
+      "source-dashboard-label": "Pulpit źródłowy",
+      "template-variables-title": "Dostosuj zmienne szablonu",
+      "time-range-description": "",
+      "time-range-label": "Zakres czasu",
+      "view-dashboard-tooltip": "Wyświetl pulpit"
+    },
+    "discard-changes": {
+      "discard-button": "Odrzuć",
+      "text": "",
+      "title": ""
+    },
+    "email-configuration": {
+      "add-dashboard-image-label": "Osadź obraz pulpitu",
+      "add-dashboard-url-label": "Uwzględnij link do pulpitu",
+      "dashboard-image-settings-description": "Ustawienia obrazu pulpitu można dostosować w ogólnych <1>ustawieniach raportu</1>",
+      "invalid-email": "Błędny e-mail",
+      "message-label": "Wiadomość",
+      "message-placeholder": "Wpisz wiadomość",
+      "reply-to-label": "Zwrotny adres e-mail",
+      "section-title": "Ustawienia wiadomości e-mail",
+      "subject-description": "Jeśli to pole pozostanie puste, w temacie wiadomości zostanie użyta nazwa raportu",
+      "subject-label": "Temat e-maila"
+    },
+    "empty-list": {
+      "description": "",
+      "title": ""
+    },
+    "error-form": {
+      "title": ""
+    },
+    "error-list": {
+      "title": ""
+    },
+    "loading-form": "",
+    "loading-report": "",
+    "loading-report-form": "",
+    "loading-reports": "",
+    "recipients": {
+      "field-label": "Odbiorcy",
+      "invalid-email": "Błędny e-mail: {{email}} ",
+      "invalid-emails": "Błędne e-maile: {{emails}} ",
+      "placeholder": "Wpisz adresy e-mail odbiorców i naciśnij Enter",
+      "recipients-required": "Odbiorcy są wymagani",
+      "section-title": "Odbiorcy",
+      "tooltip": "Oddziel wiele adresów e-mail przecinkiem lub średnikiem"
+    },
+    "report-name": {
+      "label": "Nazwa raportu",
+      "required": "Nazwa raportu jest wymagana"
+    },
+    "save-draft": {
+      "button": "Zapisz wersję roboczą",
+      "saving-button": ""
+    },
+    "schedule": {
+      "end-date": "Data zakończenia",
+      "end-date-invalid": "Data zakończenia musi przypadać w dniu rozpoczęcia lub później",
+      "end-date-placeholder": "Nie kończy się",
+      "end-time": "Czas zakończenia",
+      "frequency": "Częstotliwość",
+      "interval-amount-min": "Wartość odstępu czasu musi wynosić co najmniej 2",
+      "interval-amount-required": "Wymagana jest wartość odstępu czasu",
+      "last-day-of-month": "Wysyłaj ostatniego dnia miesiąca",
+      "monthly-schedule-alert-title": "Uwaga: raporty nie będą wysyłane w miesiącach, które nie mają {{ dayNumber }}. dnia. Wybierz wcześniejszą datę lub wybierz „Wysyłaj ostatniego dnia miesiąca”, aby wysyłać raport na koniec każdego miesiąca.",
+      "repeat-every": "Powtarzaj co",
+      "repeat-every-placeholder": "np. 2",
+      "repeat-interval-frequency-placeholder": "np. godziny",
+      "section-title": "Harmonogram",
+      "send-time": "Harmonogram",
+      "start-date": "Data rozpoczęcia",
+      "start-date-placeholder": "Wybierz datę",
+      "start-date-required": "Data rozpoczęcia jest wymagana",
+      "start-time": "Czas rozpoczęcia",
+      "time-zone": "Strefa czasowa",
+      "workdays-only": "Wysyłaj tylko od poniedziałku do piątku"
+    },
+    "schedule-report": {
+      "button": "Zaplanuj raportowanie",
+      "scheduling-button": ""
+    },
+    "see-all-reports": "",
+    "send-preview": {
+      "button": "Wyślij podgląd",
+      "cancel": "Anuluj",
+      "email": "E-mail",
+      "email-description": "Oddziel wiele adresów e-mail przecinkiem lub średnikiem",
+      "email-required": "E-mail jest wymagany",
+      "send": "Wyślij",
+      "sending": "",
+      "title": "Wyślij podgląd",
+      "use-report-emails": ""
+    },
+    "settings": {
+      "loading": ""
+    },
+    "state": "",
+    "update-report": {
+      "button": "",
+      "delete-button": "Usuń",
+      "pause-button": "Wstrzymaj",
+      "pausing-button": "",
+      "resume-button": "Wznów",
+      "resuming-button": "",
+      "updating-button": ""
+    }
+  },
+  "shared": {
+    "resource-picker": {
+      "placeholder-select-color": ""
+    }
+  },
+  "team-lbac": {
+    "create-team-lbacform": {
+      "label-rule": "Reguła",
+      "label-team": "Zespół",
+      "new-lbac-rule": "",
+      "new-lbac-rule-example": "",
+      "save": "Zapisz"
+    },
+    "editable-cell": {
+      "empty-rule": ""
+    },
+    "team-label": {
+      "placeholder": ""
+    },
+    "team-lbaceditor-unconnected": {
+      "add-a-lbac-rule": "",
+      "add-query-permissions": "",
+      "add-team-lbac-rules": "",
+      "clear-filter": "Wyczyść",
+      "clear-filter-aria-label": "Wyczyść filtr",
+      "content-found-recommendation": "",
+      "description-data-access": "",
+      "ensure-proper-access-control-please-follow": "",
+      "filter-results-multiple": "",
+      "filter-results-single": "",
+      "filter-teams-aria-label": "",
+      "filter-teams-placeholder": "",
+      "hide-access-control-recommendations": "",
+      "hide-lbac-rule": "",
+      "label-selector": "",
+      "lbac-description": "",
+      "lbac-labelbased-access-control": "",
+      "lbac-rules-note": "",
+      "learn-more-about-lbac-rules": "",
+      "remove-unrestricted-access": "",
+      "role-warning-list": "",
+      "show-access-control-recommendations": "",
+      "sort-teams-ascending": "",
+      "sort-teams-descending": "",
+      "team": "Zespół",
+      "title-access-control-recommendations": "",
+      "title-data-access": ""
+    },
+    "team-rules-row": {
+      "aria-label-add-team-rule": "",
+      "aria-label-delete-rule": "Usuń regułę",
+      "aria-label-edit-team-rule": "",
+      "cancel": "Anuluj",
+      "or": "",
+      "save": "Zapisz",
+      "tooltip-add-new-rule": "",
+      "tooltip-provisioned-rule": ""
+    }
+  }
+}
