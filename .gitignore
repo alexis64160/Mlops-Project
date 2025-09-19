@@ -88,3 +88,11 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Large files that shouldn't be in git
+grafana-12.1.1/
+grafana-enterprise_*.tar.gz
+*.tar.gz
+*.zip
+*.dmg
+*.pkg
