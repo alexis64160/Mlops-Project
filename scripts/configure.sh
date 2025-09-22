@@ -3,21 +3,26 @@
 
 # 🛑 Stop if not sourced
 (return 0 2>/dev/null) || {
-  echo "This script must be sourced: use 'source ./scripts/configure.sh'" >&2
-  exit 1
+  echo "🛑 This script must be sourced: use 'source ./scripts/configure.sh'" >&2
+  return 1
 }
 
-# ─────────────────────────────────────────────────────────────
-# Resolve script directory (assumes utils.sh is in the same dir)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/scripts/utils.sh"
+# Set script directory
+if [ "${ZSH_VERSION+set}" ]; then
+  SCRIPT_DIR="${0:A:h}"
+elif [ "${BASH_VERSION+set}" ]; then
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+else
+  echo "🛑 Unsupported shell. Use Bash or Zsh." >&2
+  return 1
+fi
 
-# ─────────────────────────────────────────────────────────────
-# Find project root
-export DSDC_DIR="$(find_project_root ".dsdc_project_root")"
+# Load functions and set project root directory
+source "$SCRIPT_DIR/subscripts/utils.sh" 
+source "$SCRIPT_DIR/subscripts/set_project_dir.sh" 
 
 # Set default venv location
-export DSDC_VENV="${DSDC_VENV:-.venv}"
+export DSDC_VENV="${DSDC_VENV:-$DSDC_DIR/.venv}"
 if [[ "$DSDC_VENV" = /* ]]; then
   VENV_PATH="$DSDC_VENV"
 else
@@ -28,10 +33,9 @@ fi
 # Activate the venv
 if [[ -f "$VENV_PATH/bin/activate" ]]; then
   echo "Activating virtual environment at: $VENV_PATH"
-  # shellcheck disable=SC1090
   source "$VENV_PATH/bin/activate"
 else
-  echo "⚠️  Virtual environment not found at: $VENV_PATH"
+  echo "🛑 Virtual environment not found at: $VENV_PATH"
   echo "Run ./scripts/initialize.sh to create it."
   return 1
 fi
@@ -40,5 +44,5 @@ cd $DSDC_DIR
 # ─────────────────────────────────────────────────────────────
 # Summary
 echo "✅ Environment configured:"
-echo "  - DSDC_DIR=$DSDC_DIR"
+echo "  - DSDC_DIR set to $DSDC_DIR"
 echo "  - VENV activated: $VENV_PATH"

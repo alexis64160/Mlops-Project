@@ -1,22 +1,14 @@
 #!/usr/bin/env bash
 
 find_project_root() {
-    local target_file="${1:-.dsdc_project_root}"  # Default to ".project_root" if no argument given
-    local start_points=()
-
-    # 1. Add the directory containing this script
-    local script_path="${BASH_SOURCE[0]}"
-    local script_dir="$(cd "$(dirname "$script_path")" && pwd)"
-    start_points+=("$script_dir")
-
-    # 2. Add the current working directory
-    start_points+=("$PWD")
+    local marker_name=".dsdc_project_root"
+    local start_points=("$@")
 
     # For each starting point, walk up the directory tree
     for start in "${start_points[@]}"; do
         local dir="$start"
         while true; do
-            if [ -f "$dir/$target_file" ]; then
+            if [ -f "$dir/$marker_name" ]; then
                 echo "$dir"
                 return 0
             fi
@@ -42,7 +34,7 @@ check_python_version() {
         elif command -v python &>/dev/null; then
             py_exec=$(command -v python)
         else
-            echo "Error: Python is not installed or not in PATH." >&2
+            echo "🛑 Error: Python is not installed or not in PATH." >&2
             return 1
         fi
     else
@@ -50,7 +42,7 @@ check_python_version() {
         if command -v "$py_exec" &>/dev/null; then
             py_exec=$(command -v "$py_exec")
         else
-            echo "Error: Python executable '$py_exec' not found or not executable." >&2
+            echo "🛑 Error: Python executable '$py_exec' not found or not executable." >&2
             return 1
         fi
     fi
@@ -65,7 +57,7 @@ check_python_version() {
         echo $py_exec
         return 0
     else
-        echo "Error: Python version must be ${required_major}.${required_minor}.x, but found $version_str" >&2
+        echo "🛑 Error: Python version must be ${required_major}.${required_minor}.x, but found $version_str" >&2
         return 1
     fi
 }

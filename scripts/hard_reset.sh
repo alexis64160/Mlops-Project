@@ -2,11 +2,19 @@
 set -euo pipefail
 
 # Resolve and source utils.sh (assumes utils.sh is next to this script)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/utils.sh"
+# Set script directory
+if [ "${ZSH_VERSION+set}" ]; then
+  SCRIPT_DIR="${0:A:h}"
+elif [ "${BASH_VERSION+set}" ]; then
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+else
+  echo "🛑 Unsupported shell. Use Bash or Zsh." >&2
+  return 1
+fi
 
-# Find project root
-DSDC_DIR="$(find_project_root ".dsdc_project_root")"
+# Load functions and set project root directory
+source "$SCRIPT_DIR/subscripts/utils.sh" 
+source "$SCRIPT_DIR/subscripts/set_project_dir.sh" 
 
 # Ask for confirmation
 echo "⚠️  WARNING: This operation will IRREVERSIBLY delete all generated files in:"
