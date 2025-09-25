@@ -56,6 +56,9 @@ def get_embedding_label_pairs() -> List[Tuple[List[float], int]]:
             # .filter(ProcessedImage.document_id == OriginalDocument.id)  # ensure both point to same doc
             .all()
         )
+        if not results:
+            raise ValueError("No embedding data fetched")
+
         return list(zip(*results))
         #     (list(embedding), label)
         #     for embedding, label in results
@@ -64,7 +67,7 @@ def get_embedding_label_pairs() -> List[Tuple[List[float], int]]:
 
     except Exception as e:
         logging.error(f"Error fetching embedding-label pairs: {e}")
-        return []
+        return [], []
     finally:
         session.close()
 
@@ -132,7 +135,6 @@ def add_embeddings(
                     embeddings=emb
                 )
             )
-
         session.bulk_save_objects(records)
         session.commit()
 

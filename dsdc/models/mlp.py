@@ -6,37 +6,8 @@ from keras.layers import Input, Dense, Dropout, LeakyReLU
 from keras.optimizers import Adam
 from keras.models import load_model
 
-# Best models parameters in compliance with DS Project
-# Refer MLP12 (acc=90,05%), MLP9 (acc=89,70%) and MLP11 (acc=89,67%)
 from dsdc import CONFIG
-INITIAL_BEST_KNWON_PARAMS = {
-    "MLP12": {
-        "layers": [
-            {"units": 512, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.4},
-            {"units": 128, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.3},
-            {"units": 32, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.2},
-        ],
-        "learning_rate": 1e-4
-    },
-    "MLP9": {
-        "layers": [
-            {"units": 256, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.4},
-            {"units": 128, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.2},
-            {"units": 128, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.2},
-            {"units": 64, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.1},
-            {"units": 64, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.1},
-        ],
-        "learning_rate": 1e-4
-    },
-    "MLP11": {
-        "layers": [
-            {"units": 512, "activation": "relu", "dropout": 0.4},
-            {"units": 128, "activation": "relu", "dropout": 0.3},
-            {"units": 32, "activation": "relu", "dropout": 0.2},
-        ],
-        "learning_rate": 1e-4
-    },
-} 
+
 
 class MLP(Sequential):
     def __init__(self, params: dict):
