@@ -56,8 +56,8 @@ data/raw/
 data/processed/
 models/clip-vit-base/
 *.log
-.env.secrets
 token.txt
+/.env.secrets
 /config.yaml
 
 # operationnal folders
