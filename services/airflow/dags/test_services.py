@@ -48,7 +48,7 @@ def test_services():
     @task(task_id="test_extract_texts")
     def test_extract_texts():
         import requests
-        API_URL="http://dsdc_extract_text:64411/extract_text"
+        API_URL="http://dsdc_extract_text:64411/extract-text"
         logging.info(f"testing connection to extract_text")
         response = requests.post(API_URL, files={})
         json_response = response.json()
