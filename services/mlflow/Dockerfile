@@ -1,8 +1,9 @@
-FROM python:3.10-slim
-WORKDIR /app
-RUN pip install mlflow psycopg2-binary
-COPY services/mlflow/entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-VOLUME ["/mlruns"]
-EXPOSE 5000
-CMD ["/app/entrypoint.sh"]
+FROM ghcr.io/mlflow/mlflow
+
+RUN pip install psycopg2-binary
+
+CMD mlflow server \
+    --backend-store-uri postgresql://mlflow:mlflow_strong_password@postgres:5432/mlflow \
+    --default-artifact-root /mlflow/artifacts \
+    --host 0.0.0.0 \
+    --port 5000

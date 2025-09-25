@@ -13,6 +13,7 @@ authors = [
 dependencies = [
 #    "clip",
     "fastapi>=0.116.1",
+    "mlflow>=3.4.0",
 #    "nltk>=3.9.1",
 #    "pandas>=2.3.2",
 #    "pillow>=11.3.0",

@@ -1,9 +1,9 @@
 import math
 import random
+import json
 
 # Best models parameters in compliance with DS Project
 # Refer MLP12 (acc=90,05%), MLP9 (acc=89,70%) and MLP11 (acc=89,67%)
-from dsdc import CONFIG
 INITIAL_BEST_KNWON_PARAMS = {
     "MLP12": {
         "layers": [
@@ -114,3 +114,32 @@ def get_random_params(
         params[f"random_{count}"] = param
     return params
 
+def get_param_summary(params):
+    layers = params.get("layers", [])
+    num_layers = len(layers)
+    units_list = [layer.get("units", 0) for layer in layers]
+    dropout_list = [layer.get("dropout", 0.0) for layer in layers]
+
+    activations = set(layer.get("activation", "relu") for layer in layers)
+    if len(activations) == 1:
+        main_activation = activations.pop()
+    else:
+        main_activation = "mixed"
+
+    num_dropout = sum(1 for d in dropout_list if d > 0)
+    avg_dropout = round(sum(d for d in dropout_list if d > 0), 2) / num_dropout if num_dropout > 0 else 0
+
+    summary = {
+        "num_layers": num_layers,
+        "total_units": sum(units_list),
+        "avg_units": round(sum(units_list)/num_layers) if num_layers > 0 else 0,
+        "max_units": max(units_list) if units_list else 0,
+        "min_units": min(units_list) if units_list else 0,
+        "num_dropout": num_dropout,
+        "avg_dropout": avg_dropout,
+        "learning_rate": params.get("learning_rate", 0),
+        "activation": main_activation,
+        "raw_params": json.dumps(params),
+
+    }
+    return summary

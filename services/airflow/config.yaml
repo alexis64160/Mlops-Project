@@ -6,6 +6,7 @@ paths:
     rejected: /opt/dsdc/data/rejected
     raw: /opt/dsdc/data/raw
     processed: /opt/dsdc/data/processed
+    models: /opt/dsdc/models
     alternative_cdip_images: /opt/dsdc/mock_data/IIT-CDIP/images
 
 settings:

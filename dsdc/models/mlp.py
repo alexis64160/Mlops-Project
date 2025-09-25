@@ -26,15 +26,13 @@ class MLP(Sequential):
             units = layer_cfg["units"]
             activation = layer_cfg.get("activation", "relu")
             dropout_rate = layer_cfg.get("dropout", 0.0)
-            self.add(Dense(units))
 
             # Gestion des activations
             if activation == "leaky_relu":
+                self.add(Dense(units))
                 negative_slope = layer_cfg.get("negative_slope", 0.3)
                 self.add(LeakyReLU(negative_slope=negative_slope))
             else:
-                self.add(Dense(0, activation=activation))  # Hack: ignore layer, just add activation
-                self.pop()  # Remove dummy Dense
                 self.add(Dense(units, activation=activation))
 
             # Dropout optionnel
@@ -71,6 +69,11 @@ class MLP(Sequential):
         # Normalement super().from_config n’est pas compatible avec Sequential
         return model
     
+    @staticmethod
+    def get_save_path(name):
+        save_path = CONFIG.paths.models/"mlps"/name
+        return save_path
+    
     def save(self, name=""):
         if name == "":
             dense_layers = [l for l in self.layers if getattr(l, "name", "").startswith("dense")]
@@ -79,7 +82,7 @@ class MLP(Sequential):
             name = f"MLP_{layers_text}_{timestamp}.keras"
         if not name.endswith(".keras"):
             name += ".keras"
-        save_path = CONFIG.paths.models/"mlps"/name
+        save_path = MLP.get_save_path(name)
         save_path.parent.mkdir(exist_ok=True, parents=True)
         super().save(str(save_path))
         logging.info(f"Successfully saved model at {str(save_path)}")

@@ -20,7 +20,7 @@ BATCH_SIZE = 100
 @dag(
     dag_id="ingest_and_process_data",
     default_args=default_args,
-    schedule="3/5 * * * *",  # schedule_interval est déprécié, utiliser schedule
+    schedule="3/5 * * * *", 
     catchup=False,
     description="Ingest and process data",
     tags=["dsdc", "ingest", "process", "data"],
@@ -127,13 +127,16 @@ def dag_ingest_and_process_data():
                 data = {"text": text.processed_text}
                 response = requests.post(API_URL, files=files, data=data)
             json_response = response.json()
-            embeddings = json_response.get("embeddings")
+            embedding = json_response.get("embeddings")
             version = "0.0.0" # TODO
+            embeddings.append(embedding)
+            processed_image_ids.append(image.id)
+            processed_text_ids.append(text.id)
             versions.append(version)
         add_embeddings(embeddings_data=zip(
-                embeddings,
                 processed_image_ids,
                 processed_text_ids,
+                embeddings,
                 versions
                 ))
         logging.info(f"Successfully added {len(document_ids)} rows inside embeddings table")

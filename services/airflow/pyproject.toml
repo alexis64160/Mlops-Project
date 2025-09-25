@@ -11,9 +11,10 @@ authors = [
 dependencies = [
 #    "clip",
 #    "fastapi>=0.116.1",
+     "mlflow>=3.4.0",
 #    "nltk>=3.9.1",
 #    "pandas>=2.3.2",
-    "pillow>=11.3.0",
+     "pillow>=11.3.0",
 #    "psycopg2-binary>=2.9.10",
 #    "pytesseract>=0.3.13",
 #    "python-multipart>=0.0.20",
