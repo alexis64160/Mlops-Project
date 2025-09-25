@@ -76,7 +76,6 @@ parse_arguments "$@"
 DSDC_PYTHON=$(check_python_version "$cli_python")
 
 
-echo "++++++++++++++ $DSDC_DIR"
 export DSDC_DIR
 export DSDC_PYTHON
 cd $DSDC_DIR
