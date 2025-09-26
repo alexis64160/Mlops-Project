@@ -89,29 +89,5 @@ class MLP(Sequential):
     
     @classmethod
     def load(cls, filename):
-        path = CONFIG.paths.models/"mlps"/filename
+        path = MLP.get_save_path(filename)
         return load_model(str(path), custom_objects={"MLP": MLP})
-
-# EXEMPLE AVEC MLFLOW
-# import mlflow
-
-# params = {
-#     "layers": [
-#         {"units": 512, "activation": "leaky_relu", "negative_slope": 0.1, "dropout": 0.4},
-#         {"units": 128, "activation": "relu", "dropout": 0.3},
-#         {"units": 32, "activation": "relu"},
-#     ],
-#     "learning_rate": 1e-4
-# }
-
-# with mlflow.start_run():
-#     mlflow.log_params(params)
-
-#     model = MLP(input_dim=1024, params=params)
-#     history = model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=50)
-
-#     val_acc = history.history["val_accuracy"][-1]
-#     mlflow.log_metric("val_accuracy", val_acc)
-
-#     model.save("path/to/save/model.keras")
-#     mlflow.tensorflow.log_model(tf_model=model, artifact_path="model")

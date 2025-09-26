@@ -89,7 +89,7 @@ x-airflow-common:
     - ${DSDC_DIR:-.}/services/airflow/config.yaml:/opt/dsdc/config.yaml
     - ${DSDC_DIR:-.}/.env.secrets:/opt/dsdc/.env.secrets
     - ${DSDC_DIR:-.}/../ds-project/mai25_bds_extraction/data/raw/IIT-CDIP:/opt/dsdc/mock_data/IIT-CDIP
-
+    - ${DSDC_DIR:-.}/tests:/opt/dsdc/tests
 
     # - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins  user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
@@ -411,6 +411,18 @@ services:
       - "64415:8000"
     volumes:
     - ${DSDC_DIR:-.}/models:/opt/dsdc/models
+
+  predict:
+    container_name: dsdc_predict
+    image: dsdc_predict:latest
+    build:
+      context: ..
+      dockerfile: services/predict/Dockerfile
+    ports:
+      - "64416:8000"
+    volumes:
+    - ${DSDC_DIR:-.}/models:/opt/dsdc/models
+    - ${DSDC_DIR:-.}/services/predict/main.py:/app/main.py
 
   mlflow:
     build:
