@@ -64,9 +64,9 @@ def test_postgres():
 # region extract_text
 @task(task_id="test_extract_texts_healthy")
 def test_extract_texts_healthy():
-    API_URL="http://dsdc_extract_text:8000/status"
+    url="http://dsdc_extract_text:8000/status"
     logging.info(f"testing whether extract-text api is healthy")
-    response = requests.get(API_URL)
+    response = requests.get(url)
     logging.info(response.status_code)
     assert response.status_code == 200
     json_response = response.json()
@@ -77,12 +77,12 @@ def test_extract_texts_healthy():
 
 @task(task_id="test_extract_texts_functional")
 def test_extract_texts_functional(version: str):
-    API_URL=f"http://dsdc_extract_text:8000/{version}/extract-text"
+    url=f"http://dsdc_extract_text:8000/{version}/extract-text"
     logging.info(f"testing whether extract-text api is functional")
     image_path = PROJECT_ROOT/"tests"/"sample"/"rvl_aaa06d00_original.tif" # TODO: mettre ca dans CONFIG (+ ajouter path tests?)
     with open(image_path, "rb") as f:
         files = {"image": (image_path.name, f, "image/tiff")}
-        response = requests.post(API_URL, files=files)
+        response = requests.post(url, files=files)
     assert response.status_code == 200
     json_response = response.json()
     raw_text = json_response.get("extracted_text")
