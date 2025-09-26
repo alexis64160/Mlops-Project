@@ -35,7 +35,10 @@ def dag_ingest_and_process_data():
     
     @task(task_id="extract_texts")
     def task_extract_texts():
-        API_URL="http://dsdc_extract_text:8000/extract-text"
+        url="http://dsdc_extract_text:8000/status"
+        response = requests.get(url)
+        version = response.json()["version"]
+        url=f"http://dsdc_extract_text:8000/{version}/extract-text"
         document_ids = get_missing_raw_text_document_ids()[:BATCH_SIZE]
         if not document_ids:
             logging.warning("No text to extract")
@@ -46,7 +49,7 @@ def dag_ingest_and_process_data():
         for image_path in image_paths:
             with open(image_path, "rb") as f:
                 files = {"image": (image_path.name, f, "image/tiff")}
-                response = requests.post(API_URL, files=files)
+                response = requests.post(url, files=files)
             json_response = response.json()
             raw_text = json_response.get("extracted_text")
             version = json_response.get("version")
@@ -61,7 +64,10 @@ def dag_ingest_and_process_data():
 
     @task(task_id="process_texts")
     def task_process_texts():
-        API_URL="http://dsdc_process_text:8000/process-text"
+        url="http://dsdc_process_text:8000/status"
+        response = requests.get(url)
+        version = response.json()["version"]
+        url=f"http://dsdc_process_text:8000/{version}/process-text"
         raw_texts = get_missing_processed_text_raw_texts()[:BATCH_SIZE]
         if not raw_texts:
             logging.warning("No raw text to process")
@@ -70,7 +76,7 @@ def dag_ingest_and_process_data():
         raw_text_ids, processed_texts, versions = [], [], []
         for raw_text in raw_texts:
             json_data = {"raw_text": raw_text.raw_text}
-            response = requests.post(API_URL, json=json_data)
+            response = requests.post(url, json=json_data)
             json_response = response.json()
             processed_text = json_response.get("processed_text")
             version = json_response.get("version")
@@ -86,7 +92,10 @@ def dag_ingest_and_process_data():
 
     @task(task_id="process_images")
     def task_process_images():
-        API_URL="http://dsdc_process_image:8000/process-image"
+        url="http://dsdc_process_image:8000/status"
+        response = requests.get(url)
+        version = response.json()["version"]
+        url=f"http://dsdc_process_image:8000/{version}/process-image"
         documents = get_missing_processed_image_documents()[:BATCH_SIZE]
         if not documents:
             logging.warning("No image to process")
@@ -98,7 +107,7 @@ def dag_ingest_and_process_data():
         for document_id, raw_path in zip(document_ids, raw_paths):
             with open(raw_path, "rb") as f:
                 files = {"image": (raw_path.name, f, "image/tiff")}
-                response = requests.post(API_URL, files=files)
+                response = requests.post(url, files=files)
             processed_path = CONFIG.paths.processed/document_id[0]/document_id[1]/document_id/"image.png"
             processed_path.parent.mkdir(exist_ok=True, parents=True)
             with open(processed_path, "wb") as f:
@@ -115,7 +124,10 @@ def dag_ingest_and_process_data():
 
     @task(task_id="compute_embeddings")
     def task_compute_embeddings():
-        API_URL="http://dsdc_compute_clip_embeddings:8000/compute-embeddings"
+        url="http://dsdc_compute_clip_embeddings:8000/status"
+        response = requests.get(url)
+        version = response.json()["version"]
+        url=f"http://dsdc_compute_clip_embeddings:8000/{version}/compute-embeddings"
         document_ids=get_missing_embeddings_document_ids()[:BATCH_SIZE]
         texts = get_processed_texts(document_ids=document_ids) # function keeps order
         images = get_processed_images(document_ids=document_ids) # function keeps order
@@ -125,7 +137,7 @@ def dag_ingest_and_process_data():
             with open(image_path, "rb") as f:
                 files = {"image": (image_path.name, f, "image/png")}
                 data = {"text": text.processed_text}
-                response = requests.post(API_URL, files=files, data=data)
+                response = requests.post(url, files=files, data=data)
             json_response = response.json()
             embedding = json_response.get("embeddings")
             version = "0.0.0" # TODO
