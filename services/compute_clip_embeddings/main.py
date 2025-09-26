@@ -8,6 +8,8 @@ import logging
 
 from dsdc.models.clip import CLIPSingleton
 
+VERSION = "v1"
+
 app = FastAPI(
     title="Compute CLIP Embeddings Service",
     description="Micro-service pour calculer les embeddings CLIP d'une image et d'un texte.",
@@ -19,7 +21,14 @@ model = CLIPSingleton()
 import tempfile
 from pathlib import Path
 
-@app.post("/compute-embeddings")
+@app.get("/status")
+def get_status():
+    return JSONResponse(content={
+        "status": "healthy",
+        "version": VERSION
+    })
+
+@app.post(f"/{VERSION}/compute-embeddings")
 async def compute_embeddings(image: UploadFile = File(...), text: str = Form(...)):
     if image.content_type not in ["image/jpeg", "image/png"]:
         raise HTTPException(status_code=400, detail="Le fichier doit être une image JPEG ou PNG.")
@@ -45,6 +54,5 @@ async def compute_embeddings(image: UploadFile = File(...), text: str = Form(...
             logging.warning(f"Impossible de supprimer le fichier temporaire : {cleanup_error}")
 
     return JSONResponse(content={
-        "embeddings": embeddings[0],
-        "version": model.version
+        "embeddings": embeddings[0]
     })

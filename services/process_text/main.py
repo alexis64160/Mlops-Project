@@ -5,14 +5,20 @@ import logging
 
 from dsdc.data.process_text import process_text, PROCESSING_VERSION
 
+VERSION = "v1"
 app = FastAPI(title="Process Text Service")
-
 
 class TextIn(BaseModel):
     raw_text: str
 
+@app.get("/status")
+def get_status():
+    return JSONResponse(content={
+        "status": "healthy",
+        "version": VERSION
+    })
 
-@app.post("/process-text")
+@app.post(f"/{VERSION}/process-text")
 async def process_text_endpoint(payload: TextIn):
     raw_text = payload.raw_text
     try:

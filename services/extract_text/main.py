@@ -10,11 +10,16 @@ app = FastAPI(title="Extract Text Service")
 
 
 TESSERACT_VERSION = str(pytesseract.get_tesseract_version())
+VERSION = TESSERACT_VERSION
 
-# Si besoin, ajuste le chemin de tesseract ici
-# pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+@app.get("/status")
+def get_status():
+    return JSONResponse(content={
+        "status": "healthy",
+        "version": VERSION
+    })
 
-@app.post("/extract-text")
+@app.post(f"/{VERSION}/extract-text")
 async def extract_text(image: UploadFile = File(...)):
     if image.content_type not in ["image/jpeg", "image/png", "image/tiff"]:
         raise HTTPException(status_code=400, detail="Le fichier doit être une image JPEG, PNG ou TIFF.")
@@ -32,4 +37,4 @@ async def extract_text(image: UploadFile = File(...)):
         logging.error(f"Erreur lors de l'extraction du texte : {e}")
         raise HTTPException(status_code=500, detail=f"Erreur lors de l'extraction du texte : {e}")
 
-    return JSONResponse(content={"extracted_text": text.strip(), "version":TESSERACT_VERSION})
+    return JSONResponse(content={"extracted_text": text.strip()})

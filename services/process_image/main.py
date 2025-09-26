@@ -1,12 +1,20 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, JSONResponse
 from PIL import Image
 import io
 import logging
 
+VERSION = "v1"
 app = FastAPI(title="Process Image Service")
 
-@app.post("/process-image")
+@app.get("/status")
+def get_status():
+    return JSONResponse(content={
+        "status": "healthy",
+        "version": VERSION
+    })
+
+@app.post(f"/{VERSION}/process-image")
 async def process_image(image: UploadFile = File(...)):
     if image.content_type not in ["image/jpeg", "image/png", "image/tiff"]:
         raise HTTPException(status_code=400, detail="Le fichier doit être une image JPEG, PNG ou TIFF.")
