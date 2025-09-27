@@ -100,7 +100,7 @@ x-airflow-common:
       condition: service_healthy
 
 services:
-
+# region postgres
   postgres:
     image: postgres:15
     container_name: dsdc-postgres
@@ -118,7 +118,7 @@ services:
       - dsdc_db:/var/lib/postgresql/data
     ports:
       - "5432:5432" # TODO: cabler avec config.yaml
-
+# region pgadmin
   pgadim:
     image: dpage/pgadmin4
     container_name: pgadmin
@@ -132,8 +132,7 @@ services:
       - pgadmin_data:/var/lib/pgadmin
     depends_on:
       - postgres
-
-
+# region airflow
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change
     # https://redis.io/blog/redis-adopts-dual-source-available-licensing/
@@ -363,7 +362,7 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-
+# region dsdc
   extract_text:
     container_name: dsdc_extract_text
     image: dsdc_extract_text:latest
@@ -423,7 +422,7 @@ services:
     volumes:
     - ${DSDC_DIR:-.}/models:/opt/dsdc/models
     - ${DSDC_DIR:-.}/services/predict/main.py:/app/main.py
-
+# region mlflow
   mlflow:
     build:
       context: ..
@@ -464,18 +463,44 @@ services:
 #        - /var/lib/docker/:/var/lib/docker:ro
     restart: always
 
-  postgres-exporter:
+  dsdc-postgres_exporter:
     image: prometheuscommunity/postgres-exporter
     environment:
-      DATA_SOURCE_NAME: "postgresql://dsdc_admin:my_strong_password@postgres:5432/dsdc_db?sslmode=disable"
-      PG_EXPORTER_EXTEND_QUERY_PATH: /etc/postgres-exporter/queries.yaml
+      - DATA_SOURCE_NAME=postgresql://dsdc_admin:my_strong_password@postgres:5432/dsdc_db?sslmode=disable
+      # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
+    volumes:
+      - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/dsdc/queries.yaml:/etc/postgres_exporter/queries.yaml
     ports:
       - "9187:9187"
-    volumes:
-      - ${DSDC_DIR:-.}/services/monitoring/postgres-exporter/queries.yaml:/etc/postgres_exporter/queries.yaml
-    depends_on:
-      - postgres
+    command:
+      - '--extend.query-path=/etc/postgres_exporter/queries.yaml'
+      # - '--disable-default-metrics'
 
+  mlflow-postgres_exporter:
+    image: prometheuscommunity/postgres-exporter
+    environment:
+      - DATA_SOURCE_NAME=postgresql://mlflow:mlflow_strong_password@postgres:5432/mlflow?sslmode=disable
+      # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
+    volumes:
+      - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/mlflow/queries.yaml:/etc/postgres_exporter/queries.yaml
+    ports:
+      - "9189:9187"
+    command:
+      - '--extend.query-path=/etc/postgres_exporter/queries.yaml'
+      # - '--disable-default-metrics'
+
+  airflow-postgres_exporter:
+    image: prometheuscommunity/postgres-exporter
+    environment:
+      - DATA_SOURCE_NAME=postgresql://airflow:airflow_strong_password@postgres:5432/airflow?sslmode=disable
+      # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
+    volumes:
+      - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/airflow/queries.yaml:/etc/postgres_exporter/queries.yaml
+    ports:
+      - "9188:9187"
+    command:
+      - '--extend.query-path=/etc/postgres_exporter/queries.yaml'
+      # - '--disable-default-metrics'
 
 volumes:
   dsdc_db:

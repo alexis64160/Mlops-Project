@@ -1,0 +1,15 @@
+pg_tables_row_count:
+  query: |
+    SELECT
+      relname AS table,
+      reltuples::BIGINT AS row_count
+    FROM pg_class
+    JOIN pg_namespace ON pg_namespace.oid = pg_class.relnamespace
+    WHERE
+      relkind = 'r'
+      AND nspname NOT IN ('pg_catalog', 'information_schema')
+  metrics:
+    - table:
+        usage: LABEL
+    - row_count:
+        usage: GAUGE

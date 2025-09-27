@@ -1,0 +1,38 @@
+trained_models_count:
+  query: |
+    SELECT COUNT(*) AS trained_models FROM registered_models;
+  metrics:
+    - trained_models:
+        usage: GAUGE
+
+best_val_accuracy:
+  query: |
+    SELECT MAX(CAST(value AS DOUBLE PRECISION)) AS best_val_accuracy
+    FROM metrics
+    WHERE key = 'val_accuracy';
+  metrics:
+    - best_val_accuracy:
+        usage: GAUGE
+
+average_training_time:
+  query: |
+    SELECT AVG(end_time - start_time) / 1000.0 AS average_training_time_seconds
+    FROM runs
+    WHERE end_time IS NOT NULL AND start_time IS NOT NULL;
+  metrics:
+    - average_training_time_seconds:
+        usage: GAUGE
+
+last_10_training_time:
+  query: |
+    SELECT AVG(end_time - start_time) / 1000.0 AS last_10_avg_training_time_seconds
+    FROM (
+      SELECT end_time, start_time
+      FROM runs
+      WHERE end_time IS NOT NULL AND start_time IS NOT NULL
+      ORDER BY end_time DESC
+      LIMIT 10
+    ) sub;
+  metrics:
+    - last_10_avg_training_time_seconds:
+        usage: GAUGE

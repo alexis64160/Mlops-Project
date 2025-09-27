@@ -1,0 +1,225 @@
+dags_success:
+  query: |
+    SELECT
+      all_dags.dag_id,
+      COALESCE(success_stats.success, 0) AS success
+    FROM (
+      SELECT DISTINCT dag_id
+      FROM dag_run
+    ) AS all_dags
+    LEFT JOIN (
+      SELECT dag_id, COUNT(*) AS success
+      FROM dag_run
+      WHERE state = 'success'
+      GROUP BY dag_id
+    ) AS success_stats
+    ON all_dags.dag_id = success_stats.dag_id;
+  metrics:
+    - dag_id:
+        usage: LABEL
+    - success:
+        usage: GAUGE
+        description: "Total number of successful DAG runs per dag_id."
+
+dags_failed:
+  query: |
+    SELECT
+      all_dags.dag_id,
+      COALESCE(failed_stats.failed, 0) AS failed
+    FROM (
+      SELECT DISTINCT dag_id
+      FROM dag_run
+    ) AS all_dags
+    LEFT JOIN (
+      SELECT dag_id, COUNT(*) AS failed
+      FROM dag_run
+      WHERE state = 'failed'
+      GROUP BY dag_id
+    ) AS failed_stats
+    ON all_dags.dag_id = failed_stats.dag_id;
+  metrics:
+    - dag_id:
+        usage: LABEL
+    - failed:
+        usage: GAUGE
+        description: "Total number of failed DAG runs per dag_id."
+
+dags_running:
+  query: |
+    SELECT
+      all_dags.dag_id,
+      COALESCE(running_stats.running, 0) AS running
+    FROM (
+      SELECT DISTINCT dag_id
+      FROM dag_run
+    ) AS all_dags
+    LEFT JOIN (
+      SELECT dag_id, COUNT(*) AS running
+      FROM dag_run
+      WHERE state = 'running'
+      GROUP BY dag_id
+    ) AS running_stats
+    ON all_dags.dag_id = running_stats.dag_id;
+  metrics:
+    - dag_id:
+        usage: LABEL
+    - running:
+        usage: GAUGE
+        description: "Number of DAG runs currently in running state per dag_id."
+
+dags_duration_avg_last_10:
+  query: |
+    SELECT
+      dag_id,
+      AVG(duration) AS avg_duration
+    FROM (
+      SELECT
+        dag_id,
+        EXTRACT(EPOCH FROM (end_date - start_date)) AS duration,
+        ROW_NUMBER() OVER (PARTITION BY dag_id ORDER BY start_date DESC) AS rn
+      FROM dag_run
+      WHERE state = 'success' AND start_date IS NOT NULL AND end_date IS NOT NULL
+    ) sub
+    WHERE rn <= 10
+    GROUP BY dag_id;
+  metrics:
+    - dag_id:
+        usage: LABEL
+    - avg_duration:
+        usage: GAUGE
+        description: "Average duration (in seconds) of the last 10 successful DAG runs per dag_id."
+
+dags_executions_count:
+  query: |
+    SELECT
+      all_dags.dag_id,
+      COALESCE(exec_counts.count, 0) AS executions
+    FROM (
+      SELECT DISTINCT dag_id
+      FROM dag_run
+    ) AS all_dags
+    LEFT JOIN (
+      SELECT dag_id, COUNT(*) AS count
+      FROM dag_run
+      GROUP BY dag_id
+    ) AS exec_counts
+    ON all_dags.dag_id = exec_counts.dag_id;
+  metrics:
+    - dag_id:
+        usage: LABEL
+    - executions:
+        usage: GAUGE
+        description: "Total number of DAG runs (all states) per dag_id."
+
+tasks_success:
+  query: |
+    SELECT
+      all_tasks.task_id,
+      COALESCE(success_stats.success, 0) AS success
+    FROM (
+      SELECT DISTINCT task_id
+      FROM task_instance
+    ) AS all_tasks
+    LEFT JOIN (
+      SELECT task_id, COUNT(*) AS success
+      FROM task_instance
+      WHERE state = 'success'
+      GROUP BY task_id
+    ) AS success_stats
+    ON all_tasks.task_id = success_stats.task_id;
+  metrics:
+    - task_id:
+        usage: LABEL
+    - success:
+        usage: GAUGE
+        description: "Total number of successful task instances per task_id."
+
+tasks_failed:
+  query: |
+    SELECT
+      all_tasks.task_id,
+      COALESCE(failed_stats.failed, 0) AS failed
+    FROM (
+      SELECT DISTINCT task_id
+      FROM task_instance
+    ) AS all_tasks
+    LEFT JOIN (
+      SELECT task_id, COUNT(*) AS failed
+      FROM task_instance
+      WHERE state = 'failed'
+      GROUP BY task_id
+    ) AS failed_stats
+    ON all_tasks.task_id = failed_stats.task_id;
+  metrics:
+    - task_id:
+        usage: LABEL
+    - failed:
+        usage: GAUGE
+        description: "Total number of failed task instances per task_id."
+
+tasks_running:
+  query: |
+    SELECT
+      all_tasks.task_id,
+      COALESCE(running_stats.running, 0) AS running
+    FROM (
+      SELECT DISTINCT task_id
+      FROM task_instance
+    ) AS all_tasks
+    LEFT JOIN (
+      SELECT task_id, COUNT(*) AS running
+      FROM task_instance
+      WHERE state = 'running'
+      GROUP BY task_id
+    ) AS running_stats
+    ON all_tasks.task_id = running_stats.task_id;
+  metrics:
+    - task_id:
+        usage: LABEL
+    - running:
+        usage: GAUGE
+        description: "Number of task instances currently in running state per task_id."
+
+tasks_duration_avg_last_10:
+  query: |
+    SELECT
+      task_id,
+      AVG(duration) AS avg_duration
+    FROM (
+      SELECT
+        task_id,
+        EXTRACT(EPOCH FROM (end_date - start_date)) AS duration,
+        ROW_NUMBER() OVER (PARTITION BY task_id ORDER BY start_date DESC) AS rn
+      FROM task_instance
+      WHERE state = 'success' AND start_date IS NOT NULL AND end_date IS NOT NULL
+    ) sub
+    WHERE rn <= 10
+    GROUP BY task_id;
+  metrics:
+    - task_id:
+        usage: LABEL
+    - avg_duration:
+        usage: GAUGE
+        description: "Average duration (in seconds) of the last 10 successful task instances per task_id."
+
+tasks_executions_count:
+  query: |
+    SELECT
+      all_tasks.task_id,
+      COALESCE(exec_counts.count, 0) AS executions
+    FROM (
+      SELECT DISTINCT task_id
+      FROM task_instance
+    ) AS all_tasks
+    LEFT JOIN (
+      SELECT task_id, COUNT(*) AS count
+      FROM task_instance
+      GROUP BY task_id
+    ) AS exec_counts
+    ON all_tasks.task_id = exec_counts.task_id;
+  metrics:
+    - task_id:
+        usage: LABEL
+    - executions:
+        usage: GAUGE
+        description: "Total number of task instances executions (all states) per task_id."
