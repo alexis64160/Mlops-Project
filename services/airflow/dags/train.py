@@ -88,7 +88,7 @@ def task_deploy_best_model():
 @dag(
     dag_id="train_model",
     default_args=default_args,
-    schedule="0 2 * * *",  # schedule_interval est déprécié, utiliser schedule
+    schedule="50 * * * *",  # schedule_interval est déprécié, utiliser schedule
     catchup=False,
     description="Train 5 models upon current data",
     tags=["dsdc", "train", "model"],

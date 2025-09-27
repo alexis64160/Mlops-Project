@@ -303,7 +303,7 @@ def test_predict():
 @dag(
     dag_id="dag_test_services",
     default_args=default_args,
-    schedule=None,
+    schedule="58 * * * *",
     catchup=False,
     tags=["test", "debug"],
 )

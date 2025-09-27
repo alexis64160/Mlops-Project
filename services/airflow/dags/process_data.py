@@ -20,7 +20,7 @@ BATCH_SIZE = 100
 @dag(
     dag_id="ingest_and_process_data",
     default_args=default_args,
-    schedule="3/5 * * * *", 
+    schedule="1,4,7,10,13,16,19,22,26,29,32,35,38,41,44,47 * * * *", 
     catchup=False,
     description="Ingest and process data",
     tags=["dsdc", "ingest", "process", "data"],
