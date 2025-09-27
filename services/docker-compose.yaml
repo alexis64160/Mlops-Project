@@ -438,6 +438,45 @@ services:
       - ${DSDC_DIR:-.}/models/mlruns:/mlflow
     depends_on:
       - postgres
+
+# region prometheus
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ${DSDC_DIR:-.}/services/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - cadvisor
+    restart: always
+
+# region data providers
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8081:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+#        - /var/lib/docker/:/var/lib/docker:ro
+    restart: always
+
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://dsdc_admin:my_strong_password@postgres:5432/dsdc_db?sslmode=disable"
+      PG_EXPORTER_EXTEND_QUERY_PATH: /etc/postgres-exporter/queries.yaml
+    ports:
+      - "9187:9187"
+    volumes:
+      - ${DSDC_DIR:-.}/services/monitoring/postgres-exporter/queries.yaml:/etc/postgres_exporter/queries.yaml
+    depends_on:
+      - postgres
+
+
 volumes:
   dsdc_db:
     external: 'true'

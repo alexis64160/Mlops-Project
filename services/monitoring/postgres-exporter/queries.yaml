@@ -1,0 +1,19 @@
+pg_table_row_estimate:
+  query: |
+    SELECT relname AS table_name, n_live_tup::bigint AS row_estimate
+    FROM pg_stat_user_tables
+    WHERE relname IN (
+      'original_documents',
+      'raw_texts',
+      'processed_texts',
+      'processed_images',
+      'embeddings',
+      'labels'
+    );
+  metrics:
+    - table_name:
+        usage: "label"
+        description: "Table name"
+    - row_estimate:
+        usage: "gauge"
+        description: "Estimated number of live rows per table (from pg_stat_user_tables)"
