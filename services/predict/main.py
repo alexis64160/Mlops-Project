@@ -2,24 +2,55 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 import numpy as np
 import requests
+from dsdc import CONFIG
 
 VERSION = "v1"
 app = FastAPI(title="Process Image Service")
 
 from dsdc.models.mlp import MLP
-filename = "current.keras"
-mlp = MLP.load(filename)
+
+def load_model(filename="current.keras"):
+    model_path = CONFIG.paths.models/"mlps"/filename
+    if model_path.exists():
+        mlp = MLP.load(filename)
+    else: 
+        mlp = None
+    return mlp
+mlp = load_model()
 
 @app.get("/status")
 def get_status():
-    return JSONResponse(content={
-        "status": "healthy",
-        "version": VERSION
-    })
+    global mlp
+    if mlp is None:
+        mlp = load_model()
+    if mlp is None:
+        raise HTTPException(status_code=503, detail="predict api is unable to load model.")
+    else:
+        return JSONResponse(content={
+            "status": "healthy",
+            "version": VERSION
+        })
+
+@app.post("/reload-model")
+def reload_model():
+    global mlp
+    if mlp is None:
+        mlp = load_model()
+    if mlp is None:
+        raise HTTPException(status_code=503, detail="predict api is unable to load model.")
+    else:
+        return JSONResponse(content={
+            "message": "Successfully reloaded model",
+        })
+
 
 @app.post(f"/{VERSION}/predict")
 async def predict(image: UploadFile = File(...)):
-
+    global mlp
+    if mlp is None:
+        mlp = load_model()
+    if mlp is None:
+        raise HTTPException(status_code=503, detail="predict api is unable to load model.")
     if image.content_type not in ["image/jpeg", "image/png", "image/tiff"]:
         raise HTTPException(status_code=400, detail="Le fichier doit être une image JPEG, PNG ou TIFF.")
     # extract text    
