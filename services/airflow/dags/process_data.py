@@ -134,13 +134,12 @@ def dag_ingest_and_process_data():
         embeddings, processed_image_ids, processed_text_ids, versions = [], [], [], []
         for text, image in zip(texts, images):
             image_path = CONFIG.paths.processed/image.image_file
-            with open(image_path, "rb") as f:
-                files = {"image": (image_path.name, f, "image/png")}
+            with open(image_path, "rb") as image_file:
+                files = {"image": (image_path.name, image_file, "image/png")}
                 data = {"text": text.processed_text}
                 response = requests.post(url, files=files, data=data)
             json_response = response.json()
             embedding = json_response.get("embeddings")
-            version = "0.0.0" # TODO
             embeddings.append(embedding)
             processed_image_ids.append(image.id)
             processed_text_ids.append(text.id)
