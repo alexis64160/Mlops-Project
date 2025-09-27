@@ -39,52 +39,28 @@ def get_random_params(
         amount=1,
         min_layers=2,
         max_layers=5,
-        min_units=512,
-        max_units=2048,
-        unit_multiple=16,
-        min_learning_rate=1e-5,
-        max_learning_rate=1e-3,
-        activation_functions={"relu": {}, "leaky_relu": {"min_lr": 1e-5, "max_lr": 1e-3}},
+        min_units_per_layer=16,
+        max_units_per_layer=1024,
+        min_total_units=512,
+        max_total_units=2048,
         dropout_frequency=0.7,
         min_dropout=0.0,
         max_dropout=0.5,
+        activation_functions={"relu": {}, "leaky_relu": {"min_lr": 1e-5, "max_lr": 1e-3}},
 ):
-    """
-    Generate a list of random MLP model configurations.
-
-    Each configuration includes a random number of layers, units per layer (multiple of `unit_multiple`),
-    random activations (from `activation_functions`), optional dropout, and a learning rate with
-    one significant digit between `min_learning_rate` and `max_learning_rate`.
-
-    Args:
-        amount (int): Number of configurations to generate.
-        min_layers (int): Minimum number of layers.
-        max_layers (int): Maximum number of layers.
-        min_units (int): Minimum total units across all layers.
-        max_units (int): Maximum total units across all layers.
-        unit_multiple (int): Unit count will be a multiple of this.
-        min_learning_rate (float): Minimum learning rate.
-        max_learning_rate (float): Maximum learning rate.
-        activation_functions (dict): Activation types with optional constraints (e.g., slope ranges).
-        dropout_frequency (float): Probability of applying dropout to a layer.
-        min_dropout (float): Minimum dropout rate.
-        max_dropout (float): Maximum dropout rate.
-
-    Returns:
-        list[dict]: A list of random MLP configurations.
-    """
     params = dict()
+    min_power = math.ceil(math.log2(min_units_per_layer))
+    max_power = math.floor(math.log2(max_units_per_layer))
+    allowed_units = [2 ** i for i in range(min_power, max_power + 1)]
 
     for count in range(1, amount + 1):
         num_layers = random.randint(min_layers, max_layers)
 
-        min_power = math.ceil(math.log2(max(unit_multiple, min_units)))
-        max_power = math.floor(math.log2(max_units))
-        allowed_units = [2 ** i for i in range(min_power, max_power + 1)]
+        # Générer la configuration en boucle tant que la somme est dans les bornes
         while True:
             layer_units = [random.choice(allowed_units) for _ in range(num_layers)]
-            total = sum(layer_units)
-            if min_units <= total <= max_units:
+            total_units = sum(layer_units)
+            if min_total_units <= total_units <= max_total_units:
                 break
 
         layers = []
@@ -93,25 +69,25 @@ def get_random_params(
             activation = random.choice(list(activation_functions.keys()))
             layer["activation"] = activation
             if activation == "leaky_relu":
-                # Optional: configure slope or learning rate constraints
                 layer["negative_slope"] = round(random.uniform(0.01, 0.3), 2)
             if random.random() < dropout_frequency:
                 layer["dropout"] = round(random.uniform(min_dropout, max_dropout), 1)
             layers.append(layer)
 
-        # Generate learning rate with 1 significant digit
         exponent = random.randint(
-            int(round(math.log10(min_learning_rate))),
-            int(round(math.log10(max_learning_rate)))
+            int(round(math.log10(1e-5))),
+            int(round(math.log10(1e-3)))
         )
         leading_digit = random.choice([1, 2, 5])
         learning_rate = leading_digit * (10 ** exponent)
-        learning_rate = min(max(learning_rate, min_learning_rate), max_learning_rate)
+        learning_rate = min(max(learning_rate, 1e-5), 1e-3)
+
         param = {
             "layers": layers,
             "learning_rate": learning_rate
         }
         params[f"random_{count}"] = param
+
     return params
 
 def get_param_summary(params):
