@@ -1,4 +1,4 @@
-pg_tables_row_count:
+dsdc_tables:
   query: |
     SELECT
       relname AS table,
@@ -13,3 +13,4 @@ pg_tables_row_count:
         usage: LABEL
     - row_count:
         usage: GAUGE
+        description: "Amount of rows inside table"

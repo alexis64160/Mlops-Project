@@ -45,7 +45,7 @@
       "title": "DAG Avg Duration (Last 10)",
       "targets": [
         {
-          "expr": "avg(dags_duration_avg_last_10)",
+          "expr": "avg(dags_avg_duration_last_10)",
           "refId": "A"
         }
       ],
@@ -57,7 +57,7 @@
       "title": "Total DAG Executions",
       "targets": [
         {
-          "expr": "sum(dags_executions_count)",
+          "expr": "sum(dags_total_runs)",
           "refId": "A"
         }
       ],
@@ -101,7 +101,7 @@
       "title": "Task Avg Duration (Last 10)",
       "targets": [
         {
-          "expr": "avg(tasks_duration_avg_last_10)",
+          "expr": "avg(tasks_avg_duration_last_10)",
           "refId": "A"
         }
       ],
