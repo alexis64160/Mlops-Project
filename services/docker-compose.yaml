@@ -398,6 +398,16 @@ services:
     depends_on:
       - postgres
 
+#region streamlit
+  streamlit:
+    container_name: dsdc-streamlit
+    image: dsdc-streamlit:latest
+    build:
+      context: ..
+      dockerfile: ${DSDC_DIR:-.}/services/streamlit/Dockerfile
+    ports:
+      - "8501:8501"
+
 # region prometheus
   prometheus:
     image: prom/prometheus
