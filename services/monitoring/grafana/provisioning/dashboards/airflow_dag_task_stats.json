@@ -113,7 +113,7 @@
       "title": "Total Task Executions",
       "targets": [
         {
-          "expr": "sum(tasks_executions_count)",
+          "expr": "sum(tasks_executions)",
           "refId": "A"
         }
       ],
