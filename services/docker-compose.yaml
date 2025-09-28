@@ -74,7 +74,7 @@ services:
       retries: 50
       start_period: 30s
     restart: always
-    
+
   airflow-apiserver:
     <<: *airflow-common
     command: api-server
@@ -473,8 +473,10 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
       - grafana_data:/var/lib/grafana
+      - ${DSDC_DIR:-.}/services/monitoring/grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - prometheus
+
 volumes:
   dsdc_db:
     external: 'true'
