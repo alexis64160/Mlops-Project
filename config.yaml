@@ -1,3 +1,5 @@
+# this file is to be configured before running prepare.sh script
+# would it be modified afterwards, it is highly recommended to rerun prepare.sh script
 paths:
     rvl_csv: data/rvl_documents.csv # only store rvl document ids and labels
     to_ingest: data/to_ingest
@@ -9,29 +11,35 @@ paths:
     alternative_cdip_images_docker: mock_data/IIT-CDIP/images
     alternative_cdip_images_local: ../ds-project/mai25_bds_extraction/data/raw/IIT-CDIP/images
 
-    
 settings:
     locally_run: false # false in docker-compose / true for local (dev & tests)
     log_level: INFO # one of DEBUG, INFO, WARNING, ERROR 
     primarly_use_alternative_cdip_images: true
 
 host_exposed_ports:
-  redis: 6379
-  airflow-apiserver: 8080
-  flower: 5555
-  postgres: 5432
-  pgadmin: 5050
-  extract-text: 64411
-  process-text: 64412
-  process-image: 64413
-  compute-clip-embeddings: 64414
-  train: 64415
-  predict: 64416
-  mlflow: 64405
-  streamlit: 8501
-  prometheus: 9090
-  cadvisor: 8081
-  dsdc-postgres-exporter: 9187
-  mlflow-postgres-exporter: 9189
-  airflow-postgres-exporter: 9188
-  grafana: 3000
+# open services
+  streamlit: 64400
+  predict: 64401
+
+# orchestration and db
+#   airflow-apiserver: 40641
+#   flower: 40649
+#   mlflow: 40642
+#   postgres: 40643
+#   pgadmin: 40644
+#   redis: 40645
+
+# atomic services
+#   extract-text: 64411
+#   process-text: 64412
+#   process-image: 64413
+#   compute-clip-embeddings: 64414
+#   train: 64415
+
+# monitoring
+#   prometheus: 64160
+#   grafana: 64161
+#   cadvisor: 64162
+#   dsdc-postgres-exporter: 64163
+#   mlflow-postgres-exporter: 64164
+#   airflow-postgres-exporter: 64165
