@@ -1,31 +1,37 @@
-# This file defines locally all the configurations values that are required to run the project.
-
-python:
-#    binary: /opt/python3.13/bin/python3.13
-    venv_path: .venv
-
 paths:
-    rvl_csv: data/raw/rvl_documents.csv # only store rvl document ids and labels
+    rvl_csv: data/rvl_documents.csv # only store rvl document ids and labels
+    to_ingest: data/to_ingest
+    rejected: data/rejected
+    raw: data/raw
+    processed: data/processed
+    models: models
     clip_model: models/clip-vit-base
+    alternative_cdip_images_docker: mock_data/IIT-CDIP/images
+    alternative_cdip_images_local: ../ds-project/mai25_bds_extraction/data/raw/IIT-CDIP/images
 
-services:
-    prediction_api:
-        port: 8000
-        expose_on_host: True
-    mlflow:
-        port: 5000
-        expose_on_host: True
-    auth:
-        port: 7000
-        expose_on_host: True
-    streamlit:
-        port: 8501
-        expose_on_host: True
-    prometheus:
-        port: 9090
-        expose_on_host: True
-    grafana:
-        port: 3000
-        expose_on_host: True
-    docker_compose:
-        subnetwork: 72.20.0.0/16
+    
+settings:
+    locally_run: false # false in docker-compose / true for local (dev & tests)
+    log_level: INFO # one of DEBUG, INFO, WARNING, ERROR 
+    primarly_use_alternative_cdip_images: true
+
+host_exposed_ports:
+  redis: 6379
+  airflow-apiserver: 8080
+  flower: 5555
+  postgres: 5432
+  pgadmin: 5050
+  extract-text: 64411
+  process-text: 64412
+  process-image: 64413
+  compute-clip-embeddings: 64414
+  train: 64415
+  predict: 64416
+  mlflow: 64405
+  streamlit: 8501
+  prometheus: 9090
+  cadvisor: 8081
+  dsdc-postgres-exporter: 9187
+  mlflow-postgres-exporter: 9189
+  airflow-postgres-exporter: 9188
+  grafana: 3000
