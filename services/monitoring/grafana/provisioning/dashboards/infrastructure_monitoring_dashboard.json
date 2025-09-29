@@ -1,0 +1,179 @@
+{
+  "id": null,
+  "uid": "infra-monitoring",
+  "title": "Infrastructure & Ressources",
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "15s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Utilisation CPU par Conteneur",
+      "targets": [
+        { "expr": "rate(container_cpu_usage_seconds_total[1m])", "legendFormat": "total", "refId": "A" },
+        { "expr": "rate(container_cpu_usage_seconds_total{mode=\"user\"}[1m])", "legendFormat": "user", "refId": "B" },
+        { "expr": "rate(container_cpu_usage_seconds_total{mode=\"system\"}[1m])", "legendFormat": "system", "refId": "C" }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "fieldConfig": { "defaults": { "unit": "percent", "stack": true } }
+    },
+    {
+      "type": "timeseries",
+      "title": "Mémoire des Conteneurs",
+      "targets": [
+        { "expr": "container_memory_usage_bytes", "legendFormat": "usage", "refId": "A" },
+        { "expr": "container_memory_working_set_bytes", "legendFormat": "working set", "refId": "B" },
+        { "expr": "container_memory_max_usage_bytes", "legendFormat": "max", "refId": "C" }
+      ],
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "fieldConfig": { "defaults": { "unit": "bytes" } }
+    },
+    {
+      "type": "table",
+      "title": "Top 10 Conteneurs CPU",
+      "targets": [
+        {
+          "expr": "topk(10, rate(container_cpu_usage_seconds_total[5m]))",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 6 },
+      "fieldConfig": { "defaults": { "unit": "percent" } }
+    },
+    {
+      "type": "table",
+      "title": "Top 10 Conteneurs Mémoire",
+      "targets": [
+        {
+          "expr": "topk(10, container_memory_usage_bytes)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 6 },
+      "fieldConfig": { "defaults": { "unit": "bytes" } }
+    },
+    {
+      "type": "barchart",
+      "title": "Utilisation Disque",
+      "targets": [
+        { "expr": "container_fs_usage_bytes", "legendFormat": "usage", "refId": "A" },
+        { "expr": "container_fs_limit_bytes", "legendFormat": "limit", "refId": "B" }
+      ],
+      "gridPos": { "x": 0, "y": 14, "w": 12, "h": 6 },
+      "fieldConfig": { "defaults": { "unit": "bytes" } }
+    },
+    {
+      "type": "timeseries",
+      "title": "Trafic Réseau",
+      "targets": [
+        { "expr": "rate(container_network_receive_bytes_total[1m])", "legendFormat": "RX", "refId": "A" },
+        { "expr": "rate(container_network_transmit_bytes_total[1m])", "legendFormat": "TX", "refId": "B" }
+      ],
+      "gridPos": { "x": 12, "y": 14, "w": 12, "h": 6 },
+      "fieldConfig": { "defaults": { "unit": "Bps" } }
+    },
+    {
+      "type": "stat",
+      "title": "Données DSDC",
+      "targets": [
+        { "expr": "dsdc_tables_row_count", "refId": "A" }
+      ],
+      "gridPos": { "x": 0, "y": 20, "w": 4, "h": 3 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 10000 },
+              { "color": "yellow", "value": 50000 },
+              { "color": "green", "value": 100000 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Santé des Services - cadvisor",
+      "targets": [
+        {
+          "expr": "count(container_cpu_usage_seconds_total{job=\"cadvisor\"})",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 4, "y": 20, "w": 4, "h": 3 },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": 0 },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Santé des Services - airflow",
+      "targets": [
+        {
+          "expr": "count(dags_success)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 8, "y": 20, "w": 4, "h": 3 },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": 0 },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "container_filter",
+        "type": "query",
+        "datasource": "Prometheus",
+        "query": "label_values(container_cpu_usage_seconds_total, name)",
+        "refresh": 1
+      },
+      {
+        "name": "service_filter",
+        "type": "custom",
+        "options": [
+          { "value": "cadvisor", "selected": true },
+          { "value": "dsdc", "selected": true },
+          { "value": "mlflow", "selected": true },
+          { "value": "airflow", "selected": true }
+        ],
+        "includeAll": true
+      }
+    ]
+  },
+  "annotations": {
+    "list": [
+      {
+        "name": "deployments",
+        "type": "dashboard",
+        "datasource": "Prometheus",
+        "enable": true,
+        "expr": "increase(container_start_time_seconds[1m]) > 0",
+        "iconColor": "rgba(255, 96, 96, 1)",
+        "titleFormat": "Redémarrage Conteneur",
+        "textFormat": "Un conteneur a redémarré"
+      }
+    ]
+  }
+}

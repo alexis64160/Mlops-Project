@@ -1,0 +1,151 @@
+{
+  "id": null,
+  "uid": "airflow-dags-tasks",
+  "title": "Rapports DAGs Airflow",
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "type": "piechart",
+      "title": "État des DAGs",
+      "targets": [
+        {
+          "expr": "sum(dags_success)",
+          "legendFormat": "Success",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(dags_failed)",
+          "legendFormat": "Failed",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(dags_running)",
+          "legendFormat": "Running",
+          "refId": "C"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 8, "h": 6 }
+    },
+    {
+      "type": "table",
+      "title": "Exécutions Totales par DAG",
+      "targets": [
+        {
+          "expr": "dags_total_runs",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 8, "y": 0, "w": 8, "h": 6 }
+    },
+    {
+      "type": "barchart",
+      "title": "Durée Moyenne (10 Derniers DAGs)",
+      "targets": [
+        {
+          "expr": "dags_avg_duration_last_10",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 6, "w": 8, "h": 6 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        }
+      }
+    },
+    {
+      "type": "heatmap",
+      "title": "Durée Totale par DAG",
+      "targets": [
+        {
+          "expr": "dags_total_duration",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 8, "y": 6, "w": 8, "h": 6 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        }
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Tâches Réussies",
+      "targets": [
+        {
+          "expr": "sum(tasks_success)",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 12, "w": 4, "h": 3 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Tâches Échouées",
+      "targets": [
+        {
+          "expr": "sum(tasks_failed)",
+          "refId": "B"
+        }
+      ],
+      "gridPos": { "x": 4, "y": 12, "w": 4, "h": 3 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Tâches En Cours",
+      "targets": [
+        {
+          "expr": "sum(tasks_running)",
+          "refId": "C"
+        }
+      ],
+      "gridPos": { "x": 8, "y": 12, "w": 4, "h": 3 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        }
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Exécutions de Tâches",
+      "targets": [
+        {
+          "expr": "tasks_executions_count",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 15, "w": 12, "h": 6 }
+    },
+    {
+      "type": "table",
+      "title": "Performance Tâches (Dernières 10)",
+      "targets": [
+        {
+          "expr": "tasks_avg_duration_last_10",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 0, "w": 8, "h": 6 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        }
+      }
+    }
+  ]
+}
