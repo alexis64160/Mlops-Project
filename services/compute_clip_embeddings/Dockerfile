@@ -6,7 +6,7 @@ COPY dsdc ./dsdc
 COPY .dsdc_project_root .
 COPY .env.secrets .
 
-COPY services/compute_clip_embeddings/config.yaml .
+COPY config.yaml .
 COPY services/compute_clip_embeddings/main.py .
 COPY services/compute_clip_embeddings/pyproject.toml .
 

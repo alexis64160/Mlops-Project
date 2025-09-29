@@ -5,7 +5,7 @@ WORKDIR /app
 COPY dsdc ./dsdc
 COPY .dsdc_project_root .
 COPY .env.secrets .
-COPY services/extract_text/config.yaml .
+COPY config.yaml .
 COPY services/extract_text/main.py .
 COPY services/extract_text/pyproject.toml .
 

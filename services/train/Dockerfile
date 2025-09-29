@@ -6,7 +6,7 @@ COPY dsdc ./dsdc
 COPY .dsdc_project_root .
 COPY .env.secrets .
 
-COPY services/train/config.yaml .
+COPY config.yaml .
 COPY services/train/main.py .
 COPY services/train/pyproject.toml .
 

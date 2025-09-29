@@ -6,7 +6,7 @@ COPY dsdc ./dsdc
 COPY .dsdc_project_root .
 COPY .env.secrets .
 
-COPY services/predict/config.yaml .
+COPY config.yaml .
 # COPY services/predict/main.py .
 COPY services/predict/pyproject.toml .
 
