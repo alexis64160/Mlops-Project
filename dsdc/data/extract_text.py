@@ -8,18 +8,18 @@ from dsdc.db.crud.original_documents import get_original_image_paths
 
 try:
     version = str(pytesseract.get_tesseract_version())
-    print("Tesseract version:", version)
-    print("pytesseract est bien configuré.")
+    logging.info("Tesseract version:", version)
+    logging.info("pytesseract est bien configuré.")
 except Exception as e:
-    print("Erreur:", e)
+    logging.info("Erreur:", e)
     logging.info("trying to set pytesseract path manually")
     pytesseract.pytesseract.tesseract_cmd = "/opt/homebrew/bin/tesseract" # Chemin à mettre à jour le cas echeant
     try:
         version = str(pytesseract.get_tesseract_version())
-        print("Tesseract version:", version)
-        print("pytesseract est bien configuré.")
+        logging.info("Tesseract version:", version)
+        logging.info("pytesseract est bien configuré.")
     except Exception as e:
-        print("Erreur:", e)
+        logging.error(f"Erreur: {e}")
 version = f"Tesseract v{version}"
 
 def extract_text(image_file_path):

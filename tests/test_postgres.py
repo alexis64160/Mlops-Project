@@ -1,12 +1,13 @@
 import psycopg2
 import pytest
+import os
+from dsdc import CONFIG
 
-from dsdc import CONFIG, SECRETS
 # Configuration de connexion à la base de données
 DB_CONFIG = {
-    "dbname": CONFIG.services.postgres.db_name,
-    "user": SECRETS.POSTGRES_USER,
-    "password": SECRETS.POSTGRES_PASSWORD,
+    "dbname": os.environ["DSDC_POSTGRES_DSDC_DB"],
+    "user": os.environ["DSDC_POSTGRES_DSDC_USER"],
+    "password": os.environ["DSDC_POSTGRES_DSDC_PASSWORD"],
     "host": "localhost",
     "port": 5432
 }

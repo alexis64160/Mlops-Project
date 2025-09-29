@@ -54,27 +54,27 @@ async def predict(image: UploadFile = File(...)):
     if image.content_type not in ["image/jpeg", "image/png", "image/tiff"]:
         raise HTTPException(status_code=400, detail="Le fichier doit être une image JPEG, PNG ou TIFF.")
     # extract text    
-    url = "http://dsdc_extract_text:8000/status"
+    url = "http://dsdc-extract-text:8000/status"
     response = requests.get(url)
     version = response.json()["version"]
-    url = f"http://dsdc_extract_text:8000/{version}/extract-text"
+    url = f"http://dsdc-extract-text:8000/{version}/extract-text"
     payload = {
         "image": (image.filename, await image.read(), image.content_type)
     }
     response = requests.post(url, files=payload)
     raw_text = response.json()["extracted_text"]
     # process text
-    url="http://dsdc_process_text:8000/status"
+    url="http://dsdc-process-text:8000/status"
     response = requests.get(url)
     version = response.json()["version"]
-    url = f"http://dsdc_process_text:8000/{version}/process-text"
+    url = f"http://dsdc-process-text:8000/{version}/process-text"
     response = requests.post(url, json={"raw_text": raw_text})
     processed_text = response.json()["processed_text"]
     # process image
-    url = "http://dsdc_process_image:8000/status"
+    url = "http://dsdc-process-image:8000/status"
     response = requests.get(url)
     version = response.json()["version"]
-    url = f"http://dsdc_process_image:8000/{version}/process-image"
+    url = f"http://dsdc-process-image:8000/{version}/process-image"
     await image.seek(0)
     payload = {
         "image": (image.filename, await image.read(), image.content_type)
@@ -82,10 +82,10 @@ async def predict(image: UploadFile = File(...)):
     response = requests.post(url, files=payload)
     processed_image = response.content
     # compute embeddings
-    url = "http://dsdc_compute_clip_embeddings:8000/status"
+    url = "http://dsdc-compute-clip-embeddings:8000/status"
     response = requests.get(url)
     version = response.json()["version"]
-    url = f"http://dsdc_compute_clip_embeddings:8000/{version}/compute-embeddings"
+    url = f"http://dsdc-compute-clip-embeddings:8000/{version}/compute-embeddings"
     embeddings_payload = {
         "image": ("processed_image.png", processed_image, "image/png")
     }

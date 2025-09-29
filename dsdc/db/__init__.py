@@ -1,13 +1,14 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from dsdc import CONFIG, SECRETS
+from dsdc import CONFIG
 import logging
+import os
 
 DSDCBase = declarative_base()
 
-username = SECRETS.DSDC_USER
-password = SECRETS.DSDC_PASSWORD
-db_name = CONFIG.services.postgres.dsdc_db_name
+username = os.environ["DSDC_POSTGRES_DSDC_USER"]
+password = os.environ["DSDC_POSTGRES_DSDC_PASSWORD"]
+db_name = os.environ["DSDC_POSTGRES_DSDC_DB"]
 
 if getattr(CONFIG.settings, "locally_run", False):
     prefix = "postgresql"
@@ -16,6 +17,8 @@ if getattr(CONFIG.settings, "locally_run", False):
     address = f"{host}:{port}"
 else:
     prefix = "postgresql+psycopg2"
+    host = "localhost" 
+    port = 5432
     address = "dsdc-postgres" # TODO: set to docker subnet CONFIG.docker_compose.subnetwork
 
 DATABASE_URL = f"{prefix}://{username}:{password}@{address}/{db_name}"

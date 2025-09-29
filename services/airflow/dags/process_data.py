@@ -35,10 +35,10 @@ def dag_ingest_and_process_data():
     
     @task(task_id="extract_texts")
     def task_extract_texts():
-        url="http://dsdc_extract_text:8000/status"
+        url="http://dsdc-extract-text:8000/status"
         response = requests.get(url)
         version = response.json()["version"]
-        url=f"http://dsdc_extract_text:8000/{version}/extract-text"
+        url=f"http://dsdc-extract-text:8000/{version}/extract-text"
         document_ids = get_missing_raw_text_document_ids()[:BATCH_SIZE]
         if not document_ids:
             logging.warning("No text to extract")
@@ -64,10 +64,10 @@ def dag_ingest_and_process_data():
 
     @task(task_id="process_texts")
     def task_process_texts():
-        url="http://dsdc_process_text:8000/status"
+        url="http://dsdc-process-text:8000/status"
         response = requests.get(url)
         version = response.json()["version"]
-        url=f"http://dsdc_process_text:8000/{version}/process-text"
+        url=f"http://dsdc-process-text:8000/{version}/process-text"
         raw_texts = get_missing_processed_text_raw_texts()[:BATCH_SIZE]
         if not raw_texts:
             logging.warning("No raw text to process")
@@ -92,10 +92,10 @@ def dag_ingest_and_process_data():
 
     @task(task_id="process_images")
     def task_process_images():
-        url="http://dsdc_process_image:8000/status"
+        url="http://dsdc-process-image:8000/status"
         response = requests.get(url)
         version = response.json()["version"]
-        url=f"http://dsdc_process_image:8000/{version}/process-image"
+        url=f"http://dsdc-process-image:8000/{version}/process-image"
         documents = get_missing_processed_image_documents()[:BATCH_SIZE]
         if not documents:
             logging.warning("No image to process")
@@ -124,10 +124,10 @@ def dag_ingest_and_process_data():
 
     @task(task_id="compute_embeddings")
     def task_compute_embeddings():
-        url="http://dsdc_compute_clip_embeddings:8000/status"
+        url="http://dsdc-compute-clip-embeddings:8000/status"
         response = requests.get(url)
         version = response.json()["version"]
-        url=f"http://dsdc_compute_clip_embeddings:8000/{version}/compute-embeddings"
+        url=f"http://dsdc-compute-clip-embeddings:8000/{version}/compute-embeddings"
         document_ids=get_missing_embeddings_document_ids()[:BATCH_SIZE]
         texts = get_processed_texts(document_ids=document_ids) # function keeps order
         images = get_processed_images(document_ids=document_ids) # function keeps order

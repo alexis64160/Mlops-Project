@@ -12,9 +12,11 @@ else
   return 1
 fi
 
+source "$SCRIPT_DIR/configure.sh"
+
 # Load functions and set project root directory
-source "$SCRIPT_DIR/subscripts/utils.sh" 
-source "$SCRIPT_DIR/subscripts/set_project_dir.sh" 
+# source "$SCRIPT_DIR/subscripts/utils.sh" 
+# source "$SCRIPT_DIR/subscripts/set_project_dir.sh" 
 
 # Ask for confirmation
 echo "⚠️  WARNING: This operation will IRREVERSIBLY delete all generated files in:"
@@ -110,6 +112,12 @@ fi
 if [[ -d "$DSDC_DIR/models" ]]; then
   echo "🔸 Removing models directory"
   rm -rf "$DSDC_DIR/models"
+fi
+
+# Remove logs:
+if [[ -d "$DSDC_DIR/logs" ]]; then
+  echo "🔸 Removing logs directory"
+  rm -rf "$DSDC_DIR/logs"
 fi
 
 

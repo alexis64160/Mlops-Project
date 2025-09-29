@@ -4,11 +4,10 @@ WORKDIR /app
 
 COPY dsdc ./dsdc
 COPY .dsdc_project_root .
-COPY .env.secrets .
 
 COPY config.yaml .
-COPY services/compute_clip_embeddings/main.py .
-COPY services/compute_clip_embeddings/pyproject.toml .
+COPY services/compute-clip-embeddings/main.py .
+COPY services/compute-clip-embeddings/pyproject.toml .
 
 RUN apt-get update && apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
 

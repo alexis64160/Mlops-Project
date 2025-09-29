@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY dsdc ./dsdc
 COPY .dsdc_project_root .
-COPY .env.secrets .
 
 COPY config.yaml .
 COPY services/train/main.py .

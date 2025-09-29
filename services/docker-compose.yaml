@@ -10,7 +10,8 @@ x-airflow-common:
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
   # [personnal comment]: pre-building immage alow to save space and to avoid to have as many images as services.
-  image: dsdc_airflow:latest
+  image: dsdc-airflow:latest
+  # build needs to be done separately (to avoid error saying that build already exist)
   # build:
   #   context: ..
   #   dockerfile: services/airflow/Dockerfile
@@ -36,6 +37,9 @@ x-airflow-common:
     # The following line can be used to set a custom config file, stored in the local config folder
     AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
     DSDC_DIR: '/opt/dsdc'
+    DSDC_POSTGRES_DSDC_USER: ${DSDC_POSTGRES_DSDC_USER}
+    DSDC_POSTGRES_DSDC_PASSWORD: ${DSDC_POSTGRES_DSDC_PASSWORD}
+    DSDC_POSTGRES_DSDC_DB: ${DSDC_POSTGRES_DSDC_DB}
     PYTHONPATH: '/opt/airflow/plugins:/opt/airflow/plugins/dsdc:/opt/dsdc'
 
   volumes:
@@ -46,8 +50,7 @@ x-airflow-common:
     - ${DSDC_DIR:-.}/data:/opt/dsdc/data
     - ${DSDC_DIR:-.}/models:/opt/dsdc/models
     - ${DSDC_DIR:-.}/.dsdc_project_root:/opt/dsdc/.dsdc_project_root
-    - ${DSDC_DIR:-.}/services/airflow/config.yaml:/opt/dsdc/config.yaml
-    - ${DSDC_DIR:-.}/.env.secrets:/opt/dsdc/.env.secrets
+    - ${DSDC_DIR:-.}/config.yaml:/opt/dsdc/config.yaml
     - ${DSDC_DIR:-.}/../ds-project/mai25_bds_extraction/data/raw/IIT-CDIP:/opt/dsdc/mock_data/IIT-CDIP
     - ${DSDC_DIR:-.}/tests:/opt/dsdc/tests
 
@@ -64,9 +67,12 @@ services:
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change
     # https://redis.io/blog/redis-adopts-dual-source-available-licensing/
+    container_name: dsdc-redis
     image: redis:7.2-bookworm
     expose:
       - 6379
+    ports:
+      - "${DSDC_REDIS_PORT_MAPPING}"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -79,7 +85,7 @@ services:
     <<: *airflow-common
     command: api-server
     ports:
-      - "8080:8080"
+      - "${DSDC_AIRFLOW_APISERVER_PORT_MAPPING}"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/api/v2/version"]
       interval: 30s
@@ -248,9 +254,9 @@ services:
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_MIGRATE: 'true'
-      _AIRFLOW_WWW_USER_CREATE: 'true'
-      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
-      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _AIRFLOW_WWW_USER_CREATE: ${DSDC__AIRFLOW_WWW_USER_CREATE}
+      _AIRFLOW_WWW_USER_USERNAME: ${DSDC__AIRFLOW_WWW_USER_USERNAME}
+      _AIRFLOW_WWW_USER_PASSWORD: ${DSDC__AIRFLOW_WWW_USER_PASSWORD}
       _PIP_ADDITIONAL_REQUIREMENTS: ''
     user: "0:0"
 
@@ -278,7 +284,7 @@ services:
     profiles:
       - flower
     ports:
-      - "5555:5555"
+      - "${DSDC_FLOWER_PORT_MAPPING}"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:5555/"]
       interval: 30s
@@ -295,101 +301,106 @@ services:
     image: postgres:15
     container_name: dsdc-postgres
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${DSDC_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${DSDC_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${DSDC_POSTGRES_DB}
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "airflow"]
+      test: ["CMD", "pg_isready", "-U", "${DSDC_POSTGRES_USER}", "-d", "${DSDC_POSTGRES_DB}" ]
       interval: 10s
       retries: 5
       start_period: 5s
     restart: always
     volumes:
-      - dsdc_db:/var/lib/postgresql/data
+      - dsdc_postgres:/var/lib/postgresql/data
     ports:
-      - "5432:5432" # TODO: cabler avec config.yaml
+      - "${DSDC_POSTGRES_PORT_MAPPING}"
 # region pgadmin
-  pgadim:
+  pgadmin:
+    container_name: dsdc-pgadmin
     image: dpage/pgadmin4
-    container_name: pgadmin
     restart: always
     ports:
-      - "5050:80"  # TODO: cabler avec config.yaml
+      - "${DSDC_PGADMIN_PORT_MAPPING}"
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: adminpassword
+      PGADMIN_DEFAULT_EMAIL: ${DSDC_PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${DSDC_PGADMIN_DEFAULT_PASSWORD}
     volumes:
-      - pgadmin_data:/var/lib/pgadmin
+      - dsdc_pgadmin:/var/lib/pgadmin
     depends_on:
       - postgres
 # region dsdc
-  extract_text:
-    container_name: dsdc_extract_text
-    image: dsdc_extract_text:latest
+  extract-text:
+    container_name: dsdc-extract-text
+    image: dsdc-extract-text:latest
     build:
       context: ..
-      dockerfile: services/extract_text/Dockerfile
+      dockerfile: services/extract-text/Dockerfile
     ports:
-      - "64411:8000"
+      - "${DSDC_EXTRACT_TEXT_PORT_MAPPING}"
 
-  process_text:
-    container_name: dsdc_process_text
-    image: dsdc_process_text:latest
+  process-text:
+    container_name: dsdc-process-text
+    image: dsdc-process-text:latest
     build:
       context: ..
-      dockerfile: services/process_text/Dockerfile
+      dockerfile: services/process-text/Dockerfile
     ports:
-      - "64412:8000"
+      - "${DSDC_PROCESS_TEXT_PORT_MAPPING}"
 
-  process_image:
-    container_name: dsdc_process_image
-    image: dsdc_process_image:latest
+  process-image:
+    container_name: dsdc-process-image
+    image: dsdc-process-image:latest
     build:
       context: ..
-      dockerfile: services/process_image/Dockerfile
+      dockerfile: services/process-image/Dockerfile
     ports:
-      - "64413:8000"
+      - "${DSDC_PROCESS_IMAGE_PORT_MAPPING}"
 
-  compute_clip_embeddings:
-    container_name: dsdc_compute_clip_embeddings
-    image: dsdc_compute_clip_embeddings:latest
+  compute-clip-embeddings:
+    container_name: dsdc-compute-clip-embeddings
+    image: dsdc-compute-clip-embeddings:latest
     build:
       context: ..
-      dockerfile: services/compute_clip_embeddings/Dockerfile
+      dockerfile: services/compute-clip-embeddings/Dockerfile
     ports:
-      - "64414:8000"
+      - "${DSDC_COMPUTE_CLIP_EMBEDDINGS_PORT_MAPPING}"
     restart: always
 
   train:
-    container_name: dsdc_train
-    image: dsdc_train:latest
+    container_name: dsdc-train
+    image: dsdc-train:latest
     build:
       context: ..
       dockerfile: services/train/Dockerfile
+    environment:
+      DSDC_POSTGRES_DSDC_USER: ${DSDC_POSTGRES_DSDC_USER}
+      DSDC_POSTGRES_DSDC_PASSWORD: ${DSDC_POSTGRES_DSDC_PASSWORD}
+      DSDC_POSTGRES_DSDC_DB: ${DSDC_POSTGRES_DSDC_DB}
+
     ports:
-      - "64415:8000"
+      - "${DSDC_TRAIN_PORT_MAPPING}"
     volumes:
-    - ${DSDC_DIR:-.}/models:/opt/dsdc/models
+      - ${DSDC_DIR:-.}/models:/app/models
 
   predict:
-    container_name: dsdc_predict
-    image: dsdc_predict:latest
+    container_name: dsdc-predict
+    image: dsdc-predict:latest
     build:
       context: ..
       dockerfile: services/predict/Dockerfile
     ports:
-      - "64416:8000"
+      - "${DSDC_PREDICT_PORT_MAPPING}"
     volumes:
-    - ${DSDC_DIR:-.}/models:/opt/dsdc/models
+    - ${DSDC_DIR:-.}/models:/app/models
     - ${DSDC_DIR:-.}/services/predict/main.py:/app/main.py
 # region mlflow
   mlflow:
+    container_name: dsdc-mlflow
     build:
       context: ..
       dockerfile: services/mlflow/Dockerfile
-    container_name: mlflow
     ports:
-      - "64405:5000"
+      - "${DSDC_MLFLOW_PORT_MAPPING}"
     environment:
       MLFLOW_BACKEND_STORE_URI: postgresql://mlflow:mlflow_strong_password@dsdc-postgres:5432/mlflow
       MLFLOW_ARTIFACT_ROOT: file:///mlflow/artifacts
@@ -406,16 +417,16 @@ services:
       context: ..
       dockerfile: ${DSDC_DIR:-.}/services/streamlit/Dockerfile
     ports:
-      - "8501:8501"
+      - "${DSDC_STREAMLIT_PORT_MAPPING}"
 
 # region prometheus
   prometheus:
     image: prom/prometheus
-    container_name: prometheus
+    container_name: dsdc-prometheus
     volumes:
       - ${DSDC_DIR:-.}/services/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"
+      - "${DSDC_PROMETHEUS_PORT_MAPPING}"
     depends_on:
       - cadvisor
     restart: always
@@ -423,9 +434,9 @@ services:
 # region data providers
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
-    container_name: cadvisor
+    container_name: dsdc-cadvisor
     ports:
-      - "8081:8080"
+      - "${DSDC_CADVISOR_PORT_MAPPING}"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -434,61 +445,69 @@ services:
     restart: always
 
   dsdc-postgres_exporter:
+    container_name: dsdc-tables-exporter
     image: prometheuscommunity/postgres-exporter
     environment:
-      - DATA_SOURCE_NAME=postgresql://dsdc_admin:my_strong_password@postgres:5432/dsdc_db?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@postgres:5432/${DSDC_POSTGRES_DSDC_DB}?sslmode=disable
       # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
     volumes:
       - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/dsdc/queries.yaml:/etc/postgres_exporter/queries.yaml
     ports:
-      - "9187:9187"
+      - "${DSDC_DSDC_POSTGRES_EXPORTER_PORT_MAPPING}"
     command:
       - '--extend.query-path=/etc/postgres_exporter/queries.yaml'
+      - '--no-collector.wal'
       # - '--disable-default-metrics'
 
   mlflow-postgres_exporter:
+    container_name: dsdc-mlflow-exporter
     image: prometheuscommunity/postgres-exporter
     environment:
-      - DATA_SOURCE_NAME=postgresql://mlflow:mlflow_strong_password@postgres:5432/mlflow?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@postgres:5432/${DSDC_POSTGRES_MLFLOW_DB}?sslmode=disable
       # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
     volumes:
       - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/mlflow/queries.yaml:/etc/postgres_exporter/queries.yaml
     ports:
-      - "9189:9187"
+      - "${DSDC_MLFLOW_POSTGRES_EXPORTER_PORT_MAPPING}"
     command:
       - '--extend.query-path=/etc/postgres_exporter/queries.yaml'
+      - '--no-collector.wal'
       # - '--disable-default-metrics'
 
   airflow-postgres_exporter:
+    container_name: dsdc-airflow-exporter
     image: prometheuscommunity/postgres-exporter
     environment:
-      - DATA_SOURCE_NAME=postgresql://airflow:airflow_strong_password@postgres:5432/airflow?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@postgres:5432/${DSDC_POSTGRES_MLFLOW_DB}?sslmode=disable
       # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
     volumes:
       - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/airflow/queries.yaml:/etc/postgres_exporter/queries.yaml
     ports:
-      - "9188:9187"
+      - "${DSDC_AIRFLOW_POSTGRES_EXPORTER_PORT_MAPPING}"
     command:
       - '--extend.query-path=/etc/postgres_exporter/queries.yaml'
+      - '--no-collector.wal'
       # - '--disable-default-metrics'
 
 #region grafana
   grafana:
     image: grafana/grafana:latest
-    container_name: grafana
+    container_name: dsdc-grafana
     ports:
-      - "3000:3000"
+      - "${DSDC_GRAFANA_PORT_MAPPING}"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
-      - grafana_data:/var/lib/grafana
+      - dsdc_grafana:/var/lib/grafana
       - ${DSDC_DIR:-.}/services/monitoring/grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - prometheus
 
 volumes:
-  dsdc_db:
+  dsdc_postgres:
     external: 'true'
-  pgadmin_data:
-  grafana_data:
+  dsdc_pgadmin:
+    external: 'true'
+  dsdc_grafana:
+    external: 'true'

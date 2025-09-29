@@ -4,10 +4,9 @@ WORKDIR /app
 
 COPY dsdc ./dsdc
 COPY .dsdc_project_root .
-COPY .env.secrets .
 COPY config.yaml .
-COPY services/process_image/main.py .
-COPY services/process_image/pyproject.toml .
+COPY services/extract-text/main.py .
+COPY services/extract-text/pyproject.toml .
 
 # Installer tesseract OCR + langues anglaises
 RUN apt-get update && apt-get install -y tesseract-ocr tesseract-ocr-eng && rm -rf /var/lib/apt/lists/*

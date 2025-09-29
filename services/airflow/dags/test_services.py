@@ -64,7 +64,7 @@ def test_postgres():
 # region extract_text
 @task(task_id="test_extract_texts_healthy")
 def test_extract_texts_healthy():
-    url="http://dsdc_extract_text:8000/status"
+    url="http://dsdc-extract-text:8000/status"
     logging.info(f"testing whether extract-text api is healthy")
     response = requests.get(url)
     logging.info(response.status_code)
@@ -77,7 +77,7 @@ def test_extract_texts_healthy():
 
 @task(task_id="test_extract_texts_functional")
 def test_extract_texts_functional(version: str):
-    url=f"http://dsdc_extract_text:8000/{version}/extract-text"
+    url=f"http://dsdc-extract-text:8000/{version}/extract-text"
     logging.info(f"testing whether extract-text api is functional")
     image_path = PROJECT_ROOT/"tests"/"sample"/"rvl_aaa06d00_original.tif" # TODO: mettre ca dans CONFIG (+ ajouter path tests?)
     with open(image_path, "rb") as f:
@@ -105,7 +105,7 @@ def test_extract_texts():
 # region process_text
 @task(task_id="test_process_texts_healthy")
 def test_process_texts_healthy():
-    API_URL="http://dsdc_process_text:8000/status"
+    API_URL="http://dsdc-process-text:8000/status"
     logging.info(f"testing whether process-text api is healthy")
     response = requests.get(API_URL)
     logging.info(response.status_code)
@@ -118,7 +118,7 @@ def test_process_texts_healthy():
 
 @task(task_id="test_process_texts_functional")
 def test_process_texts_functional(version: str):
-    API_URL=f"http://dsdc_process_text:8000/{version}/process-text"
+    API_URL=f"http://dsdc-process-text:8000/{version}/process-text"
     logging.info(f"testing whether process-text api is functional")
     raw_text_path = PROJECT_ROOT/"tests"/"sample"/"rvl_aaa06d00_raw_text.txt"
     with open(raw_text_path, "r") as f:
@@ -147,7 +147,7 @@ def test_process_texts():
 #region process_image
 @task(task_id="test_process_image_healthy")
 def test_process_image_healthy():
-    API_URL = "http://dsdc_process_image:8000/status"
+    API_URL = "http://dsdc-process-image:8000/status"
     logging.info("Testing whether process-image API is healthy.")
     response = requests.get(API_URL)
     logging.info(f"Status code: {response.status_code}")
@@ -160,7 +160,7 @@ def test_process_image_healthy():
 
 @task(task_id="test_process_image_functional")
 def test_process_image_functional(version: str):
-    API_URL = f"http://dsdc_process_image:8000/{version}/process-image"
+    API_URL = f"http://dsdc-process-image:8000/{version}/process-image"
     def images_are_similar(img1: Image.Image, img2: Image.Image, tolerance: int = 5) -> bool:
         """
         Compare deux images avec une tolérance pixel par pixel.
@@ -213,7 +213,7 @@ def test_process_image():
 # region compute embeddings
 @task(task_id="test_embeddings_api_healthy")
 def test_embeddings_api_healthy():
-    API_URL = "http://dsdc_compute_clip_embeddings:8000/status"
+    API_URL = "http://dsdc-compute-clip-embeddings:8000/status"
     logging.info("Testing whether compute-embeddings API is healthy.")
     response = requests.get(API_URL)
     assert response.status_code == 200
@@ -225,7 +225,7 @@ def test_embeddings_api_healthy():
 
 @task(task_id="test_embeddings_api_functional")
 def test_embeddings_api_functional(version: str):
-    API_URL = f"http://dsdc_compute_clip_embeddings:8000/{version}/compute-embeddings"
+    API_URL = f"http://dsdc-compute-clip-embeddings:8000/{version}/compute-embeddings"
     logging.info("Testing whether compute-embeddings API is functional.")
 
     # Préparer les fichiers de test
@@ -259,7 +259,7 @@ def test_compute_embeddings():
 # region predict
 @task(task_id="test_predict_healthy")
 def test_predict_healthy():
-    API_URL="http://dsdc_predict:8000/status"
+    API_URL="http://dsdc-predict:8000/status"
     logging.info(f"testing whether predict api is healthy")
     response = requests.get(API_URL)
     logging.info(response.status_code)
@@ -272,7 +272,7 @@ def test_predict_healthy():
 
 @task(task_id="test_predict_functional")
 def test_predict_functional(version: str):
-    API_URL=f"http://dsdc_predict:8000/{version}/predict"
+    API_URL=f"http://dsdc-predict:8000/{version}/predict"
     logging.info(f"testing whether predict api is functional")
 
     image = PROJECT_ROOT/"tests"/"sample"/"rvl_aaa06d00_original.tif"

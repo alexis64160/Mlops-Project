@@ -18,11 +18,11 @@ default_args = {
     'start_date': datetime(2025, 9, 14),
 }
 
-TRAIN_RUNS = 10
+TRAIN_RUNS = 3
 
 @task(task_id="train_model")
 def task_train_model():
-    API_URL="http://dsdc_train:8000/train-model"
+    API_URL="http://dsdc-train:8000/train-model"
     params = INITIAL_BEST_KNWON_PARAMS | get_random_params(amount=max(0, TRAIN_RUNS-len(INITIAL_BEST_KNWON_PARAMS)))
     logging.info(f"retrieved {len(params)} parameters sets.")
     responses = []
@@ -77,13 +77,13 @@ def task_deploy_best_model():
     logging.info(f"Linked {current_link} -> {model_file_path}")
 
     try:
-        response = requests.post("http://dsdc_predict:8000/reload-model")
+        response = requests.post("http://dsdc-predict:8000/reload-model")
         if response.status_code == 200:
-            logging.info("Successfully reloaded dsdc_predict.")
+            logging.info("Successfully reloaded dsdc-predict.")
         else:
-            logging.warning(f"Failed to reload dsdc_predict: {response.status_code}")
+            logging.warning(f"Failed to reload dsdc-predict: {response.status_code}")
     except Exception as e:
-        logging.warning(f"Could not contact dsdc_predict to reload model: {e}")
+        logging.warning(f"Could not contact dsdc-predict to reload model: {e}")
 
 @dag(
     dag_id="train_model",

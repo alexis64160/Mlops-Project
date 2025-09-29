@@ -95,24 +95,12 @@ mkdir -p data/raw
 mkdir -p data/processed
 mkdir -p models
 
-# --------------------- #
-# DOWNLOAD CLIP WEIGHTS #
-# --------------------- #
-python $DSDC_DIR/dsdc/scripts/download_clip.py
-
-
-# -------------- #
-# PREPARE DOCKER #
-# -------------- #
-
-docker pull postgres:15
-cd $DSDC_DIR/services/airflow
-docker build -t dsdc_airflow:latest .
-cd $DSDC_DIR
-$DSDC_DIR/services/postgres/scripts/initialize.sh
-
-
 unset DSDC_PYTHON
-# TODO: pull toutes images
-# TODO: build toutes images
-# TODO: prune
+
+echo ""
+echo "✅ Successfully installed DataScientest Document Classification"
+echo "Next steps:"
+echo "  - [MANTADORY] Customize your passwords inside ${DSDC_DIR}/.secrets file"
+echo "  - [OPTIONAL] Customize your settings inside ${DSDC_DIR}/config.yaml file"
+echo "  - execute 'prepare.sh' script at ${DSDC_DIR}/scripts/prepare.sh"
+

@@ -5,7 +5,7 @@ from PIL import Image
 import numpy as np
 
 # API endpoint
-API_URL = "http://dsdc_predict:8000/v1/predict"
+API_URL = "http://dsdc-predict:8000/v1/predict"
 
 # DVL-CDIP class labels
 CLASS_NAMES = [

@@ -22,7 +22,6 @@ def get_project_root(marker=".dsdc_project_root") -> Path:
         else:
             files = [p.name for p in Path(root_dir).iterdir()]
             if not marker in files:
-                print(list(Path(root_dir).iterdir()))
                 logging.warning(
                     msg=f"DSDC_DIR directory does not contain .dsdc_project_root file, as expected (current_value is {root_dir}). Scanning for project root directory..."
                 )
@@ -75,13 +74,15 @@ def load_config_as_namespace(config_path: Path, project_root: Path) -> SimpleNam
     with open(config_path, "r") as f:
         config_dict = yaml.safe_load(f)
 
-    # Traitement spécifique pour `paths`
+    # make all paths absolute
     if config_dict is None:
         return SimpleNamespace()
     elif "paths" in config_dict:
         config_dict["paths"] = process_paths(config_dict["paths"])
-
+    config_dict["paths"]["project_root"] = project_root
+    config_dict["paths"]["config"] = config_path
     return dict_to_namespace(config_dict)
+
 
 
 def load_env_file(filepath):

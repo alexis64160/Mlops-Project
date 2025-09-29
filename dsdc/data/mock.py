@@ -34,10 +34,14 @@ def pull_cdip_images(minimum_quantity = 500):
 
     if CONFIG.settings.primarly_use_alternative_cdip_images:
         # copie des images depuis un répertoire local
-        logging.info(f"Looking for files in local repository {CONFIG.paths.alternative_cdip_images}")
+        if getattr(CONFIG.settings, "locally_run", False):
+            mock_data_path = CONFIG.paths.alternative_cdip_images_local
+        else:
+            mock_data_path = CONFIG.paths.alternative_cdip_images_docker
+        paths = [mock_data_path/f"images{prefix[0]}"/prefix[0]/prefix[1] for prefix in prefixes]
+        logging.info(f"Looking for files in local repository {str(mock_data_path)}")
         t = time.time()
         tif_amount = 0
-        paths = [CONFIG.paths.alternative_cdip_images/f"images{prefix[0]}"/prefix[0]/prefix[1] for prefix in prefixes]
         for source_file in sum(list(map(get_images_files_in_directory, paths)), []):
             cdip_document_id = source_file.parent.name
             filename = source_file.name
