@@ -95,6 +95,11 @@ mkdir -p data/raw
 mkdir -p data/processed
 mkdir -p models
 
+# --------------------- #
+#  COPY FILE TEMPLATES  #
+# --------------------- #
+cp "$DSDC_DIR/scripts/templates/*" "$DSDC_DIR"
+
 unset DSDC_PYTHON
 
 echo ""
