@@ -65,8 +65,11 @@ token.txt
 /models
 /logs
 
-# docker .env (dynamically created)
+# (dynamically created files)
 services/.env
+services/postgres/init_dbs/init_dbs_and_users.sql
+/.secrets
+/.config.yaml
 
 # Docker
 .dockerignore
