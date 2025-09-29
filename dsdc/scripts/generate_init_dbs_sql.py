@@ -60,7 +60,7 @@ for name, info in db_users.items():
     sql_lines.append(f"""\\c {db}
 GRANT USAGE ON SCHEMA public TO {exporter_user};
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO {exporter_user};
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO {exporter_user};
+ALTER DEFAULT PRIVILEGES FOR ROLE {info['user']} IN SCHEMA public GRANT SELECT ON TABLES TO {exporter_user};
 """)
 
 # Écriture du fichier SQL
