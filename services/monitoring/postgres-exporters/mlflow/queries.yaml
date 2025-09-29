@@ -1,6 +1,6 @@
 trained_models_count:
   query: |
-    SELECT COUNT(*) AS trained_models FROM registered_models;
+    SELECT COUNT(*) AS run_uuid FROM runs;
   metrics:
     - trained_models:
         usage: GAUGE
