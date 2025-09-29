@@ -444,11 +444,11 @@ services:
 #        - /var/lib/docker/:/var/lib/docker:ro
     restart: always
 
-  dsdc-postgres_exporter:
+  dsdc-tables-exporter:
     container_name: dsdc-tables-exporter
     image: prometheuscommunity/postgres-exporter
     environment:
-      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@postgres:5432/${DSDC_POSTGRES_DSDC_DB}?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@dsdc-postgres:5432/${DSDC_POSTGRES_DSDC_DB}?sslmode=disable
       # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
     volumes:
       - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/dsdc/queries.yaml:/etc/postgres_exporter/queries.yaml
@@ -463,7 +463,7 @@ services:
     container_name: dsdc-mlflow-exporter
     image: prometheuscommunity/postgres-exporter
     environment:
-      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@postgres:5432/${DSDC_POSTGRES_MLFLOW_DB}?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@dsdc-postgres:5432/${DSDC_POSTGRES_MLFLOW_DB}?sslmode=disable
       # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
     volumes:
       - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/mlflow/queries.yaml:/etc/postgres_exporter/queries.yaml
@@ -478,7 +478,7 @@ services:
     container_name: dsdc-airflow-exporter
     image: prometheuscommunity/postgres-exporter
     environment:
-      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@postgres:5432/${DSDC_POSTGRES_MLFLOW_DB}?sslmode=disable
+      - DATA_SOURCE_NAME=postgresql://${DSDC_POSTGRES_EXPORTER_USER}:${DSDC_POSTGRES_EXPORTER_PASSWORD}@dsdc-postgres:5432/${DSDC_POSTGRES_AIRFLOW_DB}?sslmode=disable
       # - PG_EXPORTER_DISABLE_DEFAULT_METRICS=true
     volumes:
       - ${DSDC_DIR:-.}/services/monitoring/postgres-exporters/airflow/queries.yaml:/etc/postgres_exporter/queries.yaml

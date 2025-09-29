@@ -7,10 +7,10 @@ scrape_configs:
       - targets: ['cadvisor:8080']
   - job_name: 'postgres-dsdc'
     static_configs:
-      - targets: ['services-dsdc-postgres_exporter-1:9187']
+      - targets: ['dsdc-tables-exporter:9187']
   - job_name: 'postgres-airflow'
     static_configs:
-      - targets: ['services-airflow-postgres_exporter-1:9187']
+      - targets: ['dsdc-airflow-exporter:9187']
   - job_name: 'postgres-mlflow'
     static_configs:
-      - targets: ['services-mlflow-postgres_exporter-1:9187']
+      - targets: ['dsdc-mlflow-exporter:9187']
