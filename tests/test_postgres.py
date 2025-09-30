@@ -2,6 +2,9 @@ import psycopg2
 import pytest
 import os
 from dsdc import CONFIG
+from dotenv import load_dotenv
+
+load_dotenv(CONFIG.paths.project_root/"services"/".env")
 
 # Configuration de connexion à la base de données
 DB_CONFIG = {
@@ -9,7 +12,7 @@ DB_CONFIG = {
     "user": os.environ["DSDC_POSTGRES_DSDC_USER"],
     "password": os.environ["DSDC_POSTGRES_DSDC_PASSWORD"],
     "host": "localhost",
-    "port": 5432
+    "port": os.environ["DSDC_POSTGRES_PORT"]
 }
 
 # Liste des tables attendues
