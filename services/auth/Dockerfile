@@ -8,9 +8,6 @@ COPY config.yaml .
 COPY services/auth/main.py .
 COPY services/auth/pyproject.toml .
 
-
-# Installer tesseract OCR + langues anglaises
-
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install --no-cache-dir .
 
