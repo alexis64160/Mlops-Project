@@ -1,0 +1,69 @@
+@startuml
+title Stack Technique MLOps
+
+skinparam backgroundColor #FFFFFF
+skinparam package {
+    BackgroundColor<<UI>> #E3F2FD
+    BorderColor<<UI>> #90CAF9
+
+    BackgroundColor<<Services>> #E8F5E9
+    BorderColor<<Services>> #A5D6A7
+
+    BackgroundColor<<Orchestration>> #FFF8E1
+    BorderColor<<Orchestration>> #FFE082
+
+    BackgroundColor<<Stockage>> #F3E5F5
+    BorderColor<<Stockage>> #CE93D8
+
+    BackgroundColor<<Monitoring>> #ECEFF1
+    BorderColor<<Monitoring>> #B0BEC5
+}
+
+' Légende (facultatif pour export)
+legend left
+<color:#E3F2FD>UI</color>, 
+<color:#E8F5E9>Services</color>, 
+<color:#FFF8E1>Orchestration</color>, 
+<color:#F3E5F5>Stockage</color>, 
+<color:#ECEFF1>Monitoring</color>
+endlegend
+
+' Couches empilées sans flèches
+
+package "Interfaces Utilisateur" <<UI>> {
+  [Streamlit]
+  [Grafana]
+  [pgAdmin]
+}
+
+package "Services Applicatifs" <<Services>> {
+  [Auth (JWT)]
+  [Predict (FastAPI)]
+}
+
+package "Orchestration & Traitement" <<Orchestration>> {
+  [Airflow Scheduler]
+  [Airflow Worker]
+  [Airflow Web UI]
+  [Extract Text (PyTesseract)]
+  [Process Text]
+  [Process Image]
+  [Compute Embeddings (CLIP/CDIP)]
+  [Train]
+  [MLflow]
+}
+
+package "Stockage & Fichiers" <<Stockage>> {
+  [PostgreSQL]
+  [Redis]
+  [Filesystem (Artifacts)]
+}
+
+package "Monitoring" <<Monitoring>> {
+  [Prometheus]
+  [cAdvisor]
+  [Postgres Exporters]
+  [Grafana]
+}
+
+@enduml

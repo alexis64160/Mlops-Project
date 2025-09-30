@@ -1,0 +1,19 @@
+title Stack Technique MLOps - DAG de Traitement
+
+participant "Orchestrateur (DAG)" as DAG
+participant "Ingestion de données" as Ingest
+participant "Extraction texte (OCR)" as ExtractText
+participant "Prétraitement texte" as ProcessText
+participant "Prétraitement image" as ProcessImage
+participant "Calcul des embeddings (CDIP)" as Embeddings
+participant "Base de Données / Vector Store" as DB
+
+DAG -> Ingest: task_ingest_data()
+Ingest -> ExtractText: task_extract_texts()
+Ingest -> ProcessImage: task_process_images()
+
+ExtractText -> ProcessText: task_process_texts()
+ProcessText -> Embeddings: Texte nettoyé
+ProcessImage -> Embeddings: Image prétraitée
+
+Embeddings -> DB: Stockage des embeddings

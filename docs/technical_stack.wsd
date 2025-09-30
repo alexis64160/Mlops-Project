@@ -1,0 +1,97 @@
+@startuml
+title Stack Technique - Infrastructure MLOps
+
+' Direction facultative si tu veux en horizontal
+' left to right direction
+
+' Couche Utilisateurs
+actor "Utilisateur" as User
+
+' Couche Interfaces
+package "Interfaces Utilisateur" {
+  [Streamlit]
+  [pgAdmin]
+  [Grafana]
+}
+
+' Couche Services Applicatifs
+package "Services Applicatifs" {
+  [Auth (JWT)]
+  [Predict (FastAPI)]
+}
+
+' Couche Orchestration & Traitement
+package "Orchestration & Traitement" {
+  [Airflow Scheduler]
+  [Airflow Worker]
+  [Airflow Web UI]
+  [Extract Text (PyTesseract)]
+  [Process Text]
+  [Process Image]
+  [Compute Embeddings (CLIP/CDIP)]
+  [Train]
+  [MLflow]
+}
+
+' Couche Stockage & Fichiers
+package "Stockage & Fichiers" {
+  database "PostgreSQL" as Postgres
+  [Redis Broker]
+  [Filesystem (Artifacts)]
+}
+
+' Couche Monitoring
+package "Monitoring" {
+  [Prometheus]
+  [cAdvisor]
+  [Postgres Exporters]
+  [Grafana]
+  }
+
+' Relations Utilisateurs
+User --> [Streamlit]
+User --> [Grafana]
+User --> [pgAdmin]
+
+' Interfaces --> Services Applicatifs
+[Streamlit] --> [Predict (FastAPI)]
+[Predict (FastAPI)] --> [Auth (JWT)]
+
+' Airflow et traitement
+[Airflow Scheduler] --> [Airflow Worker]
+[Airflow Web UI] --> [Airflow Scheduler]
+[Airflow Worker] --> [Extract Text (PyTesseract)]
+[Airflow Worker] --> [Process Text]
+[Airflow Worker] --> [Process Image]
+[Airflow Worker] --> [Compute Embeddings (CLIP/CDIP)]
+[Airflow Worker] --> [Train]
+[Airflow Worker] --> [Compute Embeddings (CLIP/CDIP)]
+
+' Prétraitement
+[Process Text] --> [Compute Embeddings (CLIP/CDIP)]
+[Process Image] --> [Compute Embeddings (CLIP/CDIP)]
+[Extract Text (PyTesseract)] --> [Process Text]
+
+' Embeddings
+[Compute Embeddings (CLIP/CDIP)] --> Postgres
+[Compute Embeddings (CLIP/CDIP)] --> [Train]
+' Train
+[Train] --> [MLflow]
+[MLflow] --> Postgres
+[MLflow] --> [Filesystem (Artifacts)]
+
+' Messaging & Storage
+[Airflow Scheduler] --> [Redis Broker]
+[Airflow Worker] --> Postgres
+
+' Monitoring
+[Prometheus] --> [cAdvisor]
+[Prometheus] --> [Postgres Exporters]
+[Grafana] --> [Prometheus]
+
+' pgAdmin
+[pgAdmin] --> Postgres
+[Process Text] --> Postgres
+[Process Image] --> Postgres
+[Extract Text (PyTesseract)] --> Postgres
+@enduml

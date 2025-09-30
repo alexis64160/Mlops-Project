@@ -1,0 +1,34 @@
+title Stack Technique MLOps - Vue Statique
+
+note over User, Streamlit: Couche 1 - Interfaces Utilisateur
+User -> Streamlit: Interface Web (Streamlit)
+User -> PgAdmin: Gestion DB (pgAdmin)
+User -> Grafana: Monitoring (Grafana)
+
+note over Streamlit, Grafana: Couche 2 - Services Applicatifs
+Streamlit -> Predict: Appels prédiction (FastAPI)
+Predict -> Auth: Authentification JWT
+Streamlit -> MLflow: Visualisation expériences
+
+note over Airflow, Train: Couche 3 - Orchestration & Traitement
+Airflow --> ExtractText: OCR via PyTesseract
+Airflow --> ProcessText: Prétraitement texte
+Airflow --> ProcessImage: Prétraitement image
+Airflow --> ComputeEmbeddings: Embeddings via CLIP
+Airflow --> Train: Entraînement modèles
+Airflow --> Predict: Déploiement / appel modèle
+
+note over ComputeEmbeddings, MLflow: Couche 4 - Machine Learning
+ComputeEmbeddings --> Postgres: Stockage vecteurs
+Train --> MLflow: Tracking entraînement
+Predict --> Postgres: Lecture modèles
+
+note over Postgres, Redis: Couche 5 - Stockage & Messaging
+Predict --> Postgres: Stockage modèles / résultats
+Airflow --> Redis: Broker Celery
+Airflow --> Postgres: Métadonnées DAGs
+
+note over Prometheus, Exporters: Couche 6 - Monitoring
+Prometheus <-- Exporters: Metrics (Postgres, Airflow, MLflow)
+Grafana <-- Prometheus: Dashboards
+cAdvisor --> Prometheus: Metrics système
