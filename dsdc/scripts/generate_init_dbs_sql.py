@@ -4,16 +4,6 @@ import logging
 
 # Config
 ENV_SECRETS_FILE = CONFIG.paths.secrets
-OUTPUT_SQL_FILE = CONFIG.paths.project_root / "services" / "posgtres" / "init_dbs" / "init_dbs_and_users.sql"
-
-# Chargement des secrets
-secrets = dotenv_values(ENV_SECRETS_FILE)
-
-from dsdc import CONFIG
-from dotenv import dotenv_values
-
-# Config
-ENV_SECRETS_FILE = CONFIG.paths.secrets
 OUTPUT_SQL_FILE = CONFIG.paths.project_root / "services" / "postgres" / "init_dbs" / "init_dbs_and_users.sql"
 
 # Chargement des secrets
