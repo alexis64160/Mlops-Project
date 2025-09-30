@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY dsdc ./dsdc
 COPY .dsdc_project_root .
-COPY .env.secrets .
+# COPY .secrets .
 
 COPY config.yaml .
 # COPY services/predict/main.py .
