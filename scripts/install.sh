@@ -98,7 +98,8 @@ mkdir -p models
 # --------------------- #
 #  COPY FILE TEMPLATES  #
 # --------------------- #
-cp "$DSDC_DIR/scripts/templates/*" "$DSDC_DIR"
+cp "$DSDC_DIR/scripts/templates/.secrets" "$DSDC_DIR/"
+cp "$DSDC_DIR/scripts/templates/config.yaml" "$DSDC_DIR/"
 
 unset DSDC_PYTHON
 
