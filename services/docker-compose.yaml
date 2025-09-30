@@ -396,6 +396,7 @@ services:
 # region auth
   auth:
     container_name: dsdc-auth
+    image: dsdc-auth:latest
     build:
       context: ..
       dockerfile: services/auth/Dockerfile
