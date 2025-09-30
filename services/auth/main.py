@@ -30,12 +30,12 @@ USERS = {
         "hashed_password": pwd_context.hash("wonderland"),
         "disabled": False,
     },
-    "streamlit": {
-        "username": "streamlit",
+    "airflow": {
+        "username": "airflow",
         "full_name": "Airflow orchestrator",
         "role": "model-admin",
         "email": "",
-        "hashed_password": pwd_context.hash("streamlit"),
+        "hashed_password": pwd_context.hash("airflow_reload_secret"),
         "disabled": False,
     }
 }

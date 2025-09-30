@@ -18,7 +18,7 @@ default_args = {
     'start_date': datetime(2025, 9, 14),
 }
 
-TRAIN_RUNS = 3
+TRAIN_RUNS = 10
 
 @task(task_id="train_model")
 def task_train_model():
@@ -76,19 +76,43 @@ def task_deploy_best_model():
     current_link.symlink_to(model_file_path)
     logging.info(f"Linked {current_link} -> {model_file_path}")
 
+    # 1. Get OAuth2 token 
+    auth_url = "http://dsdc-auth:8000/token"
+    auth_data = {
+        "username": "airflow",
+        "password": "airflow_reload_secret"
+    }
     try:
-        response = requests.post("http://dsdc-predict:8000/reload-model")
+        auth_response = requests.post(
+            auth_url, 
+            data=auth_data,
+            headers={"Content-Type": "application/x-www-form-urlencoded"}
+        )
+        auth_response.raise_for_status()
+        access_token = auth_response.json().get("access_token")
+        if not access_token:
+            logging.warning("No access token received from auth service.")
+            return
+    except Exception as e:
+        logging.warning(f"Failed to get access token: {e}")
+        return
+
+    # 2. use token to launch model reload
+    reload_url = "http://dsdc-predict:8000/reload-model"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    try:
+        response = requests.post(reload_url, headers=headers)
         if response.status_code == 200:
             logging.info("Successfully reloaded dsdc-predict.")
         else:
-            logging.warning(f"Failed to reload dsdc-predict: {response.status_code}")
+            logging.warning(f"Failed to reload dsdc-predict: {response.status_code} {response.text}")
     except Exception as e:
         logging.warning(f"Could not contact dsdc-predict to reload model: {e}")
 
 @dag(
     dag_id="train_model",
     default_args=default_args,
-    schedule="50 * * * *",  # schedule_interval est déprécié, utiliser schedule
+    schedule="50 * * * *",
     catchup=False,
     description="Train 5 models upon current data",
     tags=["dsdc", "train", "model"],

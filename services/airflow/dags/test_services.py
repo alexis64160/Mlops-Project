@@ -257,40 +257,73 @@ def test_compute_embeddings():
 
 
 # region predict
+def get_access_token():
+    auth_url = "http://dsdc-auth:8000/token"
+    auth_data = {
+        "username": "airflow",
+        "password": "airflow_reload_secret"
+    }
+    try:
+        auth_response = requests.post(
+            auth_url,
+            data=auth_data,
+            headers={"Content-Type": "application/x-www-form-urlencoded"}
+        )
+        auth_response.raise_for_status()
+        token = auth_response.json().get("access_token")
+        if not token:
+            logging.error("No access token received from auth service.")
+        return token
+    except Exception as e:
+        logging.error(f"Failed to get access token: {e}")
+        return None
+
+
 @task(task_id="test_predict_healthy")
 def test_predict_healthy():
-    API_URL="http://dsdc-predict:8000/status"
-    logging.info(f"testing whether predict api is healthy")
+    API_URL = "http://dsdc-predict:8000/status"
+    logging.info(f"Testing whether predict API is healthy")
     response = requests.get(API_URL)
-    logging.info(response.status_code)
-    assert response.status_code == 200
+    logging.info(f"Status code: {response.status_code}")
+    assert response.status_code == 200, f"Status check failed: {response.text}"
     json_response = response.json()
     status = json_response.get("status")
     version = json_response.get("version")
-    logging.info(f"predict api is {status} - running on version {version}.")
+    logging.info(f"Predict API is {status} - running on version {version}.")
     return version
+
 
 @task(task_id="test_predict_functional")
 def test_predict_functional(version: str):
-    API_URL=f"http://dsdc-predict:8000/{version}/predict"
-    logging.info(f"testing whether predict api is functional")
+    token = get_access_token()
+    if not token:
+        raise Exception("No token retrieved, skipping test.")
 
-    image = PROJECT_ROOT/"tests"/"sample"/"rvl_aaa06d00_original.tif"
-    response = requests.post(
-        API_URL,
-        files={"image": (image.name, open(image, "rb"), "image/tiff")}
-    )
-    assert response.status_code == 200, response.status_code
-    label_path = PROJECT_ROOT/"tests"/"sample"/"rvl_aaa06d00_label.txt"
+    API_URL = f"http://dsdc-predict:8000/{version}/predict"
+    headers = {"Authorization": f"Bearer {token}"}
+    logging.info(f"Testing whether predict API is functional")
+
+    image = PROJECT_ROOT / "tests" / "sample" / "rvl_aaa06d00_original.tif"
+    with open(image, "rb") as img_file:
+        response = requests.post(
+            API_URL,
+            headers=headers,
+            files={"image": (image.name, img_file, "image/tiff")}
+        )
+
+    assert response.status_code == 200, f"Prediction failed: {response.status_code} - {response.text}"
+
+    label_path = PROJECT_ROOT / "tests" / "sample" / "rvl_aaa06d00_label.txt"
     with open(label_path) as f:
         expected_label = int(f.read().strip())
+
     json_response = response.json()
     label = json_response["label"]
     probas = json_response["probas"]
-    assert label == expected_label
-    logging.info(probas)
-    assert len(probas) == 16
-    logging.info("Successfully tested prediction service (prediction = {label}, as expected).")
+
+    assert label == expected_label, f"Expected {expected_label}, got {label}"
+    assert len(probas) == 16, f"Expected 16 probabilities, got {len(probas)}"
+    logging.info(f"Prediction successful. Label = {label}, Probabilities = {probas}")
 
     
 @task_group(group_id="test_predict")
