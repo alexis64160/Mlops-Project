@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS embeddings(
     processed_text_id INTEGER REFERENCES processed_texts(id),
     clip_version TEXT NOT NULL,
     embeddings FLOAT8[1024]
+    processing_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_labels_document_id ON labels(document_id);

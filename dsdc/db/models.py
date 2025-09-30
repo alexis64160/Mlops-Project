@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, TIMESTAMP, Text, Float, ARRAY
 from sqlalchemy.orm import relationship
 from dsdc.db import DSDCBase
+from datetime import datetime
 
 class OriginalDocument(DSDCBase):
     __tablename__ = 'original_documents'
@@ -9,7 +10,7 @@ class OriginalDocument(DSDCBase):
     file_path = Column(String, nullable=False)
     original_name = Column(String, nullable=False)
 
-    import_datetime = Column(TIMESTAMP)
+    import_datetime = Column(TIMESTAMP, default=datetime.utcnow)
 
     labels = relationship("Label", back_populates="document")
     processed_images = relationship("ProcessedImage", back_populates="document")
@@ -34,7 +35,7 @@ class ProcessedImage(DSDCBase):
     document_id = Column(String, ForeignKey("original_documents.id"))
     image_file = Column(String, nullable=False)
     processor = Column(String)
-    processing_datetime = Column(TIMESTAMP)
+    processing_datetime = Column(TIMESTAMP, default=datetime.utcnow)
 
     document = relationship("OriginalDocument", back_populates="processed_images")
     embeddings = relationship("Embedding", back_populates="processed_image")
@@ -47,7 +48,7 @@ class RawText(DSDCBase):
     document_id = Column(String, ForeignKey("original_documents.id"))
     raw_text = Column(Text, nullable=False)
     processor = Column(String)
-    processing_datetime = Column(TIMESTAMP)
+    processing_datetime = Column(TIMESTAMP, default=datetime.utcnow)
 
     document = relationship("OriginalDocument", back_populates="raw_texts")
     processed_texts = relationship("ProcessedText", back_populates="raw_text")
@@ -60,7 +61,7 @@ class ProcessedText(DSDCBase):
     raw_text_id = Column(Integer, ForeignKey("raw_texts.id"))
     processed_text = Column(Text, nullable=False)
     processor = Column(String)
-    processing_datetime = Column(TIMESTAMP)
+    processing_datetime = Column(TIMESTAMP, default=datetime.utcnow)
 
     raw_text = relationship("RawText", back_populates="processed_texts")
     embeddings = relationship("Embedding", back_populates="processed_text")
@@ -74,6 +75,7 @@ class Embedding(DSDCBase):
     processed_text_id = Column(Integer, ForeignKey("processed_texts.id"))
     clip_version = Column(String, nullable=False)
     embeddings = Column(ARRAY(Float, dimensions=1))  # FLOAT8[1024]
+    processing_datetime = Column(TIMESTAMP, default=datetime.utcnow)
 
     processed_image = relationship("ProcessedImage", back_populates="embeddings")
     processed_text = relationship("ProcessedText", back_populates="embeddings")
