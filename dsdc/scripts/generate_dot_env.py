@@ -9,6 +9,7 @@ CONFIG_FILE = CONFIG.paths.config
 SECRETS_FILE = CONFIG.paths.secrets
 OUTPUT_DOT_ENV_FILE = CONFIG.paths.project_root / "services" / ".env"
 INTERNAL_PORTS = {
+    "auth": 8000,
     "pgadmin": 80,
     "mlflow": 5000,
     "grafana": 3000,
@@ -54,7 +55,7 @@ def generate_env(config, secrets):
             continue
         var_name = f"{prefix}{service.upper().replace('-', '_')}_PORT"
         mapping_var_name = f"{var_name}_MAPPING"
-        # env[var_name] = str(host_port)
+        env[var_name] = str(host_port)
         env[mapping_var_name] = f"{host_port}:{internal_port}"
 
     # add secrets

@@ -393,6 +393,16 @@ services:
     volumes:
     - ${DSDC_DIR:-.}/models:/app/models
     - ${DSDC_DIR:-.}/services/predict/main.py:/app/main.py
+# region auth
+  auth:
+    container_name: dsdc-auth
+    build:
+      context: ..
+      dockerfile: services/auth/Dockerfile
+    ports:
+      - "${DSDC_AUTH_PORT_MAPPING}"
+    environment:
+      DSDC_JWT_SECRET_KEY: ${DSDC_JWT_SECRET_KEY}
 # region mlflow
   mlflow:
     container_name: dsdc-mlflow

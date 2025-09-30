@@ -21,6 +21,9 @@ host_exposed_ports:
   streamlit: 64400
   predict: 64401
 
+# authentication
+#  auth: 64421
+
 # orchestration and db
 #   airflow-apiserver: 40641
 #   flower: 40649

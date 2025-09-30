@@ -1,10 +1,52 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, Depends
+from fastapi.security import OAuth2PasswordBearer
 from fastapi.responses import JSONResponse
+from jose import JWTError, jwt
+from pydantic import BaseModel
 import numpy as np
 import requests
 from dsdc import CONFIG
+import os
+import logging
 
 VERSION = "v1"
+SECRET_KEY = os.environ["DSDC_JWT_SECRET_KEY"]
+ALGORITHM = getattr(CONFIG.settings, "authenticaiton_algorithm", "HS256")
+
+# Le tokenUrl doit pointer vers ton service d'auth
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="http://dsdc-auth:8000/token")
+
+class TokenData(BaseModel):
+    username: str
+    role: str
+
+def get_current_user(token: str = Depends(oauth2_scheme)) -> str:
+    credentials_exception = HTTPException(
+        status_code=401,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        role: str = payload.get("role")
+        if username is None or role is None:
+            raise credentials_exception
+        return username
+    except JWTError:
+        raise credentials_exception
+    
+def require_role(required_role: str):
+    def role_checker(user: TokenData = Depends(get_current_user)):
+        if user.role != required_role:
+            raise HTTPException(
+                status_code=403,
+                detail=f"User does not have required role: {required_role}"
+            )
+        return user
+    return role_checker
+
+
 app = FastAPI(title="Process Image Service")
 
 from dsdc.models.mlp import MLP
@@ -32,7 +74,9 @@ def get_status():
         })
 
 @app.post("/reload-model")
-def reload_model():
+def reload_model(
+    current_user: TokenData = Depends(require_role("model-admin"))
+):
     global mlp
     if mlp is None:
         mlp = load_model()
@@ -45,7 +89,11 @@ def reload_model():
 
 
 @app.post(f"/{VERSION}/predict")
-async def predict(image: UploadFile = File(...)):
+async def predict(
+    image: UploadFile = File(...),
+    current_user: TokenData = Depends(get_current_user)
+    ):
+    logging.info(f"Prediction requested by user: {current_user}")
     global mlp
     if mlp is None:
         mlp = load_model()
