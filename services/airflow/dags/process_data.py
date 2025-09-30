@@ -52,7 +52,6 @@ def dag_ingest_and_process_data():
                 response = requests.post(url, files=files)
             json_response = response.json()
             raw_text = json_response.get("extracted_text")
-            version = json_response.get("version")
             raw_texts.append(raw_text)
             versions.append(version)
         add_raw_texts(zip(
@@ -79,7 +78,6 @@ def dag_ingest_and_process_data():
             response = requests.post(url, json=json_data)
             json_response = response.json()
             processed_text = json_response.get("processed_text")
-            version = json_response.get("version")
             raw_text_ids.append(raw_text.id)
             processed_texts.append(processed_text)
             versions.append(version)

@@ -4,7 +4,7 @@ from PIL import Image
 import io
 import logging
 
-VERSION = "v1"
+VERSION = "1.0.0"
 app = FastAPI(title="Process Image Service")
 
 @app.get("/status")

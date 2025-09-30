@@ -5,7 +5,7 @@ import logging
 
 from dsdc.data.process_text import process_text, PROCESSING_VERSION
 
-VERSION = "v1"
+VERSION = "1.0.0"
 app = FastAPI(title="Process Text Service")
 
 class TextIn(BaseModel):

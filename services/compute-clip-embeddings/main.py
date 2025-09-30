@@ -8,7 +8,7 @@ import logging
 
 from dsdc.models.clip import CLIPSingleton
 
-VERSION = "v1"
+VERSION = "1.0.0"
 
 app = FastAPI(
     title="Compute CLIP Embeddings Service",
