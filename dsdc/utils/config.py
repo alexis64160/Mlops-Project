@@ -49,8 +49,8 @@ def get_project_root(marker=".dsdc_project_root") -> Path:
             current = current.parent
     if not found:
         raise FileNotFoundError(f"Could not find '{marker}' in any parent directory.")
-    else:
-        return project_root
+    logging.info(f"🆗 found root directory.")
+    return project_root
 
 def load_config_as_namespace(config_path: Path, project_root: Path) -> SimpleNamespace:
     def process_paths(paths_dict):
